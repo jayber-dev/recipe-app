@@ -1,0 +1,63 @@
+
+.img-container {
+    position: relative;
+    margin: 10px;
+    width: 40vw;
+    height: 40vh;
+    transition: width 0.5s,height 0.5s;
+
+    img {
+        height: 100%;
+        width: 100%;
+        border: 1px solid grey;
+        border-radius: 10px;
+        transition: width 0.5s,height 0.5s;
+        object-fit: cover;
+        object-position: center;
+        
+    }
+    
+    p {
+        position: absolute;
+        text-align: center;
+        font-size: large;
+        font-weight: 500;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: rgba(245, 245, 245, 0.479);
+        width: auto;
+        padding: 20px;
+        height: 30px;
+        // top: 0;
+        bottom: 0;
+        left: 0;
+        right:0;
+        margin: auto;
+    }
+   
+}
+
+.img-container:hover{    
+    width: 41vw;
+    height: 41vh;
+}
+
+
+@media screen and (max-width:750px) {
+    
+
+    .img-container{
+        position: relative;
+        margin: 10px;
+        width: 80vw;
+        transition: width 0.5s,height 0.5s;
+    
+        p {
+            font-size: medium;
+            font-weight: 600;
+        }
+    }
+
+    .img-container:hover{    
+        width: 82.5vw;
+    }
+}

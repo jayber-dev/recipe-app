@@ -1,0 +1,31 @@
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(128, 247, 128, 0.479);
+    ul {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+        li {
+            padding:20px;
+            list-style: none;
+            text-decoration: none;
+            a{
+                text-decoration: none;
+                color: cadetblue;
+            }        
+            // a:active {
+            //     color:cadetblue
+            // }
+
+            a:visited{
+                color: cadetblue;
+            }
+        }
+        li:hover {
+            background-color: whitesmoke;
+        }
+    }
+    
+}

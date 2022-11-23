@@ -1,0 +1,21 @@
+.recipe-card {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (max-width:750px) {
+    
+    .recipe-card {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        // scale: 1.6;
+    }
+}
