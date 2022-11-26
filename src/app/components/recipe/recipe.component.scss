@@ -1,4 +1,4 @@
-
+$borderColor: rgb(63, 135, 166);
 .img-container {
     position: relative;
     margin: 10px;
@@ -9,7 +9,7 @@
     img {
         height: 100%;
         width: 100%;
-        border: 1px solid grey;
+        border: 1px solid $borderColor;
         border-radius: 10px;
         transition: width 0.5s,height 0.5s;
         object-fit: cover;
@@ -60,5 +60,28 @@
 
     .img-container:hover{    
         width: 82.5vw;
+    }
+}
+
+.recipe-card {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    // margin: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (max-width:750px) {
+    
+    .recipe-card {
+        display: flex;
+        flex-direction: column;
+        margin: 70px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        // scale: 1.6;
     }
 }

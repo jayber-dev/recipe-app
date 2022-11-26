@@ -1,0 +1,23 @@
+<nav>
+    <ul>
+        <div class="left-nav">
+            <img src="../../assets/images/logo.png" alt="">
+            <li><a routerLink="/">Home</a></li>
+            <li>Favorites</li>
+        </div>
+        <div class="right-nav">
+            <li (click)="modalView($event)" class="login">Login</li>
+            <div class="login-modal" *ngIf="showModal">
+                <form action="">
+                    <label for="">Email</label>
+                    <input [(ngModel)]="email" name="email" autocomplete="email"  type="text">
+                    <label for="">Password</label>
+                    <input [(ngModel)]="password" name="password" autocomplete="current-password" type="password">
+                    <button (click)="sendLogin()">Submit</button>
+                </form>
+            </div>
+            <li>Register</li>
+        </div>
+        
+    </ul>
+</nav>
