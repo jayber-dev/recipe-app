@@ -1,20 +1,18 @@
 from flask import Flask,jsonify,request
-# import requests
 import json
-# from flask_cors import CORS
-import flask_cors
-from mysql.connector import (connection)
+import mysql.connector
+
 
 app = Flask(__name__)
-flask_cors.CORS(app=app)
+# flask_cors.CORS(app=app)
 
-wow = connection.MySQLConnection()
+# wow = connection.MySQLConnection()
 
 
 @app.route('/auth', methods=['GET','POST'])
 def home ():
     if(request.method == 'POST'):
-        print(requests)
+        # print(requests)
         return jsonify([{'nana':'lala'},2,3])
     elif(request.method == 'GET'):
         return 'poop'
