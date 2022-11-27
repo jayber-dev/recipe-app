@@ -5,8 +5,8 @@
             <li><a routerLink="/">Home</a></li>
             <li>Favorites</li>
         </div>
-        <div class="right-nav">
-            <li (click)="modalView($event)" class="login">Login</li>
+        <div class="right-nav" >
+            <li *ngIf="!isLogged" (click)="modalView($event)" class="login">Login</li>
             <div class="login-modal" *ngIf="showModal">
                 <app-login></app-login>
             </div>

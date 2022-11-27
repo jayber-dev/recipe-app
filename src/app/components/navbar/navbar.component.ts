@@ -1,4 +1,5 @@
 import { Component,OnInit} from '@angular/core';
+import { UserAuthService } from 'src/app/user-auth.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 
 
@@ -9,7 +10,7 @@ import { RecipeComponent } from '../recipe/recipe.component';
 })
 export class NavbarComponent implements OnInit {
  
-  
+  isLogged:boolean
   showModal:boolean = false;
   effect: any = [{height:'0px'},{height:'500px'}]
   
@@ -33,7 +34,10 @@ export class NavbarComponent implements OnInit {
 
   
 
-  constructor() {
+  constructor(private user:UserAuthService) {
+    
+    this.isLogged = user.isLogged
+    console.log(this.isLogged);
     console.log(document.querySelector('.login-modal'))
 
   }
