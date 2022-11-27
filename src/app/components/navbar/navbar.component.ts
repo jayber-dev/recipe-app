@@ -9,8 +9,7 @@ import { RecipeComponent } from '../recipe/recipe.component';
 })
 export class NavbarComponent implements OnInit {
  
-  email:string = '';
-  password:string = '';
+  
   showModal:boolean = false;
   effect: any = [{height:'0px'},{height:'500px'}]
   
@@ -32,11 +31,7 @@ export class NavbarComponent implements OnInit {
     console.log('wow ' + this.showModal);
   }
 
-  sendLogin() {
-    console.log(`login was pressed with credentials \n 
-email: ${this.email}\n
-password: ${this.password}` );
-  }
+  
 
   constructor() {
     console.log(document.querySelector('.login-modal'))

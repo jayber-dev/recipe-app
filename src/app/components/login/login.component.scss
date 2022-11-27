@@ -1,0 +1,17 @@
+$backgroundColor : rgb(128, 247, 128,0.575);
+$textcolor: rgb(61, 58, 58);
+$borderColor: rgb(63, 135, 166,0.575);
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+
+    button {
+        margin-top: 20px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid grey;
+        background-image: linear-gradient(0.25turn, white, #ebf8e1, $backgroundColor);
+    }
+}

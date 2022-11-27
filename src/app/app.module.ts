@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { routes } from './routing.module';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -16,6 +17,7 @@ import { routes } from './routing.module';
     AppComponent,
     NavbarComponent,
     RecipeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -8,13 +8,7 @@
         <div class="right-nav">
             <li (click)="modalView($event)" class="login">Login</li>
             <div class="login-modal" *ngIf="showModal">
-                <form action="">
-                    <label for="">Email</label>
-                    <input [(ngModel)]="email" name="email" autocomplete="email"  type="text">
-                    <label for="">Password</label>
-                    <input [(ngModel)]="password" name="password" autocomplete="current-password" type="password">
-                    <button (click)="sendLogin()">Submit</button>
-                </form>
+                <app-login></app-login>
             </div>
             <li>Register</li>
         </div>
