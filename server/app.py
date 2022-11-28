@@ -2,10 +2,12 @@ from flask import Flask,jsonify,request
 import json
 import mysql.connector
 from flask_cors import CORS
+from pony.orm import *
 
 
 app = Flask(__name__)
 CORS(app=app)
+db = Database()
 
 
 
