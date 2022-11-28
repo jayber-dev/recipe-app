@@ -6,10 +6,10 @@
             <li>Favorites</li>
         </div>
         <div class="right-nav" >
-            <li *ngIf="!isLogged" (click)="modalView($event)" class="login">Login</li>
-            <div class="login-modal" *ngIf="showModal">
-                <app-login></app-login>
-            </div>
+            <li *ngIf="user.isLogged" (click)="modalView($event)" class="login">Login</li>
+                <div class="login-modal" *ngIf="showModal && user.isLogged">
+                    <app-login></app-login>
+                </div>
             <li>Register</li>
         </div>
         
