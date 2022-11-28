@@ -10,8 +10,8 @@ CORS(app=app)
 
 
 
-@app.route('/auth', methods=['GET','POST'])
-def home ():
+@app.route('/login', methods=['GET','POST'])
+def login ():
     if(request.method == 'GET'):
         # print(requests)
         return jsonify([{'nana':'lala'},2,3])
@@ -23,6 +23,10 @@ def home ():
         else:
             return jsonify({'data':'false'})  
         # return data
+
+@app.route('/logout', methods=['GET','POST'])
+def logout():
+    return jsonify({'logout':'true'})
     
 
 

@@ -20,8 +20,7 @@ export class LoginComponent {
     console.log(`login was pressed with credentials \n 
 email: ${this.email}\n
 password: ${this.password}` ); 
-    let isToChange = this.user.validate(this.email,this.password)
-    console.log(isToChange);
+  this.user.validate(this.email,this.password)  
   }
 
   
