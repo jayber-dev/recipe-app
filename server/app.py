@@ -3,7 +3,7 @@ import json
 import mysql.connector
 from flask_cors import CORS
 from pony.orm import *
-
+import db.entities
 
 
 app = Flask(__name__)
@@ -11,8 +11,16 @@ CORS(app=app)
 db = Database()
 
 class Person(db.Entity):
-    name = Required(str)
-    age = Required(int)
+    user = Required(str)
+    passeord = Required(int)
+    
+# db.generate_mapping(create_tables=True)
+
+# @db_session
+# def insert():
+#     pass
+    
+# db.bind(provider='mysql', host='localhost:4036', user='root', passwd='', db='recipeUser')
 
 @app.route('/login', methods=['GET','POST'])
 def login ():
