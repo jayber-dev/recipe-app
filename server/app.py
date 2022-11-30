@@ -2,35 +2,31 @@ from flask import Flask,jsonify,request
 import json
 import mysql.connector
 from flask_cors import CORS
-from pony.orm import *
-import db.entities
+# from pony.orm import *
+import db.entities as entity
 
 
 app = Flask(__name__)
 CORS(app=app)
-db = Database()
 
 # mydb = mysql.connector.connect(
 #     host='31.170.164.51',
 #     user='u889934763_p00nani',
 #     password='Pp0526767682!',
-#     database='u889934763_recipeUsers',
-    
+#     database='u889934763_recipeUsers',  
 # )
 
 # print(mydb)
-class Person(db.Entity):
-    user = Required(str)
-    passeord = Required(int)
-    
+# class Person(db.Entity):
+#     user = Required(str)
+#     passeord = Required(int)
 
-
-@db_session
-def insert():
-    pass
-    
-db.bind(provider='mysql',host='31.170.164.51', user='u889934763_p00nani', passwd='Pp0526767682!', db='u889934763_recipeUsers')
-db.generate_mapping(create_tables=True)
+# @db_session
+# def insert():
+#     pass
+   
+entity.db.bind(provider='mysql',host='31.170.164.51', user='u889934763_p00nani', passwd='Pp0526767682!', db='u889934763_recipeUsers')
+entity.db.generate_mapping(create_tables=True)
 
 @app.route('/login', methods=['GET','POST'])
 def login ():
