@@ -13,11 +13,9 @@ CORS(app=app)
 entity.db.bind(provider='mysql',host='31.170.164.51', user='u889934763_p00nani', passwd='Pp0526767682!', db='u889934763_recipeUsers')
 entity.db.generate_mapping(create_tables=True)
 
-# entity.insert('jayber1@gmail.com','Pp304682685!')
+
 user_list = entity.retrive_user_list()
-for i in user_list:
-    print(i.email, i.password)
-# print(user_list[0].email)
+
 
 @app.route('/login', methods=['GET','POST'])
 def login ():
@@ -26,21 +24,21 @@ def login ():
         user_data = entity.retrive_user(user['name'])
         if(request.method == 'POST'):
             data = request.get_json()
-            before_hash = 'nana'
-            hashed_pass = generate_password_hash(password=before_hash,method='pbkdf2:sha256:20000')
-            print(hashed_pass)
-            print(check_password_hash(hashed_pass,'nana'))
-            print(data['name'])
-        if(data['name'] == user_data.email):
-            return jsonify({'data':check_password_hash(hashed_pass,'nana'),'hashed_pass':hashed_pass})
+            # before_hash = 'nana'
+            # hashed_pass = generate_password_hash(password=before_hash,method='pbkdf2:sha256:20000')
+            # print(hashed_pass)
+            # print(check_password_hash(hashed_pass,'nana'))
+            # print(data['name'])
+        if(data['name'] == user_data.email and data['pass'] == user_data.password):
+            return jsonify({'data': True})
         else:
             return jsonify({'data':'false'})  
     except:
-        pass
+        return jsonify([{'nana':'lala'},2,3])
     
     # print(user_data.email,user_data.password)
     
-    return jsonify([{'nana':'lala'},2,3])
+    
     
 
 @app.route('/logout', methods=['GET','POST'])

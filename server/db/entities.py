@@ -15,7 +15,8 @@ def retrive_user(email):
 
 @db_session
 def retrive_user_list():
-    return select(p for p in Users)[:]
+    return select(p for p in Users)[:],
+   
 
 
 class Users(db.Entity):

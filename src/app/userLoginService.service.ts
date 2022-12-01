@@ -13,8 +13,8 @@ export class UserLoginService {
 
   validate(user:string,pass:string){
     this.http.post<any>('http://127.0.0.1:5001/login',{name:user,pass:pass},{responseType:'json'}).subscribe((data) =>{
-    
-      if(data['data'] == 'true'){
+      console.log(data);
+      if(data['data'] == true){
         this.isLogged = false
       } else{
         this.isLogged = true
