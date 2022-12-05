@@ -14,12 +14,13 @@ entity.db.bind(provider='mysql',host='31.170.164.51', user='u889934763_p00nani',
 entity.db.generate_mapping(create_tables=True)
 
 
-user_list = entity.retrive_user_list()
+# user_list = entity.retrive_user_list()
 
 
 @app.route('/login', methods=['GET','POST'])
 def login ():
     user = request.get_json()
+    
     try:
         user_data = entity.retrive_user(user['name'])
         if(request.method == 'POST'):
@@ -34,7 +35,7 @@ def login ():
         else:
             return jsonify({'data':'false'})  
     except:
-        return jsonify([{'nana':'lala'},2,3])
+        return jsonify(['error with the pass or email'])
     
     # print(user_data.email,user_data.password)
     

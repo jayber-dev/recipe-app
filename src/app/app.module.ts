@@ -11,6 +11,7 @@ import { routes } from './routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserLoginService } from './userLoginService.service';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 
 
 
@@ -21,6 +22,7 @@ import { UserLoginService } from './userLoginService.service';
     NavbarComponent,
     RecipeComponent,
     LoginComponent,
+    RegistrationFormComponent,
   ],
   imports: [
     BrowserAnimationsModule,

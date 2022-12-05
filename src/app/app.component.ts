@@ -9,7 +9,7 @@ import { recipeData } from './recipeData.interface'
 export class AppComponent {
   title = 'recipe-app';
 
-  
+  // TODO: nake a register from and connect to server API
    
     
 

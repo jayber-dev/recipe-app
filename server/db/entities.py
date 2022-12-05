@@ -1,7 +1,8 @@
 from pony.orm import *
 
+#  TODO: build recipe database entity and make the API
 
-print('hello from entities')
+print('entities in working state')
 db = Database()
 
 @db_session
@@ -23,5 +24,10 @@ class Users(db.Entity):
     email = Required(str,unique=True)
     password = Required(str)
     token = Optional(str)
+
+class Recipes():
+    recipe_name = Required(str)
+    ingredients = Required(str)
+
     
 
