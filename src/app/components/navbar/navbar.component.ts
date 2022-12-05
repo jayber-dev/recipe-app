@@ -1,4 +1,5 @@
-import { Component,Input,OnInit, Output} from '@angular/core';
+import { Component,inject,Injectable,Injector,Input,OnInit, Output} from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { UserLoginService } from 'src/app/userLoginService.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 
@@ -9,8 +10,9 @@ import { RecipeComponent } from '../recipe/recipe.component';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  
-  constructor(public user:UserLoginService) {
+  home:boolean
+  constructor(public user:UserLoginService,private routes:Router) {
+    
   }
   
   showModal:boolean = false;
@@ -24,15 +26,14 @@ export class NavbarComponent implements OnInit {
     } else {
       this.showModal = false
     }
+
+    
   }
 
   logout(){
     this.user.logout()
   }
-
-  
-
-  
+ 
 
   ngOnInit(): any {
     

@@ -2,7 +2,7 @@
     <ul>
         <div class="left-nav">
             <img src="../../assets/images/logo.png" alt="">
-            <li routerLinkActive="active-link"><a routerLink="/" >Home</a></li>
+            <li [routerLinkActive]="'active'" IsActiveOptions="{exact: true}"> <a routerLink="" >Home</a></li>
             <li>Favorites</li>
         </div>
         <div class="right-nav" >
@@ -13,7 +13,7 @@
             <li *ngIf="!user.isLogged" (click)="logout()" class="login">
                 Logout
             </li>
-            <li>Register</li>
+            <li routerLinkActive="active-link"><a routerLink="/register" > Register</a></li>
         </div>
         
     </ul>

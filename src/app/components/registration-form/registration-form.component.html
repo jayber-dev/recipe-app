@@ -1,1 +1,13 @@
-<p>registration-form works!</p>
+<div class="form-wrapper">
+    <div class="registration-form">
+    <h1>Registration</h1>
+    <label for="name">First Name </label>
+    <input id="name" name="name" type="text" [formControl]="firstName">
+    <label for="name">Last Name </label>
+    <input id="name" name="name" type="text" [formControl]="lastName">
+
+    <p>{{firstName?.value}}</p>
+    <p>{{lastName.value}}</p>
+    </div>
+</div>
+

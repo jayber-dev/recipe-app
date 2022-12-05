@@ -1,0 +1,14 @@
+.form-wrapper {
+    display:flex;
+    flex-direction: column;
+    margin-top: 100px;
+    // width: 20vw;
+    align-items: center;
+
+    .registration-form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}
