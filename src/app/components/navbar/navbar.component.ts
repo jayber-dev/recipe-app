@@ -11,7 +11,7 @@ import { RecipeComponent } from '../recipe/recipe.component';
 })
 export class NavbarComponent implements OnInit {
   home:boolean
-  constructor(public user:UserLoginService,private routes:Router) {
+  constructor(public user:UserLoginService) {
     
   }
   

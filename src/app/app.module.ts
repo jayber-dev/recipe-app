@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
-import { FormsModule,FormGroup } from '@angular/forms';
+import { FormsModule,FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component';
@@ -28,6 +28,7 @@ import { RegistrationFormComponent } from './components/registration-form/regist
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes)

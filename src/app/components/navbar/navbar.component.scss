@@ -2,7 +2,7 @@ $backgroundColor : rgb(128, 247, 128,0.575);
 $textcolor: rgb(61, 58, 58);
 $borderColor: rgb(63, 135, 166,0.575);
 .active-link{
-    background-color:rgba(60, 128, 66, 0.548);
+    background-color:rgba(60, 128, 66, 0.548); 
 }
 nav {
     background-color: $backgroundColor;
@@ -40,12 +40,14 @@ nav {
                 a{
                     cursor: pointer;
                     text-decoration: none;
-                    // color: cadetblue;
+                    color: rgb(55, 178, 182);
+                    
                     
                 }        
                 
                 a:visited {
                     color:black;
+                    
                 }
                 
             }

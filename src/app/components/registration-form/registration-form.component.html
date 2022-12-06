@@ -1,13 +1,21 @@
 <div class="form-wrapper">
     <div class="registration-form">
     <h1>Registration</h1>
-    <label for="name">First Name </label>
-    <input id="name" name="name" type="text" [formControl]="firstName">
-    <label for="name">Last Name </label>
-    <input id="name" name="name" type="text" [formControl]="lastName">
+    <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <label >First Name</label>
+        <input type="text" formControlName="firstName">
+        <label >Last Name</label>
+        <input type="text" formControlName="lastName">
+        <label for="cars">Choose a car:</label>
+        <select name="country" id="cars" formControlName="country">
+            <option *ngFor="let i of countries"  value="{{i.name}}">{{i.name}}</option>
+            
+        </select>
 
-    <p>{{firstName?.value}}</p>
-    <p>{{lastName.value}}</p>
-    </div>
+        <button type="submit">submit</button>
+    </form>
+    <p>{{registerForm.value.firstName}}</p>
+    <p>{{registerForm.value.lastName}}</p>
+    </div> 
 </div>
-
+ 

@@ -1,7 +1,12 @@
 import {Routes} from '@angular/router'
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 import { RecipeComponent } from './components/recipe/recipe.component'
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component'
 
 export const routes:Routes = [
-    {path: '', component:RecipeComponent},
+    {path: 'home', component:RecipeComponent},
+    {path: '' , redirectTo:'/home',pathMatch:"full"},
+    {path: 'register', component:RegistrationFormComponent},
+    {path: '**' , component:NotFoundComponent }
 ]
