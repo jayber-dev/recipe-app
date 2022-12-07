@@ -20,7 +20,10 @@ entity.db.generate_mapping(create_tables=True)
 
 @app.route('/auth', methods=['GET','POST'])
 def auth():
-    return jsonify({"valid":True})
+    data = request.get_json()
+    
+    is_true = entity.validate_token(id=data['id'], token=data['key'])
+    return jsonify({"login":is_true})
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -28,22 +31,17 @@ def login ():
     user = request.get_json()
     
     try:
-        user_data = entity.retrive_user(user['name'])
-        
+        user_data = entity.retrive_user(user['name']) 
         if(request.method == 'POST'):
-            token = entity.update_token(user_data.id)
-            data = request.get_json()
-            print(token)
-            # Response.set_cookie(key='token', value= f'token', )
-            # before_hash = 'nana'
+            
+            data = request.get_json()   
             # hashed_pass = generate_password_hash(password=before_hash,method='pbkdf2:sha256:20000')
             # print(hashed_pass)
             # print(check_password_hash(hashed_pass,'nana'))
             # print(data['name'])
         if(data['name'] == user_data.email and data['pass'] == user_data.password):
-            resp = make_response(jsonify({'data': True, "token": token}))
-            resp.set_cookie(key='token', value= token)
-            return resp
+            token = entity.create_token(id=user_data.id)        
+            return (jsonify({'data': True, "token": token, 'id':user_data.id}))
         else:
             return jsonify({'data':'false'})  
     except:
@@ -57,6 +55,9 @@ def login ():
 
 @app.route('/logout', methods=['GET','POST'])
 def logout():
+    data = request.get_json()
+    print(data)
+    entity.delete_token(id=data['id'])
     return jsonify({'logout':'true'})
     
 

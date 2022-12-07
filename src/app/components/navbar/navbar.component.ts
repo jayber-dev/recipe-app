@@ -1,5 +1,6 @@
 import { Component,inject,Injectable,Injector,Input,OnInit, Output} from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { UserLoginService } from 'src/app/services/userLoginService.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 
@@ -11,11 +12,8 @@ import { RecipeComponent } from '../recipe/recipe.component';
 })
 export class NavbarComponent implements OnInit {
   
-  constructor(public user:UserLoginService) {
-    if(!user?.isLogged) {
-      console.log(user.isLogged)
-      // this.showModal = false
-    }
+  constructor(public user:UserLoginService,private cookieService:CookieService) {
+    
   }
   home:boolean
   showModal:boolean
@@ -32,12 +30,12 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
+    
     this.user.logout()
   }
  
 
   ngOnInit(): any {
-    
     // throw new Error('Method not implemented.');
   }
 }

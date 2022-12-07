@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserLoginService } from './services/userLoginService.service';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -33,7 +34,10 @@ import { RegistrationFormComponent } from './components/registration-form/regist
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [UserLoginService],
+  providers: [
+    UserLoginService,
+    CookieService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

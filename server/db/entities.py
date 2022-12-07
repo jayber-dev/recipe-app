@@ -8,13 +8,23 @@ db = Database()
 
 
 @db_session
-def update_token(id):
-    """  varifying existing token and replacing if needed"""
-    token = secrets.token_hex(8)
-    Users[id].token = token
+def create_token(id):
+    """  creating token """   
+    created_token = secrets.token_hex(16)
+    Users[id].token = created_token
+    return created_token
     
-    # data.token = f'{token}'
-    return token
+@db_session
+def validate_token(id,token):
+    """  validating token """   
+    if(Users[id].token == token):
+        return True
+    return False
+    
+@db_session
+def delete_token(id):
+    print(id)
+    Users[id].token = ''
 
 @db_session
 def insert(email,password):
