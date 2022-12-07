@@ -1,4 +1,4 @@
-from flask import Flask,jsonify,request
+from flask import Flask,jsonify,request,Response, make_response
 import json
 import mysql.connector
 from flask_cors import CORS
@@ -31,16 +31,19 @@ def login ():
         user_data = entity.retrive_user(user['name'])
         
         if(request.method == 'POST'):
-            entity.update_token(user_data.id)
+            token = entity.update_token(user_data.id)
             data = request.get_json()
+            print(token)
+            # Response.set_cookie(key='token', value= f'token', )
             # before_hash = 'nana'
             # hashed_pass = generate_password_hash(password=before_hash,method='pbkdf2:sha256:20000')
             # print(hashed_pass)
             # print(check_password_hash(hashed_pass,'nana'))
             # print(data['name'])
         if(data['name'] == user_data.email and data['pass'] == user_data.password):
-            
-            return jsonify({'data': True})
+            resp = make_response(jsonify({'data': True, "token": token}))
+            resp.set_cookie(key='token', value= token)
+            return resp
         else:
             return jsonify({'data':'false'})  
     except:

@@ -10,10 +10,11 @@ db = Database()
 @db_session
 def update_token(id):
     """  varifying existing token and replacing if needed"""
-    data = Users[id]
-    print(secrets.token_hex(16))
-    data.token = f'{secrets.token_hex(16)}'
-    return
+    token = secrets.token_hex(8)
+    Users[id].token = token
+    
+    # data.token = f'{token}'
+    return token
 
 @db_session
 def insert(email,password):
