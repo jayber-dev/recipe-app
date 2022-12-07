@@ -8,16 +8,22 @@ export class UserLoginService {
   constructor(private http:HttpClient) {
     
   }
-  isLogged:boolean = true
+  isLogged:boolean 
   message:string
 
-  validate(user:string,pass:string){
+  auth(){
+    this.http.post('127.0.0.1:5001',{}).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  login(user:string,pass:string){
     this.http.post<any>('http://127.0.0.1:5001/login',{name:user,pass:pass},{responseType:'json'}).subscribe((data) =>{
       console.log(data);
       if(data['data'] == true){
-        this.isLogged = false
-      } else{
         this.isLogged = true
+      } else{
+        this.isLogged = false
       }
        
     })
@@ -25,7 +31,7 @@ export class UserLoginService {
 
   logout(){
     this.http.post<any>('http://127.0.0.1:5001/logout',{}).subscribe((data)=>{
-      this.isLogged = true
+      this.isLogged = false
       console.log(this.isLogged);
     })
   }

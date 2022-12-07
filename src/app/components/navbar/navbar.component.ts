@@ -1,6 +1,6 @@
 import { Component,inject,Injectable,Injector,Input,OnInit, Output} from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { UserLoginService } from 'src/app/userLoginService.service';
+import { UserLoginService } from 'src/app/services/userLoginService.service';
 import { RecipeComponent } from '../recipe/recipe.component';
 
 
@@ -10,12 +10,15 @@ import { RecipeComponent } from '../recipe/recipe.component';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  home:boolean
-  constructor(public user:UserLoginService) {
-    
-  }
   
-  showModal:boolean = false;
+  constructor(public user:UserLoginService) {
+    if(!user?.isLogged) {
+      console.log(user.isLogged)
+      // this.showModal = false
+    }
+  }
+  home:boolean
+  showModal:boolean
   effect: any = [{height:'0px'},{height:'500px'}]
   
  
@@ -26,8 +29,6 @@ export class NavbarComponent implements OnInit {
     } else {
       this.showModal = false
     }
-
-    
   }
 
   logout(){

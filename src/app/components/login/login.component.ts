@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { UserLoginService } from 'src/app/userLoginService.service';
+import { UserLoginService } from 'src/app/services/userLoginService.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +7,7 @@ import { UserLoginService } from 'src/app/userLoginService.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private user:UserLoginService,private http:HttpClient){
+  constructor(private user:UserLoginService,){
     this.isLogged = user.isLogged
   }
 
@@ -18,9 +17,10 @@ export class LoginComponent {
 
   sendLogin() {
     console.log(`login was pressed with credentials \n 
-email: ${this.email}\n
-password: ${this.password}` ); 
-  this.user.validate(this.email,this.password)  
+    email: ${this.email}\n
+    password: ${this.password}` ); 
+    this.user.login(this.email,this.password)  
+    console.log('after server validation')
   }
 
   

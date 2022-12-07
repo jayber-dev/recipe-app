@@ -6,14 +6,14 @@
             <li>Favorites</li>
         </div>
         <div class="right-nav" >
-            <li *ngIf="user.isLogged" (click)="modalView($event)" class="login">Login</li>
-                <div class="login-modal" *ngIf="showModal && user.isLogged">
+            <li *ngIf="!user.isLogged" (click)="modalView($event)" class="login">Login</li>
+                <div class="login-modal" *ngIf="showModal && !user.isLogged">
                     <app-login></app-login>
                 </div>
-            <li *ngIf="!user.isLogged" (click)="logout()" class="login">
+            <li *ngIf="user.isLogged" (click)="logout()" class="logout">
                 Logout
             </li>
-            <li routerLinkActive="active-link"><a routerLink="/register" > Register</a></li>
+            <li *ngIf="!user.isLogged" routerLinkActive="active-link"><a routerLink="/register" > Register</a></li>
         </div>
         
     </ul>

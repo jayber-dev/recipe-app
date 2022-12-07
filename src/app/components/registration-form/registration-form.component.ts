@@ -26,7 +26,6 @@ export class RegistrationFormComponent {
 
   onSubmit() {
     console.log(this.registerForm.value)
-    console.log(countries)
   }
   
  
