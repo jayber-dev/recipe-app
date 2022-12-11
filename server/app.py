@@ -6,10 +6,12 @@ from flask_cors import CORS
 import db.entities as entity
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
+import os
+import cryptocode
 
 
 app = Flask(__name__)
-# app.config['SECRET_KEY'] = ''
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 CORS(app=app)
    
 entity.db.bind(provider='mysql',host='31.170.164.51', user='u889934763_p00nani', passwd='Pp0526767682!', db='u889934763_recipeUsers')
@@ -21,9 +23,13 @@ entity.db.generate_mapping(create_tables=True)
 @app.route('/auth', methods=['GET','POST'])
 def auth():
     data = request.get_json()
-    
-    is_true = entity.validate_token(id=data['id'], token=data['key'])
-    return jsonify({"login":is_true})
+    try:
+        decrypted_token_str = cryptocode.decrypt(enc_dict=data['key'],password=os.environ.get('SECRET_KEY'))
+        decrypted_token_json = json.loads(decrypted_token_str)
+        is_true = entity.validate_token(id=decrypted_token_json['user_id'], token=decrypted_token_json['token'])
+        return jsonify({"login":is_true})
+    except:
+        return jsonify({"login": False})
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -48,17 +54,19 @@ def login ():
         
         return jsonify(['Something went wrong'])
     
-    # print(user_data.email,user_data.password)
     
     
-    
-
 @app.route('/logout', methods=['GET','POST'])
 def logout():
     data = request.get_json()
-    print(data)
-    entity.delete_token(id=data['id'])
+    decrypted_token_str = cryptocode.decrypt(enc_dict=data['key'],password=os.environ.get('SECRET_KEY'))
+    decrypted_token_json = json.loads(decrypted_token_str)
+    entity.delete_token(id=decrypted_token_json['user_id'])
     return jsonify({'logout':'true'})
+
+@app.route('/register')
+def register():
+    return "im in register"
     
 
 if __name__ == "__main__":

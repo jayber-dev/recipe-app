@@ -1,21 +1,29 @@
+
+
 <div class="form-wrapper">
     <div class="registration-form">
     <h1>Registration</h1>
+    <!-- <p>{{registerForm.value | json}}</p> -->
     <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <label >First Name</label>
-        <input type="text" formControlName="firstName">
+        <input type="text" formControlName="firstName" placeholder="John">
         <label >Last Name</label>
-        <input type="text" formControlName="lastName">
-        <label for="cars">Choose a car:</label>
-        <select name="country" id="cars" formControlName="country">
+        <input type="text" formControlName="lastName" placeholder="Dow">
+        <label >Email</label>
+        <input type="text" formControlName="email" placeholder="JohnDow@email.com">
+        <label for="country">Country</label>
+        <select name="country" id="country" formControlName="country">
+            <option value="">Country</option>
             <option *ngFor="let i of countries"  value="{{i.name}}">{{i.name}}</option>
             
         </select>
-
+        <label >Password</label>
+        <input type="password" formControlName="pass">
+        <label >Repeat Password</label>
+        <input type="password" formControlName="passRepeat">
         <button type="submit">submit</button>
     </form>
-    <p>{{registerForm.value.firstName}}</p>
-    <p>{{registerForm.value.lastName}}</p>
+    
     </div> 
 </div>
  

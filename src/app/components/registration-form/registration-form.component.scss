@@ -1,3 +1,5 @@
+$textcolor: rgb(16, 32, 16);
+
 .form-wrapper {
     display:flex;
     flex-direction: column;
@@ -11,12 +13,45 @@
         flex-direction: column;
         align-items: center;
     }
+    h1 {
+        color: $textcolor;
+    }
 
     form {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        // border: 1px solid $textcolor;
+    
+        label {
+            padding: 5px;
+            font-size: larger;
+            color: $textcolor;
+        }
+
+        input {
+            border: 0px;
+            padding:10px;
+            border-bottom: 1px solid $textcolor;
+            background-color: transparent;
+            width: 30vw;
+        }
+
+        input:focus {
+            outline-color: rgb(134, 184, 134);
+            border: 0px;
+        }
+        
+        select {
+            background-color: transparent;
+            padding:10px;
+            width: 30vw ;
+        }
+
+        select:focus-visible {
+            border: 1px solid $textcolor;
+        }
 
         button {
             margin-top: 20px;
@@ -28,9 +63,6 @@
             border: 1px solid green;
         }
 
-        select{
-            width:177px
-        }
     }
 
    
