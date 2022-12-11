@@ -4,13 +4,17 @@ import cryptocode
 from dotenv import load_dotenv
 import os
 
+# ---------------------------------- DATABASE MODEL -------------------------------------
+db = Database()
+
 
 #  TODO: build recipe database entity and make the API
 
 print('entities in working state')
-db = Database()
+
 load_dotenv()
 
+#  ------------------------------------- DATABASE FUNCS -----------------------------------------
 @db_session
 def create_token(id):
     """  creating token """   
@@ -34,8 +38,8 @@ def delete_token(id):
     Users[id].token = ''
 
 @db_session
-def insert(email,password):
-    insert_data = Users(email=email,password=password)
+def register(first_name,last_name,country,email,password):
+    insert_data = Users(firstname=first_name,lastname=last_name,country=country,email=email,password=password)
     # commit()
     
 @db_session
@@ -48,7 +52,11 @@ def retrive_user_list():
    
 
 
+
 class Users(db.Entity):
+    firstName = Required(str)
+    lastname = Required(str)
+    country = Required(str)
     email = Required(str,unique=True)
     password = Required(str)
     token = Optional(str)
@@ -56,6 +64,4 @@ class Users(db.Entity):
 class Recipes():
     recipe_name = Required(str)
     ingredients = Required(str)
-
-    
 

@@ -2,7 +2,7 @@ from flask import Flask,jsonify,request,Response, make_response
 import json
 import mysql.connector
 from flask_cors import CORS
-# from pony.orm import *
+from pony.orm import *
 import db.entities as entity
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
@@ -64,9 +64,11 @@ def logout():
     entity.delete_token(id=decrypted_token_json['user_id'])
     return jsonify({'logout':'true'})
 
-@app.route('/register')
+@app.route('/register', methods=['GET','POST'])
 def register():
-    return "im in register"
+    print('im in register')
+    print(request.get_json())
+    return jsonify({"wow":"nana"})
     
 
 if __name__ == "__main__":
