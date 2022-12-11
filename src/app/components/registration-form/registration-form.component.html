@@ -3,7 +3,7 @@
 <div class="form-wrapper">
     <div class="registration-form">
     <h1>Registration</h1>
-    <!-- <p>{{registerForm.value | json}}</p> -->
+    <p>{{registerForm.value | json}}</p>
     <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <label >First Name</label>
         <input type="text" formControlName="firstName" placeholder="John">
