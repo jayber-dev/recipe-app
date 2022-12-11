@@ -33,7 +33,7 @@ $borderColor: rgba(16, 32, 16, 0.596);
 
         input {
             border: 0px;
-            box-shadow: -2px 2px 5px 2px grey;
+            box-shadow: -2px 2px 4px 1px grey;
             padding:10px;
             background-color: transparent;
             width: 30vw;
@@ -43,13 +43,18 @@ $borderColor: rgba(16, 32, 16, 0.596);
             outline-color: rgb(134, 184, 134);
             border: 0px;
         }
+
+        input::placeholder {
+            color: rgba(53, 53, 53, 0.541);
+        }
         
         select {
             background-color: transparent;
             padding:10px;
             width: 32vw ;
-            box-shadow: -2px 2px 5px 2px grey;
+            box-shadow: -2px 2px 4px 1px grey;
             border: 0px;
+            color:rgb(53, 53, 53) ;
         }
 
         select:focus {
@@ -57,11 +62,15 @@ $borderColor: rgba(16, 32, 16, 0.596);
         }
 
         button {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 30px;
+            font-size: larger;
+            padding: 10px;
             border-radius: 5px ;
             border: 1px dashed grey;
             background-color: transparent;
+            box-shadow: -2px 2px 4px 1px grey;
+
+            width: 32vw;
         }
         button:hover {
             border: 1px solid $borderColor;

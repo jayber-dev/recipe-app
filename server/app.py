@@ -67,7 +67,10 @@ def logout():
 @app.route('/register', methods=['GET','POST'])
 def register():
     print('im in register')
-    print(request.get_json())
+    data = request.get_json()
+    user_object = json.loads(data['data'])
+    entity.register(user_object)
+    print(user_object['firstName'])
     return jsonify({"wow":"nana"})
     
 

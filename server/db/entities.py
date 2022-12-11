@@ -38,8 +38,10 @@ def delete_token(id):
     Users[id].token = ''
 
 @db_session
-def register(first_name,last_name,country,email,password):
-    insert_data = Users(firstname=first_name,lastname=last_name,country=country,email=email,password=password)
+def register(user_object):
+    print(user_object['firstName'])
+    Users.firstName
+    insert_data = Users(firstName=user_object['firstName'],lastname=user_object['lastName'],country=user_object['country'],email=user_object['email'],password=user_object['pass'])
     # commit()
     
 @db_session

@@ -1,7 +1,9 @@
-import { ɵparseCookieValue } from '@angular/common';
+import { JsonPipe, ɵparseCookieValue } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Input, Output} from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { pipe } from 'rxjs';
+import { userData } from './userdata.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,20 @@ export class UserLoginService {
   }
   isLogged:boolean 
   message:string
-
+  dataStr:string
   auth(){
     this.http.post('127.0.0.1:5001',{}).subscribe(data => {
       console.log(data)
+    })
+  }
+
+  register(userData:any){
+    this.dataStr = JSON.stringify(userData)
+    console.log(this.dataStr);
+    
+    this.http.post('http://127.0.0.1:5001/register',{data:this.dataStr}).subscribe(data => {
+      console.log(data);
+      
     })
   }
 

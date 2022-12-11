@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormControl,FormGroup, FormBuilder } from '@angular/forms'
+import { UserLoginService } from 'src/app/services/userLoginService.service';
 import { countries } from './countries';
 
 
@@ -10,7 +11,7 @@ import { countries } from './countries';
 })
 export class RegistrationFormComponent {
 
-  constructor(private fromBuilder:FormBuilder) {
+  constructor(private fromBuilder:FormBuilder,private user:UserLoginService) {
 
   }
   countries:any[] = countries 
@@ -28,7 +29,7 @@ export class RegistrationFormComponent {
   })
 
   onSubmit() {
-    console.log(this.registerForm.value)
+    this.user.register(this.registerForm.value)
   }
   
   onInit(){
