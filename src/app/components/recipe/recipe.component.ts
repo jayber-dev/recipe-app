@@ -31,6 +31,6 @@ export class RecipeComponent {
     },
     {
     imgUrl:'../../assets/images/pizza-329523_1920.jpg',
-    imgDescription:'איטלקית מעודנת איזו פיצה ',
+    imgDescription:"איטלקית מעודנת פיצה לצבי הנינג'ה",
     },]
 }
