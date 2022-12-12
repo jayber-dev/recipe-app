@@ -15,6 +15,7 @@ export class UserLoginService {
   isLogged:boolean 
   message:string
   dataStr:string
+  
   auth(){
     this.http.post('127.0.0.1:5001',{}).subscribe(data => {
       console.log(data)
@@ -32,21 +33,23 @@ export class UserLoginService {
   }
 
   login(user:string,pass:string){
-    this.http.post<any>('http://127.0.0.1:5001/login',{name:user,pass:pass},{responseType:'json'}).subscribe((data) =>{
+    const logging = this.http.post<any>('http://127.0.0.1:5001/login', { name: user, pass: pass }, { responseType: 'json' }).subscribe((data) => {
       console.log(data);
-      if(data['data'] == true){
-        this.isLogged = true
+      if (data['data'] == true) {
+        this.isLogged = true;
         // TODO: ser expiration date
-        this.cookieService.set('key',data['token'])
+        this.cookieService.set('key', data['token']);
         // this.cookieService.set('id',data['id'])
-      } else{
-        this.isLogged = false
+      } else {
+        this.isLogged = false;
       }
     })
+
+    
   }
 
+
   logout(){
-   
     this.http.post<any>('http://127.0.0.1:5001/logout',{key:this.cookieService.get('key')}).subscribe((data)=>{
       this.isLogged = false
       this.cookieService.deleteAll()

@@ -58,7 +58,7 @@ def retrive_user_list():
 class Users(db.Entity):
     firstName = Required(str)
     lastname = Required(str)
-    country = Required(str)
+    country = Optional(str)
     email = Required(str,unique=True)
     password = Required(str)
     token = Optional(str)

@@ -32,14 +32,22 @@ def auth():
         return jsonify({"login": False})
 
 
+@app.route('/register', methods=['GET','POST'])
+def register():
+    print('im in register')
+    data = request.get_json()
+    user_object = json.loads(data['data'])
+    entity.register(user_object)
+    print('user registered')
+    return jsonify({"wow":"nana"})
+    
+
 @app.route('/login', methods=['GET','POST'])
 def login ():
     user = request.get_json()
-    
     try:
         user_data = entity.retrive_user(user['name']) 
-        if(request.method == 'POST'):
-            
+        if(request.method == 'POST'): 
             data = request.get_json()   
             # hashed_pass = generate_password_hash(password=before_hash,method='pbkdf2:sha256:20000')
             # print(hashed_pass)
@@ -64,15 +72,7 @@ def logout():
     entity.delete_token(id=decrypted_token_json['user_id'])
     return jsonify({'logout':'true'})
 
-@app.route('/register', methods=['GET','POST'])
-def register():
-    print('im in register')
-    data = request.get_json()
-    user_object = json.loads(data['data'])
-    entity.register(user_object)
-    print(user_object['firstName'])
-    return jsonify({"wow":"nana"})
-    
+
 
 if __name__ == "__main__":
     

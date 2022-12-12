@@ -19,7 +19,10 @@ export class LoginComponent {
     console.log(`login was pressed with credentials \n 
     email: ${this.email}\n
     password: ${this.password}` ); 
-    this.user.login(this.email,this.password)  
+    this.user.login(this.email,this.password) 
+    
+    
+    
     console.log('after server validation')
   }
 
