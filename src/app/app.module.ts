@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserLoginService } from './services/userLoginService.service';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { CookieService } from 'ngx-cookie-service';
+import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
+
 
 
 
@@ -24,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
     RecipeComponent,
     LoginComponent,
     RegistrationFormComponent,
+    AddRecipeComponent,
   ],
   imports: [
     BrowserAnimationsModule,
