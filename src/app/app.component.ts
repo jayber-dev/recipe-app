@@ -20,8 +20,5 @@ export class AppComponent {
       }
       
     })
-  }
-  // TODO: nake a register from and connect to server API
-  
-    
+  } 
 }
