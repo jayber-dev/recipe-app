@@ -5,5 +5,5 @@ export const passwordsMatch: ValidatorFn = (control: AbstractControl): Validatio
     const pass = control.get('pass');
     const passRepeat = control.get('passRepeat');
    
-    return (passRepeat.value !== '' && pass.value === passRepeat.value) ? {passwordsMatch:true}:{passwordsMatch:false};
+    return (passRepeat.value !== '' && pass.value === passRepeat.value) ? null:{passwordsMatch:false};
   };

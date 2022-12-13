@@ -3,6 +3,7 @@ import { FormControl,FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { UserLoginService } from 'src/app/services/userLoginService.service';
 import { countries } from './countries';
 import { passwordsMatch } from './passwordsMatch.directive';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,12 @@ import { passwordsMatch } from './passwordsMatch.directive';
 })
 export class RegistrationFormComponent {
 
-  constructor(private formBuilder:FormBuilder,private user:UserLoginService) {
+  constructor(
+    private formBuilder:FormBuilder,
+    private user:UserLoginService,
+    private router:Router
+    
+    ) {
     this.registerForm = formBuilder.group({
       firstName: ['',Validators.required] ,
       lastName: ['', Validators.required],
@@ -31,12 +37,12 @@ export class RegistrationFormComponent {
 
   onSubmit() {
     console.log(this.registerForm.get('firstName').value);
-    
+    console.log(this.registerForm.errors)
     this.registerForm.controls['firstName'].valid
     if(this.registerForm.valid){
         this.user.register(this.registerForm.value)
-        console.log('im done registring');
-        
+        this.router.navigate(['/'])
+      
     }
   }
   

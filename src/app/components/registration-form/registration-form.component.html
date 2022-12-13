@@ -3,9 +3,6 @@
 <div class="form-wrapper">
     <div class="registration-form">
     <h1>Registration</h1>
-    <!-- <p>{{registerForm.value | json}}</p> -->
-    <!-- <p>{{registerForm.valid}}</p> -->
-    <p>{{registerForm.errors | json}}</p>
     <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <label >First Name </label>
         <input type="text" formControlName="firstName" placeholder="John" [required] minlength="1">
@@ -30,8 +27,8 @@
             <small *ngIf="!registerForm.controls['pass'].valid"> Field must be filled</small>        
         <label >Repeat Password </label>
             <input type="password" formControlName="passRepeat" placeholder="Please repeat the password" required >
-            <small *ngIf="!registerForm.errors['passwordsMatch'] && !registerForm.valid">Passwords not match</small>
-        <button [disabled]="!registerForm.valid && !registerForm.errors['passwordsMatch']"type="submit">Submit</button>
+            <small *ngIf="!registerForm.valid">Passwords not match</small>
+        <button [disabled]="!registerForm.valid"type="submit">Submit</button>
     </form>
     
     </div> 
