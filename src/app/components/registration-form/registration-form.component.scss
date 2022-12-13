@@ -22,6 +22,8 @@ $borderColor: rgba(16, 32, 16, 0.596);
         display: flex;
         justify-content: center;
         flex-direction: column;
+        // padding:20px;
+        min-width: 100px;
         // align-items: start;
         // border: 1px solid $textcolor;
     
@@ -36,7 +38,7 @@ $borderColor: rgba(16, 32, 16, 0.596);
             box-shadow: -2px 2px 4px 1px grey;
             padding:10px;
             background-color: transparent;
-            width: 30vw;
+        
         }
 
         input:focus {
@@ -51,7 +53,6 @@ $borderColor: rgba(16, 32, 16, 0.596);
         select {
             background-color: transparent;
             padding:10px;
-            width: 32vw ;
             box-shadow: -2px 2px 4px 1px grey;
             border: 0px;
             color:rgb(53, 53, 53) ;
@@ -67,10 +68,9 @@ $borderColor: rgba(16, 32, 16, 0.596);
             padding: 10px;
             border-radius: 5px ;
             border: 1px dashed grey;
-            background-color: transparent;
+            background-color: rgba(209, 209, 209, 0.445);
+            color: $borderColor;
             box-shadow: -2px 2px 4px 1px grey;
-
-            width: 32vw;
         }
         button:hover {
             border: 1px solid $borderColor;

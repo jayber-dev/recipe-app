@@ -17,4 +17,11 @@
         </div>
         
     </ul>
+    <ul *ngIf="user.isLogged" class="member-nav">
+        <li routerLinkActive='active-link'> <a routerLink="/myRecipes">My recipes</a></li>
+        <li routerLinkActive='active-link'> <a routerLink="/addRecipe">Add Recipe</a></li>
+        <li routerLinkActive='active-link'> <a routerLink="/editRecipe">Edit Recipe</a></li>
+    </ul>
+    
+    
 </nav>

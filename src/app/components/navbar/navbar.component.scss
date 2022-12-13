@@ -32,6 +32,8 @@ nav {
             flex-direction: row;
             align-items: center;
             width: 50vw;
+            border-bottom: $borderColor 1px solid;
+
             li {
                 
                 padding:20px;
@@ -58,6 +60,7 @@ nav {
             flex-direction: row;
             width: 50vw;
             justify-content: flex-end;
+            border-bottom: $borderColor 1px solid;
 
             
             li {
@@ -66,17 +69,18 @@ nav {
                 padding:20px;
                 list-style: none;
                 text-decoration: none;
+
                 a{
                     cursor: pointer;
                     text-decoration: none;
-                    color: cadetblue;
+                    color: $textcolor;
                 }        
                 // a:active {
                 //     color:cadetblue
                 // }
     
                 a:visited{
-                    color: black;
+                    color: $textcolor;
                 }
             }
 
@@ -126,6 +130,31 @@ nav {
         li:hover {
             background-color: whitesmoke;
         }
+    }
+
+    .member-nav {        
+      
+        list-style: none;
+        li:first-child {
+            margin-left: 80px;
+        }
+        li{
+            list-style-type: none;
+            padding:5px;        
+        }
+
+        a{
+            padding-left: 20px;
+            padding-right: 20px;
+            text-decoration: none;
+            cursor: pointer;
+            color: $textcolor
+        }
+
+        a:visited{
+            color: $textcolor;
+        }
+        
     }
     
 }

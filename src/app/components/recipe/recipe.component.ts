@@ -1,4 +1,5 @@
 import { Component,Input } from '@angular/core';
+import { UserLoginService } from 'src/app/services/userLoginService.service';
 import { recipeData } from '../../recipeData.interface';
 @Component({
   selector: 'app-recipe-show',
@@ -6,7 +7,9 @@ import { recipeData } from '../../recipeData.interface';
   styleUrls: ['./recipe.component.scss']
 })
 export class RecipeComponent {
+  constructor(public user:UserLoginService){
     
+  }
   @Input()
   imgData: recipeData[]= [
     {
@@ -33,4 +36,9 @@ export class RecipeComponent {
     imgUrl:'../../assets/images/pizza-329523_1920.jpg',
     imgDescription:"איטלקית מעודנת פיצה לצבי הנינג'ה",
     },]
+
+    ngOnInit(){
+      
+      
+    }
 }

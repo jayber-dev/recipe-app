@@ -1,4 +1,4 @@
-<div class="recipe-card"  >
+<div class="recipe-card" [ngStyle]="user.isLogged ? {'margin-top':'100px'}:{}">
         <div *ngFor="let img of imgData" class="img-container">
                 <img src="{{img.imgUrl}}" alt="">
                 <p>{{img.imgDescription}}</p>
