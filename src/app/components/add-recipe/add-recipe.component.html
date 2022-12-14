@@ -28,9 +28,9 @@
     </div>
     <div class="right-container">
         <p>{{addRecipe.value | json}}</p>
-        <h1>{{addRecipe.get('title').value}}</h1>
-        <p>Cooking time: <span class="cooking-time">{{addRecipe.get('cookingTime').value}} </span> Minutes</p>
+        <h1 *ngIf="addRecipe.get('title').value">{{addRecipe.get('title').value}}</h1>
         <img [src]="url" alt="">
+        <p *ngIf="addRecipe.get('cookingTime').value" >Cooking time: <span class="cooking-time">{{addRecipe.get('cookingTime').value}} </span> Minutes</p>
         <ul >
             <li *ngFor="let item of ingredients">{{item}}</li>
         </ul>
