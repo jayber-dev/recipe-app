@@ -1,17 +1,18 @@
 <div class="container-wrapper">
     <div class="left-container">
         <div class="form-wrapper">
-            <form [formGroup]="addRecipe" (ngSubmit)="onSubmit()">
+            <form [formGroup]="addRecipe">
                 <label for="">Recipe name</label>
                 <input type="text" name="title" formControlName="title">
                 <label for="">Cooking Time</label>
                 <input type="number" name="cookingTime" formControlName="cookingTime">
                 <label for="">Primary image</label>
-                <input type="file" formControlName="primaryImage">
+                <input type="file" formControlName="primaryImage" (change)="readUrl($event)">
                 <div class="add-ingredient-button">
                     <label for="">Ingredient</label>
-                    <input type="text" name="ingredient" formControlName="ingredient">
-                    <button>Add ingredient</button>
+                    <input type="text" name="ingredient" formControlName="ingredient" focus>
+                    <button [disabled]="!addRecipe.valid" (click)="addIngredient()">Add ingredient</button>
+                    <p>{{addRecipe.valid | json}}</p>
                 </div>
                 <div class="add-steps-button">
                     <label for="">Cooking steps</label>
@@ -28,7 +29,10 @@
     <div class="right-container">
         <p>{{addRecipe.value | json}}</p>
         <h1>{{addRecipe.get('title').value}}</h1>
-        <p>Cooking time: {{addRecipe.get('cookingTime').value}} Minutes</p>
-        <img [src]="Sanitaizer.bypassSecurityTrustScript(addRecipe.get('primaryImage').value) " alt="">
+        <p>Cooking time: <span class="cooking-time">{{addRecipe.get('cookingTime').value}} </span> Minutes</p>
+        <img [src]="url" alt="">
+        <ul >
+            <li *ngFor="let item of ingredients">{{item}}</li>
+        </ul>
     </div>
 </div>
