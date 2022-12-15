@@ -31,9 +31,12 @@ export class UserLoginService {
     const logging = this.http.post<any>('http://127.0.0.1:5001/login', { name: user, pass: pass }, { responseType: 'json' }).subscribe((data) => {
       if (data['data'] == true) {
         this.isLogged = true;       
-        this.cookieService.set('key', data['token'],Number(1));      
+        this.cookieService.set('key', data['token'],1);      
       } else {
+        console.log(data);
+        
         this.isLogged = false;
+        this.message = data['message']
       }
     })
 

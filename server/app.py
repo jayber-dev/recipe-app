@@ -57,10 +57,10 @@ def login ():
             token = entity.create_token(id=user_data.id)        
             return (jsonify({'data': True, "token": token, 'id':user_data.id}))
         else:
-            return jsonify({'data':'false'})  
+            return jsonify({'data':'false','message':'Wrong password'})  
     except:
         
-        return jsonify(['Something went wrong'])
+        return jsonify({'data':'false','message':'User\'s email does not exist'})
     
     
     

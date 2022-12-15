@@ -7,13 +7,14 @@ import { UserLoginService } from 'src/app/services/userLoginService.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private user:UserLoginService,){
+  constructor(public user:UserLoginService,){
     this.isLogged = user.isLogged
   }
 
   email:string = '';
   password:string = '';
-  isLogged:boolean
+  isLogged:boolean;
+  message:string;
 
   sendLogin() {
     console.log(`login was pressed with credentials \n 
