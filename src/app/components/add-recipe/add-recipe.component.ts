@@ -2,6 +2,7 @@ import { Component, SecurityContext } from '@angular/core';
 import { FormGroup,FormBuilder,FormArray, Validators, } from '@angular/forms';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,8 +16,9 @@ export class AddRecipeComponent {
   SecurityContext: any;
   url:SafeUrl;
   ingredients:string[] = [];
+  stepsArray:string[] = []
 
-  constructor(fb:FormBuilder, public Sanitaizer:DomSanitizer){
+  constructor(fb:FormBuilder, public Sanitaizer:DomSanitizer,private router:Router){
     this.addRecipe = fb.group({
       title: '',
       cookingTime: '',
@@ -32,6 +34,11 @@ export class AddRecipeComponent {
     this.addRecipe.controls['ingredient'].markAsUntouched()
   }
 
+  addStep(){
+    this.stepsArray.push(this.addRecipe.get('steps').value)
+    this.addRecipe.controls['steps'].setValue('')
+  }
+
   readUrl(event:any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -45,5 +52,6 @@ export class AddRecipeComponent {
   }
   onSubmit(){
     console.log('thank you for your submission');
+    this.router.navigate(['/'])
   }
 }
