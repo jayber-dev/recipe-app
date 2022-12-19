@@ -3,6 +3,8 @@ import { FormGroup,FormBuilder,FormArray, Validators, } from '@angular/forms';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
+import { AddRecipeForm } from './addRecipe.interface';
 
 
 @Component({
@@ -17,8 +19,9 @@ export class AddRecipeComponent {
   url:SafeUrl;
   ingredients:string[] = [];
   stepsArray:string[] = []
+  toSend: AddRecipeForm
 
-  constructor(fb:FormBuilder, public Sanitaizer:DomSanitizer,private router:Router){
+  constructor(fb:FormBuilder, public Sanitaizer:DomSanitizer,private router:Router,private recipeService:RecipeService){
     this.addRecipe = fb.group({
       title: '',
       cookingTime: '',
@@ -51,7 +54,17 @@ export class AddRecipeComponent {
     }
   }
   onSubmit(){
+    this.toSend = {
+      title: this.addRecipe.get('title').value,
+      cookingTime:this.addRecipe.get('cookingTime').value,
+      img:this.addRecipe.get('primaryImage').value,
+      ingredients:this.ingredients,
+      cookingSteps:this.stepsArray,
+    }
+
     console.log('thank you for your submission');
+    console.log(this.addRecipe.value);
+    this.recipeService.addRecipe(this.toSend)
     this.router.navigate(['/'])
   }
 }

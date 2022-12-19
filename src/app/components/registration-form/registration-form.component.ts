@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormControl,FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { UserLoginService } from 'src/app/services/userLoginService.service';
+import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
 import { countries } from './countries';
 import { passwordsMatch } from './passwordsMatch.directive';
 import { Router } from '@angular/router';

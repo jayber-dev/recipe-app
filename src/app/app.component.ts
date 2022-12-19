@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 // import { Router } from '@angular/router';
 
 import { recipeData } from './recipeData.interface'
-import { UserLoginService } from './services/userLoginService.service'
+import { UserLoginService } from './services//authServices/userLoginService.service'
 
 @Component({
   selector: 'app-root',

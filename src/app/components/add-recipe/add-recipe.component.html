@@ -1,7 +1,7 @@
 <div class="container-wrapper">
     <div class="left-container">
         <div class="form-wrapper">
-            <form [formGroup]="addRecipe">
+            <form [formGroup]="addRecipe" (ngSubmit)="onSubmit()">
                 <label for="">Recipe name</label>
                 <input type="text" name="title" formControlName="title">
                 <label for="">Cooking Time</label>
@@ -11,17 +11,17 @@
                 <div class="add-ingredient-button">
                     <label for="">Ingredient</label>
                     <input type="text" name="ingredient" formControlName="ingredient" focus>
-                    <button [disabled]="!addRecipe.valid" (click)="addIngredient()">Add ingredient</button>
+                    <button type="button" [disabled]="!addRecipe.valid" (click)="addIngredient()">Add ingredient</button>
                     <p>{{addRecipe.valid | json}}</p>
                 </div>
                 <div class="add-steps-button">
                     <label for="">Cooking steps</label>
                     <textarea wrap="soft" name="" id="" cols="30" rows="10" formControlName="steps"  ></textarea>
-                    <button (click)="addStep()">Add steps</button>
+                    <button type="button" (click)="addStep()">Add steps</button>
                 </div>
                 <p *ngIf="stepsArray.length === 0">no steps added</p>
                 
-                <button [disabled]="stepsArray.length == 0" (click)="onSubmit()">Submit recipe</button>  
+                <button [disabled]="stepsArray.length == 0">Submit recipe</button>  
                 
             </form>
         </div>

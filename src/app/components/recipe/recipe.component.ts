@@ -1,5 +1,5 @@
 import { Component,Input } from '@angular/core';
-import { UserLoginService } from 'src/app/services/userLoginService.service';
+import { UserLoginService } from 'src/app/services//authServices/userLoginService.service';
 import { recipeData } from '../../recipeData.interface';
 @Component({
   selector: 'app-recipe-show',

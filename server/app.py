@@ -72,7 +72,11 @@ def logout():
     entity.delete_token(id=decrypted_token_json['user_id'])
     return jsonify({'logout':'true'})
 
-
+@app.route('/addRecipe', methods=['GET','POST'])
+def add_recipe():
+    print('got the messege')
+    print(request.get_data())
+    return jsonify({'return':'got the messege'})
 
 if __name__ == "__main__":
     

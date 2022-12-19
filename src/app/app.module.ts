@@ -10,10 +10,11 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 import { routes } from './routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserLoginService } from './services/userLoginService.service';
+import { UserLoginService } from './services//authServices/userLoginService.service';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
+import { RecipeService } from './services/recipeService/recipe-service.service';
 
 
 
@@ -39,6 +40,7 @@ import { AddRecipeComponent } from './components/add-recipe/add-recipe.component
   ],
   providers: [
     UserLoginService,
+    RecipeService,
     CookieService,
   ],
   bootstrap: [AppComponent]
