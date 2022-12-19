@@ -4,7 +4,7 @@ import cryptocode
 from dotenv import load_dotenv
 import os
 
-# ---------------------------------- DATABASE MODEL -------------------------------------
+# ---------------------------------- DATABASE MODEL ----------------------------------------------------
 db = Database()
 
 
@@ -14,7 +14,7 @@ print('entities in working state')
 
 load_dotenv()
 
-#  ------------------------------------- DATABASE FUNCS -----------------------------------------
+#  -------------------------------------USER DATABASE FUNCTIONS -----------------------------------------
 @db_session
 def create_token(id):
     """  creating token """   
@@ -52,8 +52,17 @@ def retrive_user(email):
 def retrive_user_list():
     return select(p for p in Users)[:],
    
+# --------------------------------- RECIPES DATABASE FUNCTIONS ----------------------------------------
+
+@db_session
+def add_recipe(id,data):
+    print(data)
+    recipe = Recipes(recipe_name='',primary_image='',ingredients='',cooking_steps='',user=Users[id])
+    
+    return 
 
 
+# ----------------------------------------- DATABASE MODEL --------------------------------------------
 
 class Users(db.Entity):
     firstName = Required(str)
@@ -62,8 +71,11 @@ class Users(db.Entity):
     email = Required(str,unique=True)
     password = Required(str)
     token = Optional(str)
+    recipes = Set('Recipes')
 
-class Recipes():
+class Recipes(db.Entity):
+    user = Required(Users)
     recipe_name = Required(str)
+    primary_image = Required(str)
     ingredients = Required(str)
-
+    cooking_steps = Required(str)

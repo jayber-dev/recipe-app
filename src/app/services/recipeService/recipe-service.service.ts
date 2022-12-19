@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { AddRecipeForm } from 'src/app/components/add-recipe/addRecipe.interface';
 
 @Injectable({
@@ -7,10 +8,10 @@ import { AddRecipeForm } from 'src/app/components/add-recipe/addRecipe.interface
 })
 export class RecipeService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private cookieService:CookieService) { }
 
   addRecipe(data: AddRecipeForm){
-    const send = this.http.post('http://127.0.0.1:5001/addRecipe',{data}).subscribe((data)=>{
+    const send = this.http.post('http://127.0.0.1:5001/addRecipe',{key:this.cookieService.get('key'),data}).subscribe((data)=>{
       console.log('data sent');
       console.log(data);
       

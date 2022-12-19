@@ -4,14 +4,14 @@
             <form [formGroup]="addRecipe" (ngSubmit)="onSubmit()">
                 <label for="">Recipe name</label>
                 <input type="text" name="title" formControlName="title">
-                <label for="">Cooking Time</label>
-                <input type="number" name="cookingTime" formControlName="cookingTime">
                 <label for="">Primary image</label>
                 <input type="file" formControlName="primaryImage" (change)="readUrl($event)">
+                <label for="">Cooking Time</label>
+                <input type="number" name="cookingTime" formControlName="cookingTime">
                 <div class="add-ingredient-button">
                     <label for="">Ingredient</label>
                     <input type="text" name="ingredient" formControlName="ingredient" focus>
-                    <button type="button" [disabled]="!addRecipe.valid" (click)="addIngredient()">Add ingredient</button>
+                    <button  [disabled]="!addRecipe.valid" (click)="addIngredient()">Add ingredient</button>
                     <p>{{addRecipe.valid | json}}</p>
                 </div>
                 <div class="add-steps-button">

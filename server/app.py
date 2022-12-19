@@ -75,7 +75,11 @@ def logout():
 @app.route('/addRecipe', methods=['GET','POST'])
 def add_recipe():
     print('got the messege')
-    print(request.get_data())
+    print(request.get_json())
+    data = request.get_json()
+    decrypted_token_str = cryptocode.decrypt(enc_dict=data['key'],password=os.environ.get('SECRET_KEY'))
+    decrypted_token_json = json.loads(decrypted_token_str)
+    entity.add_recipe(id=decrypted_token_json,data=data)
     return jsonify({'return':'got the messege'})
 
 if __name__ == "__main__":
