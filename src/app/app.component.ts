@@ -3,7 +3,7 @@ import { Component,Input } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 // import { Router } from '@angular/router';
 
-import { recipeData } from './recipeData.interface'
+import { recipeData } from './components/recipe/recipeData.interface'
 import { UserLoginService } from './services//authServices/userLoginService.service'
 
 @Component({

@@ -1,4 +1,5 @@
 export interface recipeData {
+    title:string;
     imgUrl:string;
-    imgDescription:string;
+    
 }

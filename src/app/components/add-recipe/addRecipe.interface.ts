@@ -1,4 +1,4 @@
-export interface AddRecipeForm {
+export interface RecpieModel {
     title:string,
     cookingTime:number,
     img:string,

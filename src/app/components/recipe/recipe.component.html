@@ -1,6 +1,6 @@
 <div class="recipe-card" [ngStyle]="user.isLogged ? {'margin-top':'100px'}:{}">
-        <div *ngFor="let img of imgData" class="img-container">
-                <img src="{{img.imgUrl}}" alt="">
-                <p>{{img.imgDescription}}</p>
+        <div *ngFor="let item of fetchedData" class="img-container">
+                <img [src]="item.img | safeUrl" alt="">
+                <p>{{item.title}}</p>
         </div>
 </div>

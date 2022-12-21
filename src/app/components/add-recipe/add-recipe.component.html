@@ -1,41 +1,66 @@
 <div class="container-wrapper">
-    <div class="left-container">
-        <div class="form-wrapper">
-            <form [formGroup]="addRecipe" (ngSubmit)="onSubmit()">
-                <label for="">Recipe name</label>
-                <input type="text" name="title" formControlName="title">
-                <label for="">Primary image</label>
-                <input type="file" formControlName="primaryImage" (change)="readUrl($event)">
-                <label for="">Cooking Time</label>
-                <input type="number" name="cookingTime" formControlName="cookingTime">
-                <div class="add-ingredient-button">
-                    <label for="">Ingredient</label>
-                    <input type="text" name="ingredient" formControlName="ingredient" focus>
-                    <button  [disabled]="!addRecipe.valid" (click)="addIngredient()">Add ingredient</button>
-                    <p>{{addRecipe.valid | json}}</p>
-                </div>
-                <div class="add-steps-button">
-                    <label for="">Cooking steps</label>
-                    <textarea wrap="soft" name="" id="" cols="30" rows="10" formControlName="steps"  ></textarea>
-                    <button type="button" (click)="addStep()">Add steps</button>
-                </div>
-                <p *ngIf="stepsArray.length === 0">no steps added</p>
-                
-                <button [disabled]="stepsArray.length == 0">Submit recipe</button>  
-                
-            </form>
+  <div class="left-container">
+    <div class="form-wrapper">
+      <form [formGroup]="addRecipe" (ngSubmit)="onSubmit()">
+        <label for="">Recipe name</label>
+        <input type="text" name="title" formControlName="title" />
+        <label for="">Primary image</label>
+        <input
+          type="file"
+          formControlName="primaryImage"
+          (change)="readUrl($event)"
+        />
+        <label for="">Cooking Time</label>
+        <input type="number" name="cookingTime" formControlName="cookingTime" />
+        <div class="add-ingredient-button">
+          <label for="">Ingredient</label>
+          <input
+            type="text"
+            name="ingredient"
+            formControlName="ingredient"
+            focus
+          />
+          <button [disabled]="!addRecipe.valid" (click)="addIngredient()">
+            Add ingredient
+          </button>
+          <p>{{ addRecipe.valid | json }}</p>
         </div>
+        <div class="add-steps-button">
+          <label for="">Cooking steps</label>
+          <textarea
+            wrap="soft"
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            formControlName="steps"
+          ></textarea>
+          <button type="button" (click)="addStep()">Add steps</button>
+        </div>
+        <p *ngIf="stepsArray.length === 0">no steps added</p>
+
+        <button [disabled]="stepsArray.length == 0">Submit recipe</button>
+      </form>
     </div>
-    <div class="right-container">
-        <p>{{addRecipe.value | json}}</p>
-        <h1 *ngIf="addRecipe.get('title').value">{{addRecipe.get('title').value}}</h1>
-        <img [src]="url" alt="">
-        <p *ngIf="addRecipe.get('cookingTime').value" >Cooking time: <span class="cooking-time">{{addRecipe.get('cookingTime').value}} </span> Minutes</p>
-        <ul >
-            <li *ngFor="let item of ingredients">{{item}}</li>
-        </ul>
-        <p *ngFor="let item of stepsArray; index as i">
-            {{i+1}}-{{item}}
-        </p>
-    </div>
+  </div>
+  <div class="right-container">
+    <p>{{ addRecipe.value | json }}</p>
+    <h1 *ngIf="addRecipe.get('title').value">
+      {{ addRecipe.get("title").value }}
+    </h1>
+    <img [src]="url" alt="" />
+    <p *ngIf="addRecipe.get('cookingTime').value">
+      Cooking time:
+      <span class="cooking-time"
+        >{{ addRecipe.get("cookingTime").value }}
+      </span>
+      Minutes
+    </p>
+    <ul>
+      <li *ngFor="let item of ingredients">{{ item }}</li>
+    </ul>
+    <p *ngFor="let item of stepsArray; index as i">
+      step {{ i + 1 }} - {{ item }}
+    </p>
+  </div>
 </div>
