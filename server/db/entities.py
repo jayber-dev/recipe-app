@@ -107,13 +107,14 @@ def retrive_recipes():
 def add_recipe(id, data):
     print(data)
     print(data['data']['title'])
-    recipe = Recipes(recipe_name=data['data']['title'],
-                     cooking_time=data['data']['cookingTime'],
-                     primary_image=data['data']['img']['changingThisBreaksApplicationSecurity'],
-                     ingredients=str(data['data']['ingredients']),
-                     cooking_steps=str(data['data']['cookingSteps']),
-                     user=Users[id]
-                     )
+    print(data['data']['img'])
+    # recipe = Recipes(recipe_name=data['data']['title'],
+    #                  cooking_time=data['data']['cookingTime'],
+    #                  primary_image=data['data']['img']['changingThisBreaksApplicationSecurity'],
+    #                  ingredients=str(data['data']['ingredients']),
+    #                  cooking_steps=str(data['data']['cookingSteps']),
+    #                  user=Users[id]
+    #                  )
 
     return
 

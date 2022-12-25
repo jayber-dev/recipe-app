@@ -19,6 +19,7 @@ export class AddRecipeComponent {
   stepsArray: string[] = [];
   toSend: RecpieModel;
   fileName:string;
+ 
 
   constructor(
     fb: FormBuilder,
@@ -59,7 +60,6 @@ export class AddRecipeComponent {
       this.recipeService.fileUpload(formData)
     }
     
-
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
 
@@ -69,17 +69,10 @@ export class AddRecipeComponent {
       };
 
       reader.readAsDataURL(event.target.files[0]);
-      
-      
+          
     }
-    // console.log(this.url);
-    // console.log(event.target.files[0]);
-    // console.log(event.target.files);
-    
   }
   async onSubmit() {
-    const imgPath = this.Sanitaizer.bypassSecurityTrustResourceUrl(this.addRecipe.get('primaryImage').value)
-    console.log(imgPath);
     
     this.toSend = {
       title: this.addRecipe.get('title').value,
