@@ -86,7 +86,7 @@ def retrive_user_list():
 
 @db_session
 def retrive_recipes():
-    set_sql_debug(True)
+    # set_sql_debug(True)
     obj_array =[]
     recipe_obj = Recipes.select()
     for i in recipe_obj:
@@ -105,11 +105,11 @@ def retrive_recipes():
 
 @db_session
 def add_recipe(id, data):
-    
+    print(data)
     print(data['data']['title'])
     recipe = Recipes(recipe_name=data['data']['title'],
                      cooking_time=data['data']['cookingTime'],
-                     primary_image=data['data']['img'],
+                     primary_image=data['data']['img']['changingThisBreaksApplicationSecurity'],
                      ingredients=str(data['data']['ingredients']),
                      cooking_steps=str(data['data']['cookingSteps']),
                      user=Users[id]

@@ -18,6 +18,7 @@ export class AddRecipeComponent {
   ingredients: string[] = [];
   stepsArray: string[] = [];
   toSend: RecpieModel;
+  fileName:string;
 
   constructor(
     fb: FormBuilder,
@@ -46,21 +47,44 @@ export class AddRecipeComponent {
   }
 
   readUrl(event: any) {
+    const file:File = event.target.files[0]
+    console.log(file);
+    if(file){
+      this.fileName = file.name;
+
+      const formData = new FormData();
+      formData.append('file',file)
+     
+
+      this.recipeService.fileUpload(formData)
+    }
+    
+
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
 
       reader.onload = (event: ProgressEvent) => {
-        this.url = (<FileReader>event.target).result;
+        this.url = (<FileReader>event.target).result;    
+           
       };
 
       reader.readAsDataURL(event.target.files[0]);
+      
+      
     }
+    // console.log(this.url);
+    // console.log(event.target.files[0]);
+    // console.log(event.target.files);
+    
   }
-  onSubmit() {
+  async onSubmit() {
+    const imgPath = this.Sanitaizer.bypassSecurityTrustResourceUrl(this.addRecipe.get('primaryImage').value)
+    console.log(imgPath);
+    
     this.toSend = {
       title: this.addRecipe.get('title').value,
       cookingTime: this.addRecipe.get('cookingTime').value,
-      img: this.addRecipe.get('primaryImage').value,
+      img: this.url,
       ingredients: this.ingredients,
       cookingSteps: this.stepsArray,
     };

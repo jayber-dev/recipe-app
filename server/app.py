@@ -5,20 +5,25 @@ from flask_cors import CORS
 from pony.orm import *
 import db.entities as entity
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 import secrets
 import os
 import cryptocode
 
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER')
 CORS(app=app)
 
 entity.db.bind(provider='mysql', host='31.170.164.51', user='u889934763_p00nani',
                passwd='Pp0526767682!', db='u889934763_recipeUsers')
 entity.db.generate_mapping(create_tables=True)
 
-
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # user_list = entity.retrive_user_list()
 
@@ -82,19 +87,35 @@ def logout():
 def add_recipe():
     print('got the messege')
     # print(request.get_json())
-    data = request.get_json()
-    decrypted_token_str = cryptocode.decrypt(
-        enc_dict=data['key'], password=os.environ.get('SECRET_KEY'))
-    decrypted_token_json = json.loads(decrypted_token_str)
-    entity.add_recipe(id=decrypted_token_json['user_id'], data=data)
-    return jsonify({'return': 'got the messege'})
+    if request.method == 'POST':
+        data = request.get_json()
+        print(request.files)
+        decrypted_token_str = cryptocode.decrypt(
+            enc_dict=data['key'], password=os.environ.get('SECRET_KEY'))
+        decrypted_token_json = json.loads(decrypted_token_str)
+        entity.add_recipe(id=decrypted_token_json['user_id'], data=data)
+        return jsonify({'return': 'got the messege'})
 
-@db_session
+
 @app.route('/retriveRecipes')
 def retrive_recipes():
     data = entity.retrive_recipes()
-    print(data)
     return data
+
+@app.route('/upload-img', methods=['GET','POST'])
+def file_upload():
+    print('im inside file upload')
+    print(request.files)
+    print(request.files['file'])
+    if 'file' not in request.files:
+        print('im in not in file')
+        return jsonify({'data':'no file was given'})
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+        file_name = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
+        return jsonify({'data':'file uploaded'})
+    return jsonify({'data':'no file provided'})
 
 if __name__ == "__main__":
 

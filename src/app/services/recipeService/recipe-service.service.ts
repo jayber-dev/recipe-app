@@ -10,6 +10,14 @@ export class RecipeService {
   constructor(private http: HttpClient, private cookieService: CookieService) {}
   recipesData:string
   
+  fileUpload(formData){
+    console.log(formData);
+    
+    this.http.post('http://127.0.0.1:5001/upload-img',formData).subscribe(data =>{
+      console.log(data);
+      
+    })
+  }
 
   addRecipe(data: RecpieModel) {
     const send = this.http

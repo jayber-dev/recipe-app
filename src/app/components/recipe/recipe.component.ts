@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component,Input } from '@angular/core';
+import { Component,Input, Sanitizer } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { UserLoginService } from 'src/app/services//authServices/userLoginService.service';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
@@ -20,7 +20,7 @@ export class RecipeComponent {
   }
   url: SafeUrl;
   fetchedData:any
-
+  paths:Sanitizer
 
   @Input()
   imgData: recipeData[]= [
@@ -65,11 +65,13 @@ export class RecipeComponent {
       
         const retriveRecipes = this.http.get('http://127.0.0.1:5001/retriveRecipes').subscribe(data => {
           this.fetchedData = data
-          for(let i =0;i < this.fetchedData.length; i++){
-            console.log(this.fetchedData[i].img);
+          console.log(this.Sanitaizer.bypassSecurityTrustResourceUrl(this.fetchedData[0]['img']));
+          
+          // for(let i =0;i < this.fetchedData.length; i++){
+          //   this.paths.push(this.Sanitaizer.bypassSecurityTrustResourceUrl(`${this.fetchedData[i].img}`));
             
-          }
-          console.log(data);    
+          // }
+          // console.log(data);    
           retriveRecipes.unsubscribe()
         })
       
