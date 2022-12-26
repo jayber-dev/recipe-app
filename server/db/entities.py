@@ -4,21 +4,17 @@ import cryptocode
 from dotenv import load_dotenv
 import os
 
+
 # ---------------------------------- DATABASE MODEL ----------------------------------------------------
 db = Database()
 
-
-#  TODO: build recipe database entity and make the API
-
-print('entities in working state')
-
 load_dotenv()
 
-# ----------------------------------------- DATABASE MODEL --------------------------------------------
+# ----------------------------------------- DATABASE MODEL ---------------------------------------------
 
 class Users(db.Entity):
     firstName = Required(str)
-    lastname = Required(str)
+    lastName = Required(str)
     country = Optional(str)
     email = Required(str, unique=True)
     password = Required(str)
@@ -68,7 +64,7 @@ def delete_token(id):
 def register(user_object):
     print(user_object['firstName'])
     Users.firstName
-    insert_data = Users(firstName=user_object['firstName'], lastname=user_object['lastName'],
+    insert_data = Users(firstName=user_object['firstName'], lastName=user_object['lastName'],
                         country=user_object['country'], email=user_object['email'], password=user_object['pass'])
     # commit()
 
@@ -84,38 +80,43 @@ def retrive_user_list():
 
 # --------------------------------- RECIPES DATABASE FUNCTIONS ----------------------------------------
 
+
 @db_session
 def retrive_recipes():
     # set_sql_debug(True)
-    obj_array =[]
+    print(os.environ['UPLOAD_FOLDER'])
+    obj_array = []
     recipe_obj = Recipes.select()
+
     for i in recipe_obj:
+        print(i.user.country)
+
+    for i in recipe_obj:
+        print(i.user)
         obj_array.append({
-            'title':i.recipe_name,
-            'cookingTime':i.cooking_time,
-            'img':i.primary_image,
-            'ingredients':i.ingredients,
-            'cookingSteps':i.cooking_steps,
+            'userId': i.user.id,
+            'userFirstName': i.user.firstName,
+            'userlastName': i.user.lastName,
+            'title': i.recipe_name,
+            'cookingTime': i.cooking_time,
+            'img': os.path.join(os.environ['UPLOAD_FOLDER'], i.primary_image),
+            'ingredients': i.ingredients,
+            'cookingSteps': i.cooking_steps,
         })
+
     return obj_array
-    
-    
-        
-   
+
 
 @db_session
 def add_recipe(id, data):
     print(data)
     print(data['data']['title'])
     print(data['data']['img'])
-    # recipe = Recipes(recipe_name=data['data']['title'],
-    #                  cooking_time=data['data']['cookingTime'],
-    #                  primary_image=data['data']['img']['changingThisBreaksApplicationSecurity'],
-    #                  ingredients=str(data['data']['ingredients']),
-    #                  cooking_steps=str(data['data']['cookingSteps']),
-    #                  user=Users[id]
-    #                  )
-
+    recipe = Recipes(recipe_name=data['data']['title'],
+                     cooking_time=data['data']['cookingTime'],
+                     primary_image=data['data']['img'],
+                     ingredients=str(data['data']['ingredients']),
+                     cooking_steps=str(data['data']['cookingSteps']),
+                     user=Users[id]
+                     )
     return
-
-

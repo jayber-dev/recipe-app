@@ -1,4 +1,2 @@
 TODO: make login after registration
-TODO: build recipes data base 
-TODO: make a relation
-IMPORTANT: decide if mysql or mongodb for recipes
+TODO: make password hash

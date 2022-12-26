@@ -11,6 +11,7 @@ import { RecpieModel } from './addRecipe.interface';
   templateUrl: './add-recipe.component.html',
   styleUrls: ['./add-recipe.component.scss'],
 })
+
 export class AddRecipeComponent {
   addRecipe: FormGroup;
   SecurityContext: any;
@@ -19,6 +20,7 @@ export class AddRecipeComponent {
   stepsArray: string[] = [];
   toSend: RecpieModel;
   fileName:string;
+  fileData:FormData = new FormData()
  
 
   constructor(
@@ -53,11 +55,11 @@ export class AddRecipeComponent {
     if(file){
       this.fileName = file.name;
 
-      const formData = new FormData();
-      formData.append('file',file)
+      // const formData = new FormData();
+      this.fileData.append('file',file)
      
 
-      this.recipeService.fileUpload(formData)
+      // this.recipeService.fileUpload(formData)
     }
     
     if (event.target.files && event.target.files[0]) {
@@ -77,13 +79,14 @@ export class AddRecipeComponent {
     this.toSend = {
       title: this.addRecipe.get('title').value,
       cookingTime: this.addRecipe.get('cookingTime').value,
-      img: this.url,
+      img: this.fileName,
       ingredients: this.ingredients,
       cookingSteps: this.stepsArray,
     };
 
     console.log('thank you for your submission');
     console.log(this.addRecipe.value);
+    this.recipeService.fileUpload(this.fileData)
     this.recipeService.addRecipe(this.toSend);
     this.router.navigate(['/']);
   }

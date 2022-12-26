@@ -100,6 +100,7 @@ def add_recipe():
 @app.route('/retriveRecipes')
 def retrive_recipes():
     data = entity.retrive_recipes()
+    print(data)
     return data
 
 @app.route('/upload-img', methods=['GET','POST'])

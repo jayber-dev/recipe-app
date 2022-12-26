@@ -20,34 +20,7 @@ export class RecipeComponent {
   }
   url: SafeUrl;
   fetchedData:any
-  paths:Sanitizer
-
-  @Input()
-  imgData: recipeData[]= [
-    {
-    imgUrl:'../../assets/images/salmon-518032_1280.jpg',
-    title: 'מנת דג סלמון גורמה'
-    },
-    {
-    imgUrl:'../../assets/images/highway-7542272_1920.jpg',
-    title:'טעם הררי וחולי מנת גורמה לכל ילד בגן',
-    },
-    {
-    imgUrl:'../../assets/images/asparagus-2169305_1920.jpg',
-    title:'טעים טעים',
-    },
-    {
-    imgUrl:'../../assets\\images\\pancakes-1984716_1920.jpg',
-    title:'מאפה לקפה ומיד לשירותים',
-    },
-    {
-    imgUrl:'../../assets/images/pasta-3547078_1920.jpg',
-    title:'פסטה לה ויסטה בייבי',
-    },
-    {
-    imgUrl:'../../assets/images/pizza-329523_1920.jpg',
-    title:"איטלקית מעודנת פיצה לצבי הנינג'ה",
-    },]
+  paths:SafeUrl[]
 
     readUrl(event: any) {
       if (event.target.files && event.target.files[0]) {
@@ -65,13 +38,8 @@ export class RecipeComponent {
       
         const retriveRecipes = this.http.get('http://127.0.0.1:5001/retriveRecipes').subscribe(data => {
           this.fetchedData = data
-          console.log(this.Sanitaizer.bypassSecurityTrustResourceUrl(this.fetchedData[0]['img']));
-          
-          // for(let i =0;i < this.fetchedData.length; i++){
-          //   this.paths.push(this.Sanitaizer.bypassSecurityTrustResourceUrl(`${this.fetchedData[i].img}`));
-            
-          // }
-          // console.log(data);    
+          console.log(this.fetchedData);
+                       
           retriveRecipes.unsubscribe()
         })
       

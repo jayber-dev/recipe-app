@@ -13,18 +13,17 @@ export class RecipeService {
   fileUpload(formData){
     console.log(formData);
     
-    this.http.post('http://127.0.0.1:5001/upload-img',formData).subscribe(data =>{
+    const upload = this.http.post('http://127.0.0.1:5001/upload-img',formData).subscribe(data =>{
       console.log(data);
-      
+      upload.unsubscribe()
     })
   }
 
   addRecipe(data: RecpieModel) {
+    console.log(data);
+    
     const send = this.http
-      .post('http://127.0.0.1:5001/addRecipe', {
-        key: this.cookieService.get('key'),
-        data,
-      })
+      .post('http://127.0.0.1:5001/addRecipe', {key: this.cookieService.get('key'),data,})
       .subscribe((data) => {
         console.log('data sent');
         console.log(data);

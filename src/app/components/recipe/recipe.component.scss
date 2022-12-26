@@ -17,7 +17,7 @@ $borderColor: rgb(63, 135, 166);
         
     }
     
-    p {
+    .recipe-name {
         position: absolute;
         text-align: center;
         font-size: large;
@@ -34,6 +34,34 @@ $borderColor: rgb(63, 135, 166);
         right:0;
         margin: auto;
     }
+    .name-container {
+        position: absolute;
+        top:10px;
+        background-color: rgba(245, 245, 245, 0.479);       
+        width: 35%;
+        height: auto;
+        border-top-left-radius:8px ;
+        border-top-right-radius: 200px;
+        border-bottom-right-radius: 200px;
+        padding: 2%;
+        
+        .user-name {
+            position: relative;
+            text-align: center;
+            font-size: large;
+            font-weight: 500;
+            color: rgb(7, 59, 7);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 500;
+            font-size: small;
+            width: 100%;
+            // padding: 20px;
+            
+         
+            margin: auto;
+        }
+    }
+    
    
 }
 
