@@ -22,6 +22,8 @@ entity.db.bind(provider='mysql', host='31.170.164.51', user='u889934763_p00nani'
                passwd='Pp0526767682!', db='u889934763_recipeUsers')
 entity.db.generate_mapping(create_tables=True)
 
+print(app.secret_key)
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
