@@ -16,6 +16,16 @@ export class UserLoginService {
   message:string
   dataStr:string
   
+  uploadProfileImg(formData:any){
+    console.log(formData);
+    
+    const http = this.http.post('http://127.0.0.1:5001/upload-profile',formData).subscribe(data => {
+      console.log(data);
+      
+      http.unsubscribe()
+    })
+  }
+
   auth(){
     this.http.post('127.0.0.1:5001',{}).subscribe(data => {
     })

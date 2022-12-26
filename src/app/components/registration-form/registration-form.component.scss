@@ -50,7 +50,35 @@ $random: #d4d5d6;
         input::placeholder {
             color: rgba(53, 53, 53, 0.541);
         }
+
+        .pic-upload {
+            display: none;
+        }
+        .pic-label{
+            position: relative;
+            cursor:pointer;
+            // border: 1px solid;
+            margin-top: 25px;
+            font-size: medium;
+            color:$textcolor;
+            padding: 10px;
+            box-shadow: -2px 2px 4px 1px grey;
+            
+            img {
+                position: absolute;
+                margin-top: 5px;
+                height: 100px;
+                width: 100px;
+                top:-35px;
+                right:-120px;
+                border-radius: 150px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
         
+        
+
         select {
             background-color: transparent;
             padding:10px;

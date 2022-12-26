@@ -19,6 +19,7 @@ class Users(db.Entity):
     email = Required(str, unique=True)
     password = Required(str)
     token = Optional(str)
+    imgName = Optional(str)
     recipes = Set('Recipes')
 
 
@@ -62,10 +63,10 @@ def delete_token(id):
 
 @db_session
 def register(user_object):
-    print(user_object['firstName'])
+    print(user_object)
     Users.firstName
     insert_data = Users(firstName=user_object['firstName'], lastName=user_object['lastName'],
-                        country=user_object['country'], email=user_object['email'], password=user_object['pass'])
+                        country=user_object['country'], email=user_object['email'], password=user_object['password'],imgName=user_object['imgName'])
     # commit()
 
 

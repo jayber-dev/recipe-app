@@ -15,6 +15,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER')
+app.config['PROFILE_UPLOAD_FOLDER'] = os.environ.get('PROFILE_UPLOAD_FOLDER')
 CORS(app=app)
 
 entity.db.bind(provider='mysql', host='31.170.164.51', user='u889934763_p00nani',
@@ -117,6 +118,22 @@ def file_upload():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
         return jsonify({'data':'file uploaded'})
     return jsonify({'data':'no file provided'})
+
+@app.route('/upload-profile', methods=['GET','POST'])
+def upload_profile_img():
+    print('im inside file upload')
+    print(request.files)
+    print(request.files['file'])
+    if 'file' not in request.files:
+        print('im in not in file')
+        return jsonify({'data':'no file was given'})
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+        file_name = secure_filename(file.filename)
+        file.save(os.path.join(app.config['PROFILE_UPLOAD_FOLDER'], file_name))
+        return jsonify({'data':'file uploaded'})
+    return jsonify({'data':'no file provided'})
+    
 
 if __name__ == "__main__":
 

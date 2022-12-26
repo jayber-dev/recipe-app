@@ -51,14 +51,11 @@ export class AddRecipeComponent {
 
   readUrl(event: any) {
     const file:File = event.target.files[0]
-    console.log(file);
+    
     if(file){
       this.fileName = file.name;
-
       // const formData = new FormData();
       this.fileData.append('file',file)
-     
-
       // this.recipeService.fileUpload(formData)
     }
     

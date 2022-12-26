@@ -4,27 +4,36 @@
     <div class="registration-form">
     <h1>Registration</h1>
     <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
         <label >First Name </label>
         <input type="text" formControlName="firstName" placeholder="John" [required] minlength="1">
         <small *ngIf="!registerForm.controls['firstName'].valid"> Field must be filled</small>
+
         <label >Last Name </label>
         <input type="text" formControlName="lastName" placeholder="Dow" required minlength="1">
         <small *ngIf="!registerForm.controls['lastName'].valid"> Field must be filled</small>
         
         <label >Email </label>
-        
         <input type="email" formControlName="email" placeholder="JohnDow@email.com" required>
         <small *ngIf="registerForm.controls['email'].invalid"> Please fill valid Email</small>
         
         <label for="country">Country</label>
         <select name="country" id="country" formControlName="country">
             <option value="">Country</option>
-            <option *ngFor="let i of countries"  value="{{i.name}}">{{i.name}}</option>
-            
+            <option *ngFor="let i of countries"  value="{{i.name}}">{{i.name}}</option>           
         </select>
+
+        <label class="pic-label" for="inputTag" [ngStyle]="{'color': fileName ? 'black' : 'red'}">
+            Upload Image: {{fileName ? fileName :'_________________________'}}  <br/>
+            <input class="pic-upload" id="inputTag" type="file" (change)="readUrl($event)" formControlName="img" value="fileName"/>
+            <img *ngIf="fileUrl" [src]="fileUrl" alt="">
+          </label>
+          <small> Optional - site default will be Displayed</small>
+
         <label >Password </label>
             <input type="password" formControlName="pass" placeholder="password" >
-            <small *ngIf="!registerForm.controls['pass'].valid"> Field must be filled</small>        
+            <small *ngIf="!registerForm.controls['pass'].valid"> Field must be filled</small>   
+
         <label >Repeat Password </label>
             <input type="password" formControlName="passRepeat" placeholder="Please repeat the password" required >
             <small *ngIf="!registerForm.valid">Passwords not match</small>
