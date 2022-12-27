@@ -44,22 +44,32 @@ $borderColor: rgb(63, 135, 166);
         border-top-right-radius: 200px;
         border-bottom-right-radius: 200px;
         padding: 2%;
-        
-        .user-name {
-            position: relative;
-            text-align: center;
-            font-size: large;
-            font-weight: 500;
-            color: rgb(7, 59, 7);
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-weight: 500;
-            font-size: small;
-            width: 100%;
-            // padding: 20px;
-            
-         
-            margin: auto;
+        div {
+            display: flex;
+            flex-direction: row;
+            .user-name {
+                position: relative;
+                text-align: center;
+                font-size: large;
+                font-weight: 500;
+                color: rgb(7, 59, 7);
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-weight: 500;
+                font-size: small;
+                width: 100%;
+                // padding: 20px;
+                
+             
+                margin: auto;
+            }
+    
+            img{
+                height: 30px;
+                width: 30px;
+                border-radius: 200px;
+            }
         }
+        
     }
     
    

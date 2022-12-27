@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Response, make_response
+from flask import Flask, jsonify, request, Response, make_response, url_for, send_from_directory
 import json
 import mysql.connector
 from flask_cors import CORS
@@ -24,11 +24,13 @@ entity.db.generate_mapping(create_tables=True)
 
 print(app.secret_key)
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # user_list = entity.retrive_user_list()
+
 
 @app.route('/auth', methods=['GET', 'POST'])
 def auth():
@@ -86,6 +88,7 @@ def logout():
 
 # --------------------------------------------- Recipes Handler ------------------------------------
 
+
 @app.route('/addRecipe', methods=['GET', 'POST'])
 def add_recipe():
     print('got the messege')
@@ -106,36 +109,52 @@ def retrive_recipes():
     print(data)
     return data
 
-@app.route('/upload-img', methods=['GET','POST'])
+#  ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------
+
+
+@app.route('/upload-img', methods=['GET', 'POST'])
 def file_upload():
     print('im inside file upload')
     print(request.files)
     print(request.files['file'])
     if 'file' not in request.files:
         print('im in not in file')
-        return jsonify({'data':'no file was given'})
+        return jsonify({'data': 'no file was given'})
     file = request.files['file']
     if file and allowed_file(file.filename):
         file_name = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
-        return jsonify({'data':'file uploaded'})
-    return jsonify({'data':'no file provided'})
+        return jsonify({'data': 'file uploaded'})
+    return jsonify({'data': 'no file provided'})
 
-@app.route('/upload-profile', methods=['GET','POST'])
+
+@app.route('/upload-profile', methods=['GET', 'POST'])
 def upload_profile_img():
     print('im inside file upload')
     print(request.files)
     print(request.files['file'])
     if 'file' not in request.files:
         print('im in not in file')
-        return jsonify({'data':'no file was given'})
+        return jsonify({'data': 'no file was given'})
     file = request.files['file']
     if file and allowed_file(file.filename):
         file_name = secure_filename(file.filename)
         file.save(os.path.join(app.config['PROFILE_UPLOAD_FOLDER'], file_name))
-        return jsonify({'data':'file uploaded'})
-    return jsonify({'data':'no file provided'})
-    
+        return jsonify({'data': 'file uploaded'})
+    return jsonify({'data': 'no file provided'})
+
+
+@app.route('/recipe-images/<string:imgName>')
+def img(imgName):
+    print(imgName)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], imgName)
+
+
+@app.route('/profile/<string:imgName>')
+def profile_img_serve(imgName):
+    print(imgName)
+    return send_from_directory(app.config['PROFILE_UPLOAD_FOLDER'], imgName)
+
 
 if __name__ == "__main__":
 

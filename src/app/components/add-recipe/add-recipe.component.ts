@@ -30,9 +30,9 @@ export class AddRecipeComponent {
     private recipeService: RecipeService
   ) {
     this.addRecipe = fb.group({
-      title: '',
-      cookingTime: '',
-      primaryImage: '',
+      title: ['', Validators.required],
+      cookingTime: ['', Validators.required],
+      primaryImage: ['', Validators.required],
       ingredient: ['', Validators.required],
       steps: '',
     });
@@ -85,6 +85,6 @@ export class AddRecipeComponent {
     console.log(this.addRecipe.value);
     this.recipeService.fileUpload(this.fileData)
     this.recipeService.addRecipe(this.toSend);
-    this.router.navigate(['/']);
+    this.router.navigateByUrl('/home');
   }
 }

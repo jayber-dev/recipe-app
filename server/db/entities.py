@@ -100,7 +100,8 @@ def retrive_recipes():
             'userlastName': i.user.lastName,
             'title': i.recipe_name,
             'cookingTime': i.cooking_time,
-            'img': os.path.join(os.environ['UPLOAD_FOLDER'], i.primary_image),
+            'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
+            'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
             'ingredients': i.ingredients,
             'cookingSteps': i.cooking_steps,
         })

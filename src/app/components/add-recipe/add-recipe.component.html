@@ -23,6 +23,7 @@
           <button [disabled]="!addRecipe.valid" (click)="addIngredient()">
             Add ingredient
           </button>
+          <small *ngIf="!addRecipe.valid">please fill the Title and Cooking time</small>
           <p>{{ addRecipe.valid | json }}</p>
         </div>
         <div class="add-steps-button">
@@ -38,7 +39,7 @@
           <button type="button" (click)="addStep()">Add steps</button>
         </div>
         <p *ngIf="stepsArray.length === 0">no steps added</p>
-
+        <p>{{addRecipe.valid}}</p>
         <button [disabled]="stepsArray.length == 0">Submit recipe</button>
       </form>
     </div>
@@ -48,7 +49,19 @@
     <h1 *ngIf="addRecipe.get('title').value">
       {{ addRecipe.get("title").value }}
     </h1>
-    <img [src]="url" alt="" />
+    <div class="right-row-container">
+      <div class="left-row">
+        <img [src]="url" alt="" />
+
+      </div>
+      <div class="right-row">
+        <ul>
+          <li *ngFor="let item of ingredients">{{ item }}</li>
+        </ul>
+      </div>
+      
+    </div>
+    
     <p *ngIf="addRecipe.get('cookingTime').value">
       Cooking time:
       <span class="cooking-time"
@@ -56,9 +69,7 @@
       </span>
       Minutes
     </p>
-    <ul>
-      <li *ngFor="let item of ingredients">{{ item }}</li>
-    </ul>
+    
     <p *ngFor="let item of stepsArray; index as i">
       step {{ i + 1 }} - {{ item }}
     </p>

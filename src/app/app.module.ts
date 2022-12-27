@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
 import { FormsModule,FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +41,7 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     RouterModule.forRoot(routes)
   ],
   providers: [
+    PathLocationStrategy,
     UserLoginService,
     RecipeService,
     CookieService,

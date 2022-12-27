@@ -1,4 +1,4 @@
-import {Routes} from '@angular/router'
+import {Routes , RoutesRecognized} from '@angular/router'
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 

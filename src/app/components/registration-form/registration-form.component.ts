@@ -77,7 +77,7 @@ export class RegistrationFormComponent {
       firstName: this.registerForm.controls['firstName'].value,
       lastName: this.registerForm.controls['lastName'].value,
       password: this.registerForm.controls['pass'].value,
-      imgName: this.fileName
+      imgName: this.fileName || "dummy.png",
     }
     
     
@@ -85,6 +85,7 @@ export class RegistrationFormComponent {
     if(this.registerForm.valid){
         this.user.uploadProfileImg(this.fileData)
         this.user.register(this.toSend)
+        this.user.login(this.registerForm.controls['email'].value,this.registerForm.controls['pass'].value)
         this.router.navigate(['/'])
       
     }
