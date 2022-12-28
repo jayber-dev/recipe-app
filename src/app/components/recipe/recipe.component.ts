@@ -47,14 +47,14 @@ export class RecipeComponent {
           console.log(this.fetchedData);                      
           retriveRecipes.unsubscribe()
 
-          this.location.onUrlChange((event)=>{
+          // this.location.onUrlChange((event)=>{
             
-            console.log(this.currUrl);
-            if(this.currUrl === "/addRecipe" || this.currUrl === "/register"){
-              window.location.reload()
-            }
-            this.currUrl = event
-          })    
+          //   console.log(this.currUrl);
+          //   // if(this.currUrl === "/addRecipe"){
+          //   //   window.location.reload()
+          //   // }
+          //   this.currUrl = event
+          // })    
           
           
           

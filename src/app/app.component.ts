@@ -21,8 +21,7 @@ export class AppComponent {
           firstName: data['firstName'],
           lastName: data['lastName'],
           imgName: data['imgName'],
-          login: true,
-          
+          login: true,        
         }
         user.isLogged = true
       }
