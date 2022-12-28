@@ -7,6 +7,8 @@ import { RecpieModel } from 'src/app/components/add-recipe/addRecipe.interface';
   providedIn: 'root',
 })
 export class RecipeService {
+  recipesList:any
+
   constructor(private http: HttpClient, private cookieService: CookieService) {}
   recipesData:string
   
@@ -31,4 +33,15 @@ export class RecipeService {
         send.unsubscribe();
       });
   }
+
+  // retriveRecipes(){
+  //   this.http.get('http://127.0.0.1:5001/retriveRecipes').subscribe(data => {
+  //     this.recipesList = data
+  //     console.log(this.recipesList);
+      
+  //     return data;
+     
+  //   })
+  // }
 }
+

@@ -27,6 +27,7 @@ export class RecipeComponent {
   fetchedData:any;
   paths:SafeUrl[];
   currUrl: string;
+  recipesData:any
 
     readUrl(event: any) {
       if (event.target.files && event.target.files[0]) {
@@ -40,21 +41,28 @@ export class RecipeComponent {
       }
     }
 
-    ngOnInit(){
+    ngAfterContentInit(){
       
+    }
+
+    ngAfterViewInit(){
+      
+    }
+
+    ngOnInit(){
+
         const retriveRecipes = this.http.get('http://127.0.0.1:5001/retriveRecipes').subscribe(data => {
-          this.fetchedData = data
-          console.log(this.fetchedData);                      
+          this.fetchedData = data                      
           retriveRecipes.unsubscribe()
 
-          // this.location.onUrlChange((event)=>{
+          this.location.onUrlChange((event)=>{
             
-          //   console.log(this.currUrl);
-          //   // if(this.currUrl === "/addRecipe"){
-          //   //   window.location.reload()
-          //   // }
-          //   this.currUrl = event
-          // })    
+            console.log(this.currUrl);
+            if(this.currUrl === "/addRecipe"){
+              window.location.reload()
+            }
+            this.currUrl = event
+          })    
           
           
           
