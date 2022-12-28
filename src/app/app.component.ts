@@ -16,6 +16,14 @@ export class AppComponent {
   constructor(private http:HttpClient, private cookieService:CookieService,user:UserLoginService){
     http.post('http://127.0.0.1:5001/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
       if(data['login']){
+        console.log(data);
+        user.userShortData = {
+          firstName: data['firstName'],
+          lastName: data['lastName'],
+          imgName: data['imgName'],
+          login: true,
+          
+        }
         user.isLogged = true
       }
       

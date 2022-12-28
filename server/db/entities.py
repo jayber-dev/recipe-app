@@ -28,8 +28,8 @@ class Recipes(db.Entity):
     recipe_name = Required(str)
     cooking_time = Required(int)
     primary_image = Required(str)
-    ingredients = Required(str)
-    cooking_steps = Required(str)
+    ingredients = Required(LongStr)
+    cooking_steps = Required(LongStr)
 
 
 #  -------------------------------------USER DATABASE FUNCTIONS -----------------------------------------
@@ -63,7 +63,7 @@ def delete_token(id):
 
 @db_session
 def register(user_object):
-    print(user_object)
+    # print(user_object)
     Users.firstName
     insert_data = Users(firstName=user_object['firstName'], lastName=user_object['lastName'],
                         country=user_object['country'], email=user_object['email'], password=user_object['password'],imgName=user_object['imgName'])
@@ -74,6 +74,9 @@ def register(user_object):
 def retrive_user(email):
     return Users.get(email=email)
 
+@db_session
+def retrive_user_by_id(id):
+    return Users.get(id=id)
 
 @db_session
 def retrive_user_list():
@@ -85,15 +88,11 @@ def retrive_user_list():
 @db_session
 def retrive_recipes():
     # set_sql_debug(True)
-    print(os.environ['UPLOAD_FOLDER'])
+    # print(os.environ['UPLOAD_FOLDER'])
     obj_array = []
     recipe_obj = Recipes.select()
 
     for i in recipe_obj:
-        print(i.user.country)
-
-    for i in recipe_obj:
-        print(i.user)
         obj_array.append({
             'userId': i.user.id,
             'userFirstName': i.user.firstName,
@@ -111,9 +110,9 @@ def retrive_recipes():
 
 @db_session
 def add_recipe(id, data):
-    print(data)
-    print(data['data']['title'])
-    print(data['data']['img'])
+    # print(data)
+    # print(data['data']['title'])
+    # print(data['data']['img'])
     recipe = Recipes(recipe_name=data['data']['title'],
                      cooking_time=data['data']['cookingTime'],
                      primary_image=data['data']['img'],

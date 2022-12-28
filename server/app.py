@@ -22,8 +22,6 @@ entity.db.bind(provider='mysql', host='31.170.164.51', user='u889934763_p00nani'
                passwd='Pp0526767682!', db='u889934763_recipeUsers')
 entity.db.generate_mapping(create_tables=True)
 
-print(app.secret_key)
-
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -41,7 +39,14 @@ def auth():
         decrypted_token_json = json.loads(decrypted_token_str)
         is_true = entity.validate_token(
             id=decrypted_token_json['user_id'], token=decrypted_token_json['token'])
-        return jsonify({"login": is_true})
+        user_data = entity.retrive_user_by_id(decrypted_token_json['user_id'])
+        print(user_data.firstName)
+        return jsonify({
+                        "login": is_true,
+                        "firstName":user_data.firstName,
+                        "lastName": user_data.lastName,
+                        "imgName": f"http://127.0.0.1:5001/profile/{user_data.imgName}",
+                        })
     except:
         return jsonify({"login": False})
 
@@ -69,7 +74,14 @@ def login():
             # print(data['name'])
         if (data['name'] == user_data.email and data['pass'] == user_data.password):
             token = entity.create_token(id=user_data.id)
-            return (jsonify({'data': True, "token": token, 'id': user_data.id}))
+            
+            return (jsonify({
+                'data': True,
+                "token": token,
+                'id': user_data.id,
+                'firstName': user_data.firstName,
+                'lastName': user_data.lastName,
+                'imgName': f"http://127.0.0.1:5001/profile/{user_data.imgName}"}))
         else:
             return jsonify({'data': 'false', 'message': 'Wrong password'})
     except:
@@ -92,10 +104,8 @@ def logout():
 @app.route('/addRecipe', methods=['GET', 'POST'])
 def add_recipe():
     print('got the messege')
-    # print(request.get_json())
     if request.method == 'POST':
         data = request.get_json()
-        print(request.files)
         decrypted_token_str = cryptocode.decrypt(
             enc_dict=data['key'], password=os.environ.get('SECRET_KEY'))
         decrypted_token_json = json.loads(decrypted_token_str)
@@ -106,7 +116,6 @@ def add_recipe():
 @app.route('/retriveRecipes')
 def retrive_recipes():
     data = entity.retrive_recipes()
-    print(data)
     return data
 
 #  ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------
@@ -115,10 +124,8 @@ def retrive_recipes():
 @app.route('/upload-img', methods=['GET', 'POST'])
 def file_upload():
     print('im inside file upload')
-    print(request.files)
-    print(request.files['file'])
     if 'file' not in request.files:
-        print('im in not in file')
+        
         return jsonify({'data': 'no file was given'})
     file = request.files['file']
     if file and allowed_file(file.filename):
@@ -131,8 +138,6 @@ def file_upload():
 @app.route('/upload-profile', methods=['GET', 'POST'])
 def upload_profile_img():
     print('im inside file upload')
-    print(request.files)
-    print(request.files['file'])
     if 'file' not in request.files:
         print('im in not in file')
         return jsonify({'data': 'no file was given'})
@@ -146,13 +151,11 @@ def upload_profile_img():
 
 @app.route('/recipe-images/<string:imgName>')
 def img(imgName):
-    print(imgName)
     return send_from_directory(app.config['UPLOAD_FOLDER'], imgName)
 
 
 @app.route('/profile/<string:imgName>')
 def profile_img_serve(imgName):
-    print(imgName)
     return send_from_directory(app.config['PROFILE_UPLOAD_FOLDER'], imgName)
 
 

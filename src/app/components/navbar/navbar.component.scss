@@ -34,6 +34,22 @@ nav {
             width: 50vw;
             border-bottom: $borderColor 1px solid;
 
+            .user-details {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                height: 100%;
+                padding: 0px;
+                p {
+                    margin: 0px;
+                }
+                img {
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 100px;
+                }
+            }
+
             li {
                 
                 padding:20px;
@@ -61,7 +77,8 @@ nav {
             width: 50vw;
             justify-content: flex-end;
             border-bottom: $borderColor 1px solid;
-
+            align-items: center;
+            
             
             li {
                 
