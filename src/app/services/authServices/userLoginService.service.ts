@@ -62,7 +62,7 @@ export class UserLoginService {
       }
     })
 
-    logging.unsubscribe()
+    // logging.unsubscribe()
   }
 
   logout(){
