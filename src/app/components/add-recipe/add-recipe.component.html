@@ -45,23 +45,12 @@
     </div>
   </div>
   <div class="right-container">
-    <p>{{ addRecipe.value | json }}</p>
-    <h1 *ngIf="addRecipe.get('title').value">
-      {{ addRecipe.get("title").value }}
-    </h1>
-    <div class="right-row-container">
-      <div class="left-row">
-        <img [src]="url" alt="" />
-
-      </div>
-      <div class="right-row">
-        <ul>
-          <li *ngFor="let item of ingredients">{{ item }}</li>
-        </ul>
-      </div>
-      
-    </div>
+    <!-- <p>{{ addRecipe.value | json }}</p> -->
+    <h1>Preview:</h1>
     
+    <h2 *ngIf="addRecipe.get('title').value">
+      {{ addRecipe.get("title").value }}
+    </h2>
     <p *ngIf="addRecipe.get('cookingTime').value">
       Cooking time:
       <span class="cooking-time"
@@ -70,8 +59,21 @@
       Minutes
     </p>
     
-    <p *ngFor="let item of stepsArray; index as i">
-      step {{ i + 1 }} - {{ item }}
-    </p>
+    <div class="right-row-container">
+      <div class="left-row">
+        <img *ngIf="url" [src]="url" alt="Preview dish image" />
+
+      </div>
+      <div class="right-row">
+        <ul>
+          <li *ngFor="let item of ingredients">{{ item }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cooking-steps-wrapper" *ngFor="let item of stepsArray; index as i">
+      <p class="cooking-steps" >
+        step {{ i + 1 }} - {{ item }}
+      </p>
+    </div>
   </div>
 </div>

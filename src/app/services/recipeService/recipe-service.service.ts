@@ -34,14 +34,8 @@ export class RecipeService {
       });
   }
 
-  // retriveRecipes(){
-  //   this.http.get('http://127.0.0.1:5001/retriveRecipes').subscribe(data => {
-  //     this.recipesList = data
-  //     console.log(this.recipesList);
-      
-  //     return data;
-     
-  //   })
-  // }
+  retriveRecipes(){
+    return this.http.get('http://127.0.0.1:5001/retriveRecipes')
+  }
 }
 

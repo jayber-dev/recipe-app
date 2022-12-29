@@ -31,15 +31,16 @@ export class UserLoginService {
   }
 
   auth(){
-    this.http.post('127.0.0.1:5001',{}).subscribe(data => {
+    const auth = this.http.post('127.0.0.1:5001',{}).subscribe(data => {
       // console.log(data);
-      
+      auth.unsubscribe()
     })
   }
 
   register(userData:any){
     this.dataStr = JSON.stringify(userData)
-    this.http.post('http://127.0.0.1:5001/register',{data:this.dataStr}).subscribe(data => {
+    const register = this.http.post('http://127.0.0.1:5001/register',{data:this.dataStr}).subscribe(data => {
+      register.unsubscribe()
     })
   }
 
@@ -61,7 +62,7 @@ export class UserLoginService {
       }
     })
 
-    
+    logging.unsubscribe()
   }
 
   logout(){

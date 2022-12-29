@@ -110,6 +110,8 @@ def retrive_recipes():
 
 @db_session
 def add_recipe(id, data):
+    # set_sql_debug(True)
+
     # print(data)
     # print(data['data']['title'])
     # print(data['data']['img'])

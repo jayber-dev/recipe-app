@@ -33,6 +33,7 @@ nav {
             align-items: center;
             width: 50vw;
             border-bottom: $borderColor 1px solid;
+            
 
             .user-details {
                 display: flex;
@@ -40,6 +41,7 @@ nav {
                 align-items: center;
                 height: 100%;
                 padding: 0px;
+                margin-left: 20px;
                 p {
                     margin: 0px;
                 }
@@ -49,6 +51,10 @@ nav {
                     border-radius: 100px;
                     object-fit: cover;
                 }
+            }
+
+            .user-details:hover {
+                background-color: transparent;
             }
 
             li {

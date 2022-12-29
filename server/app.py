@@ -18,8 +18,10 @@ app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER')
 app.config['PROFILE_UPLOAD_FOLDER'] = os.environ.get('PROFILE_UPLOAD_FOLDER')
 CORS(app=app)
 
-entity.db.bind(provider='mysql', host='31.170.164.51', user='u889934763_p00nani',
-               passwd='Pp0526767682!', db='u889934763_recipeUsers')
+# entity.db.bind(provider='mysql', host='31.170.164.51', user='u889934763_p00nani',
+#                passwd='Pp0526767682!', db='u889934763_recipeUsers')
+
+entity.db.bind(provider="sqlite", filename='db.sqlite', create_db=True)
 entity.db.generate_mapping(create_tables=True)
 
 
