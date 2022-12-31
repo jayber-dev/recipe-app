@@ -5,6 +5,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
 import { RecpieModel } from './addRecipe.interface';
+import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -21,19 +22,23 @@ export class AddRecipeComponent {
   toSend: RecpieModel;
   fileName:string;
   fileData:FormData = new FormData()
+  toPush: any;
  
 
   constructor(
     fb: FormBuilder,
     public Sanitaizer: DomSanitizer,
     private router: Router,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private user:UserLoginService
   ) {
     this.addRecipe = fb.group({
       title: ['', Validators.required],
       cookingTime: ['', Validators.required],
       primaryImage: ['', Validators.required],
       ingredient: ['', Validators.required],
+      quantity: ['', Validators.required],
+      unit: ['', Validators.required],
       steps: '',
     });
   }
@@ -54,9 +59,7 @@ export class AddRecipeComponent {
     
     if(file){
       this.fileName = file.name;
-      // const formData = new FormData();
       this.fileData.append('file',file)
-      // this.recipeService.fileUpload(formData)
     }
     
     if (event.target.files && event.target.files[0]) {
@@ -81,8 +84,9 @@ export class AddRecipeComponent {
       cookingSteps: this.stepsArray,
     };
 
-    console.log('thank you for your submission');
-    console.log(this.addRecipe.value);
+    // console.log(this.recipeService.recipesList);
+    // console.log('thank you for your submission');
+
     this.recipeService.fileUpload(this.fileData)
     this.recipeService.addRecipe(this.toSend);
     this.router.navigateByUrl('/home');

@@ -15,7 +15,14 @@ $random: #d4d5d6;
             form {
                 display: flex;
                 flex-direction: column;
-
+                .quantity-unit {
+                    margin-top: 20px;
+                    display: flex;
+                    align-items: center;
+                    input {
+                        width: 50px;
+                    }
+                }
                 label {
                     padding: 5px;
                     font-size: larger;
@@ -64,10 +71,10 @@ $random: #d4d5d6;
                 }
 
                 button {
-                    margin-top: 30px;
+                    margin-top: 20px;
                     font-size: larger;
                     padding: 10px;
-                    border-radius: 5px ;
+                    // border-radius: 5px ;
                     border: 1px dashed grey;
                     background-color: rgba(168, 46, 46, 0.445);
                     color: $borderColor;
@@ -80,11 +87,20 @@ $random: #d4d5d6;
                 }
 
             
-
-                .add-ingredient-button{
+                .add-ingredient-button-container{
                     display: flex;
                     flex-direction: column;
                     margin-bottom: 10px;
+                }
+
+                .add-ingredient-button{
+                    margin-top: 20px;                    
+                }
+
+                
+
+                .button-hover:hover {
+                    border:1px solid grey
                 }
                 .add-steps-button{
                     display: flex;
@@ -129,9 +145,9 @@ $random: #d4d5d6;
             }
         }
 
-        .cooking-steps-wrapper:nth-child(odd) {
-            // background: linear-gradient(transparent , rgba(128, 128, 128, 0.137),transparent);
-        }
+        // .cooking-steps-wrapper:nth-child(odd) {
+        //     background: linear-gradient(transparent , rgba(128, 128, 128, 0.137),transparent);
+        // }
         
         .right-row-container {
             display: flex;

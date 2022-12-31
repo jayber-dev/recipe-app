@@ -7,35 +7,33 @@ import { RecpieModel } from 'src/app/components/add-recipe/addRecipe.interface';
   providedIn: 'root',
 })
 export class RecipeService {
-  recipesList:any
+  recipesList: any = [];
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
-  recipesData:string
-  
-  fileUpload(formData){
-    console.log(formData);
-    
-    const upload = this.http.post('http://127.0.0.1:5001/upload-img',formData).subscribe(data =>{
-      console.log(data);
-      upload.unsubscribe()
-    })
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+    const recipesList: any[] = this.recipesData;
+  }
+  recipesData: string[];
+
+  fileUpload(formData) {
+    const upload = this.http
+      .post('http://127.0.0.1:5001/upload-img', formData)
+      .subscribe((data) => {
+        upload.unsubscribe();
+      });
   }
 
   addRecipe(data: RecpieModel) {
-    console.log(data);
-    
     const send = this.http
-      .post('http://127.0.0.1:5001/addRecipe', {key: this.cookieService.get('key'),data,})
+      .post('http://127.0.0.1:5001/addRecipe', {
+        key: this.cookieService.get('key'),
+        data,
+      })
       .subscribe((data) => {
-        console.log('data sent');
-        console.log(data);
-
         send.unsubscribe();
       });
   }
 
-  retriveRecipes(){
-    return this.http.get('http://127.0.0.1:5001/retriveRecipes')
+  retriveRecipes() {
+    return this.http.get('http://127.0.0.1:5001/retriveRecipes');
   }
 }
-
