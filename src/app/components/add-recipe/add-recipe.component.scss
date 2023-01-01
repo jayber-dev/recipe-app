@@ -57,6 +57,10 @@ $random: #d4d5d6;
                     padding: 10px;
                     box-shadow: -2px 2px 4px 1px grey;
                     
+                    svg {
+                        text-align: end;
+                    }
+
                     img {
                         position: absolute;
                         margin-top: 5px;
