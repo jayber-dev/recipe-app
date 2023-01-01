@@ -29,7 +29,13 @@
             <label for="">quantity</label>
             <input type="number" formControlName="quantity">
             <label for="">unit</label>
-            <input type="number" formControlName="unit">
+            <select type="number" formControlName="unit">
+              <option value="spoon">Spoon</option>
+              <option value="grams">Grams</option>
+              <option value="Kilograms">Kilograms</option>
+              <option value="grams">  </option>
+
+            </select>
           </div>
           
           <button class="add-ingredient-button button-hover"  [disabled]="!addRecipe.valid" [ngStyle]="{'background-color': addRecipe.valid ? 'rgba(81, 151, 81, 0.514)' : 'rgba(168, 46, 46, 0.445)' }" (click)="addIngredient()">

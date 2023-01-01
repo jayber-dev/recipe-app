@@ -45,6 +45,7 @@ export class AddRecipeComponent {
 
   addIngredient() {
     this.ingredients.push(this.addRecipe.get('ingredient').value);
+    console.log(this.addRecipe.get('quantity').value)
     this.addRecipe.controls['ingredient'].setValue('');
     this.addRecipe.controls['ingredient'].markAsUntouched();
   }
