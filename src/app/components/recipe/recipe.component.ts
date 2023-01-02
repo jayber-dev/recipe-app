@@ -23,7 +23,7 @@ export class RecipeComponent implements OnInit {
   ) {}
   someSubscription: any;
   url: SafeUrl;
-  fetchedData: recipeData[];
+  fetchedData: any;
   paths: SafeUrl[];
   currUrl: string;
 
@@ -39,24 +39,34 @@ export class RecipeComponent implements OnInit {
     }
   }
 
+  updateRecipeRecords() {
+    if(this.recipeService.recipesList){
+      this.fetchedData.push(...this.recipeService.recipesList)
+    }
+    this.recipeService.recipesList = []   
+  }
+
   ngOnInit() {
-    console.log("im in the ngoninit")
-    // this.fetchedData = this.recipeService.recipesList;
+    console.log("im in the ngoninit") 
     const recieps = this.recipeService.retriveRecipes().subscribe((data) => {
-      this.recipeService.recipesList = data;
-      this.fetchedData = this.recipeService.recipesList;
+      this.fetchedData = data;
+      
       // this.location.onUrlChange((event)=>{
 
       //       console.log(this.currUrl);
       //       if(this.currUrl === "/addRecipe"){
-      //         window.location.reload()
+      //         // window.location.reload()
+              
+
       //       }
       //       this.currUrl = event
+            
       // })
+      this.updateRecipeRecords()
       recieps.unsubscribe();
     });
-
-    this.fetchedData = this.recipeService.recipesList;
+    
+    // this.fetchedData = this.recipeService.recipesList;
 
   }
 }

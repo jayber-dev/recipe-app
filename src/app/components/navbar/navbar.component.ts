@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
  
 
   ngOnInit(): any {
+    console.log(this.user.userData);
+    
     // throw new Error('Method not implemented.');
   }
 }

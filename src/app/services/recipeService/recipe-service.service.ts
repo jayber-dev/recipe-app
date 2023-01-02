@@ -7,7 +7,8 @@ import { RecpieModel } from 'src/app/components/add-recipe/addRecipe.interface';
   providedIn: 'root',
 })
 export class RecipeService {
-  recipesList: any = [];
+  recipesList:any = [] ;
+  recipe:any
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
     const recipesList: any[] = this.recipesData;
