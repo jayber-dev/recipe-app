@@ -25,7 +25,7 @@
 
         <label class="pic-label" for="inputTag" [ngStyle]="{'color': fileName ? 'black' : 'red'}">
             Upload Image: {{fileName ? fileName :'_________________________'}}  <br/>
-            <input class="pic-upload" id="inputTag" type="file" (change)="readUrl($event)" formControlName="img" accept="image/*"> value="fileName"/>
+            <input class="pic-upload" id="inputTag" type="file" (change)="readUrl($event)" formControlName="img" accept="image/*"> 
             <img *ngIf="fileUrl" [src]="fileUrl" alt="">
           </label>
           <small> Optional - site default will be Displayed</small>

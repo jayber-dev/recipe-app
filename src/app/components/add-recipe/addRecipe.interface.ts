@@ -3,6 +3,12 @@ export interface RecpieModel {
     title:string,
     cookingTime:number,
     img:string,
-    ingredients:string[],
+    ingredients:Ingredient[],
     cookingSteps:string[],
 }
+
+export interface Ingredient {
+    ingredient:string;
+    quantity:number;
+    unit:string;
+  }

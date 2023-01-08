@@ -53,6 +53,12 @@ export class UserLoginService {
         
         this.userData = data
         console.log(this.userData);
+        this.userShortData = {
+          firstName: data['firstName'],
+          lastName: data['lastName'],
+          imgName: data['imgName'],
+          login: true,        
+        }
         
       } else {
         

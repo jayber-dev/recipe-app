@@ -139,7 +139,29 @@ $random: #d4d5d6;
             
         }
        
+        .delete-btn {
+            background-color: transparent;
+            border-radius: 20px;
+            border: 1px solid grey;
+            margin-left: 20px;
+            width:50px;
+            font-size: x-small;
+
+        }
         
+        .steps-delete-btn {
+            background-color: transparent;
+            border-radius: 20px;
+            border: 1px solid grey;
+            // margin-left: 20px;
+            width:50px;
+            font-size: x-small;
+        }
+
+        .steps-delete-btn:hover, .delete-btn:hover{
+            background-color: $borderColor;
+            color: whitesmoke;
+        }
 
         .cooking-steps-wrapper {
             width: 100%;
@@ -180,7 +202,7 @@ $random: #d4d5d6;
                     
                     line-break: loose;
                     li {
-                        font-size: x-small;
+                        font-size: small;
                     }
                 }
             }
