@@ -1,12 +1,15 @@
 <div class="recipe-card" [ngStyle]="user.isLogged ? {'margin-top':'100px'}:{}">
         <div *ngFor="let item of fetchedData" class="img-container">
-                <a href=""><img [src]="item['recipe-img']" alt="" loading="lazy"></a>
-                <p class="recipe-name">{{item.title}}</p>
+                <a [routerLink]="['recipeDetails', item.recipeId]" ><img [src]="item['recipe-img']" alt="" loading="lazy"></a>
+                <p class="recipe-name">{{item.title}} {{item.recipeId}}
+                </p>
                 <div class="name-container">
+                        
                         <div>
                                 <p class="user-name">by {{item.userFirstName}} {{item.userlastName}}</p>
                                 <img class="profile-img" [src]="item['profile-img']" alt="" loading="lazy">
                         </div>
                 </div>
         </div>
+        
 </div>

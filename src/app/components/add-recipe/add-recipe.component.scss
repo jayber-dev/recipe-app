@@ -74,6 +74,20 @@ $random: #d4d5d6;
                     }
                 }
 
+                select {
+                    // appearance: none;
+                    outline: none;
+                    background-color: transparent;
+                    padding:10px;
+                    box-shadow: -2px 2px 4px 1px grey;
+                    border: 0px;
+                    color:rgb(53, 53, 53) ;
+                    border: none; 
+                    option {
+                        background-color:  rgba(112, 163, 112, 0.233); 
+                    }
+                }
+
                 button {
                     margin-top: 20px;
                     font-size: larger;
@@ -143,10 +157,10 @@ $random: #d4d5d6;
             background-color: transparent;
             border-radius: 20px;
             border: 1px solid grey;
-            margin-left: 20px;
+            // margin-left: 20px;
             width:50px;
             font-size: x-small;
-
+            
         }
         
         .steps-delete-btn {
@@ -199,10 +213,27 @@ $random: #d4d5d6;
                 ul{
                     width: 100%;
                     list-style-image: url(../../../assets/images/ingredients-svgrepo-com.svg);
-                    
                     line-break: loose;
                     li {
+                        border-bottom: 1px solid rgba(128, 128, 128, 0.411);
                         font-size: small;
+                        table {
+                            width: 100%;
+                            tr{
+                                td {
+                                    width: 80px;
+                                    text-align: start;
+                                }
+                                td:nth-child(2n) {
+                                    width: 30px;
+                                }
+
+                                td:last-child {
+                                    text-align: end;
+                                }
+                            }
+                            
+                        }
                     }
                 }
             }

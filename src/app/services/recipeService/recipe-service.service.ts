@@ -37,4 +37,8 @@ export class RecipeService {
   retriveRecipes() {
     return this.http.get('http://127.0.0.1:5001/retriveRecipes');
   }
+
+  retriveRecipe(id) {
+    return this.http.get('http://127.0.0.1:5001/retriveRecipe/' + id);
+  }
 }

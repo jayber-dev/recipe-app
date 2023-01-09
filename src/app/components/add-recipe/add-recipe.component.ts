@@ -47,18 +47,22 @@ export class AddRecipeComponent {
     this.ingredients.push({ingredient : this.addRecipe.get('ingredient').value,
                           quantity: this.addRecipe.get('quantity').value,
                           unit: this.addRecipe.get('unit').value});
-
-    console.log(this.ingredients);
-    
-
+ 
     console.log(this.addRecipe.get('ingredient').value)
     this.addRecipe.controls['ingredient'].setValue('');
+    this.addRecipe.controls['quantity'].setValue('')
+    this.addRecipe.controls['unit'].setValue('')
     this.addRecipe.controls['ingredient'].markAsUntouched();
   }
 
   deleteItem(itemId) {
     this.ingredients.splice(itemId, 1)
-    console.log(this.ingredients);
+    
+    
+  }
+  deleteStepItem(itemId) {
+    this.stepsArray.splice(itemId, 1)
+  
     
   }
 

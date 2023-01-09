@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AddRecipeComponent } from './components/add-recipe/add-recipe.component';
 import { RecipeService } from './services/recipeService/recipe-service.service';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
 
 
 
@@ -30,6 +31,7 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     RegistrationFormComponent,
     AddRecipeComponent,
     SafeUrlPipe,
+    RecipeDetailsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

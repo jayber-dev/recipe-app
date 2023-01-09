@@ -50,22 +50,22 @@ export class RecipeComponent implements OnInit {
     console.log("im in the ngoninit") 
     const recieps = this.recipeService.retriveRecipes().subscribe((data) => {
       this.fetchedData = data;
+      console.log(this.fetchedData);
       
       this.location.onUrlChange((event)=>{
 
             console.log(this.currUrl);
             if(this.currUrl === "/addRecipe"){
               window.location.reload()
-            
             }
             this.currUrl = event
             
       })
-      // this.updateRecipeRecords()
+      this.updateRecipeRecords()
       recieps.unsubscribe();
     });
     
-    // this.fetchedData = this.recipeService.recipesList;
+    
 
   }
 }

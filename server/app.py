@@ -120,6 +120,12 @@ def retrive_recipes():
     data = entity.retrive_recipes()
     return data
 
+@app.route('/retriveRecipe/<int:id>')
+def retrive_recipe(id):
+    print('im in retrive')
+    data = entity.retrive_recipe(id)
+    return data
+
 #  ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------
 
 
