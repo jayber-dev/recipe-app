@@ -33,13 +33,13 @@ export class AddRecipeComponent {
     private user:UserLoginService
   ) {
     this.addRecipe = fb.group({
-      title: ['', Validators.required],
-      cookingTime: ['', Validators.required],
-      primaryImage: ['', Validators.required],
-      ingredient: ['', Validators.required],
-      quantity: ['', Validators.required],
-      unit: ['', Validators.required],
-      steps: '',
+      title: ["", Validators.required],
+      cookingTime: ["", Validators.required],
+      primaryImage: ["", Validators.required],
+      ingredient: ["", Validators.required],
+      quantity: ["", Validators.required],
+      unit: ["", Validators.required],
+      steps: "",
     });
   }
 

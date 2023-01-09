@@ -1,0 +1,21 @@
+.recipe-details-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    margin-top: 150Px;
+    .top-container {
+        display: flex;
+        flex-direction: row;
+        .left-container {
+            width: 50%;
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .right-container {
+            width: 50%;
+        }
+    }
+}

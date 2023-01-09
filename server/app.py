@@ -124,7 +124,17 @@ def retrive_recipes():
 def retrive_recipe(id):
     print('im in retrive')
     data = entity.retrive_recipe(id)
-    return data
+    # return_obj
+    return jsonify([{'userId': data.user.id,
+            "userFirstName": data.user.firstName,
+            "userlastName": data.user.lastName,
+            "recipeId": data.id,
+            "title": data.recipe_name,
+            "cookingTime": data.cooking_time,
+            "recipeImg": f"http://127.0.0.1:5001/recipe-images/{data.primary_image}",
+            "profileImg": f"http://127.0.0.1:5001/profile/{data.user.imgName}",
+            "ingredients": data.ingredients,
+            "cookingSteps": data.cooking_steps,}])
 
 #  ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------
 
