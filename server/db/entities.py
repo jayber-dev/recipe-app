@@ -110,9 +110,24 @@ def retrive_recipes():
 
 @db_session
 def retrive_recipe(id):
+    obj_array = {}
     data = Recipes.get(id=id)
+    steps = data.cooking_steps.replace("'",'"')
+    ingredients = data.ingredients.replace("'",'"')
+    obj_array = {
+            "userId": data.user.id,
+            "userFirstName": data.user.firstName,
+            "userlastName": data.user.lastName,
+            "recipeId": data.id,
+            "title": data.recipe_name,
+            "cookingTime": data.cooking_time,
+            "recipe-img": f"http://127.0.0.1:5001/recipe-images/{data.primary_image}",
+            "profile-img": f"http://127.0.0.1:5001/profile/{data.user.imgName}",
+            "ingredients": ingredients,
+            "cookingSteps": steps,
+        }
     
-    return  data
+    return obj_array
     
 
 @db_session

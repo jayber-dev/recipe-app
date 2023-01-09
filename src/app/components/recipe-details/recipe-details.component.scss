@@ -2,20 +2,55 @@
     display: flex;
     flex-direction: column;
     padding: 5%;
-    margin-top: 150Px;
+    padding-top: 0px;
+    margin-top: 100Px;
+    // p{
+    //     font-size: 2vw;
+    // }
+    h1 { 
+        font-size: 4em;
+        font-weight: 600;
+        margin:0px;
+        .user-name {     
+            font-weight: bold;
+            font-size: 0.35em;
+        }
+    }
     .top-container {
         display: flex;
         flex-direction: row;
+        
+        
         .left-container {
             width: 50%;
-            img {
-                height: 100%;
-                object-fit: cover;
+            img{
+                border-radius: 10px;
+                box-shadow: -5px 5px 5px 0 grey;
+                width: 100%;
             }
         }
-
+        
+        // TODO: Fix image sizing issues
         .right-container {
             width: 50%;
+            // background-color: rgba(245, 245, 245, 0.63);
+            border-radius: 10px;
+                ul{
+                    li {
+                        list-style-type: none;
+                        line-height: 0px;
+                        list-style-image: url(../../../assets/images/ingredients-svgrepo-com.svg);
+                    }
+                }    
+        }
+        
+    }
+    .steps-container {
+           margin-top: 50px; 
+        p {
+            padding:5px;
+            width: 80%;
+            line-break: normal;
         }
     }
 }

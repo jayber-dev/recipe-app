@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
 import { ActivatedRoute} from '@angular/router'
 import { recipeDetails } from './recipeDetails.interface';
+import { toArray } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-details',
@@ -17,7 +18,8 @@ export class RecipeDetailsComponent implements OnInit {
 
   param:any
   recipeDetails:any
-  ingredients:any
+  cookingSteps:string[]
+  ingredients:string[]
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(param => {
@@ -28,14 +30,10 @@ export class RecipeDetailsComponent implements OnInit {
     console.log(this.param);
     
     const recipeDetails = this.recipeService.retriveRecipe(this.param.id).subscribe(data => {
-      // console.log(data);
-      
+      console.log(data);
       this.recipeDetails = data;
-      this.ingredients = this.recipeDetails.ingredients;
-      const parsed = JSON.parse(this.ingredients)
-      console.log(parsed);
-      
-      
+      this.cookingSteps = (JSON.parse(this.recipeDetails.cookingSteps));
+      this.ingredients = (JSON.parse(this.recipeDetails.ingredients))
       
       
       recipeDetails.unsubscribe()

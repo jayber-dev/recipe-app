@@ -1,16 +1,21 @@
 <div class="recipe-details-container">
+    <h1>{{recipeDetails['title']}}<span class="user-name"> by {{recipeDetails['userFirstName']}} {{recipeDetails['userlastName']}}</span></h1>
+    <h3>Cooking time : {{recipeDetails['cookingTime']}} minutes</h3>
     <div class="top-container">
         <div class="left-container">
-            <!-- <img [src]="recipeDetails.recipeImg" alt=""> -->
+            <img [src]="recipeDetails['recipe-img']" alt="">
         </div>
-        <div class="right-container">
-            <ul *ngFor="let item of ingredients">
-                <li>item</li>
-            </ul>
-        </div>
+        
+            <div class="right-container">
+                <ul *ngFor="let item of ingredients">
+                    <li>{{item['ingredient']}}: {{item['quantity']}} {{item['unit']}}</li>
+                </ul>
+            </div>
+        
+        
     </div>
-    <div class="steps-container">
-
+    <div class="steps-container" >
+        <p *ngFor="let step of cookingSteps">{{ step}}</p>
     </div>
 </div>
-<p>{{recipeDetails | json}}</p>
+
