@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import { NavigationStart, Router, RoutesRecognized } from '@angular/router';
 import { UserLoginService } from 'src/app/services//authServices/userLoginService.service';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
-import { recipeData } from './recipeData.interface';
 import { Location } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 

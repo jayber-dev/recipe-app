@@ -2,7 +2,7 @@ import { Component,inject,Injectable,Injector,Input,OnInit, Output} from '@angul
 import { Route, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserLoginService } from 'src/app/services//authServices/userLoginService.service';
-import { RecipeComponent } from '../recipe/recipe.component';
+import { RecipeComponent } from '../recipe-home-card/recipe.component';
 
 
 @Component({

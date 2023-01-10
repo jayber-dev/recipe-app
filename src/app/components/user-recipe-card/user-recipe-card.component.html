@@ -1,0 +1,23 @@
+<div class="user-recipe-card"*ngFor="let item of userRecipesObjectData" >
+    <div class="recipe-card" >
+        <div class="header">
+            <h1>{{item.title}}</h1>
+        </div>
+        <div class="main-container">
+            <div class="left-container">
+                <p>Likes: </p>
+                <p>Dislikes: </p>
+                <div class="buttons-container">
+                    <button>Edit</button>
+                    <button>Delete</button>
+                    <button>Share</button>
+                </div>
+            </div>
+            <div class="right-container">
+                <img [src]="item.recipeImg" alt="">
+            </div>
+        </div>
+        
+        
+    </div>
+</div>

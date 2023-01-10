@@ -5,12 +5,12 @@ from dotenv import load_dotenv
 import os
 
 
-# ---------------------------------- DATABASE MODEL ----------------------------------------------------
+# IMPORTANT ---------------------------------- DATABASE MODEL ----------------------------------------------------
 db = Database()
 
 load_dotenv()
 
-# ----------------------------------------- DATABASE MODEL ---------------------------------------------
+# IMPORTANT ----------------------------------------- DATABASE MODEL ---------------------------------------------
 
 class Users(db.Entity):
     firstName = Required(str)
@@ -32,7 +32,7 @@ class Recipes(db.Entity):
     cooking_steps = Required(LongStr)
 
 
-#  -------------------------------------USER DATABASE FUNCTIONS -----------------------------------------
+# IMPORTANT -------------------------------------USER DATABASE FUNCTIONS -----------------------------------------
 
 
 @db_session
@@ -82,7 +82,7 @@ def retrive_user_by_id(id):
 def retrive_user_list():
     return select(p for p in Users)[:],
 
-# --------------------------------- RECIPES DATABASE FUNCTIONS ----------------------------------------
+# IMPORTANT --------------------------------- RECIPES DATABASE FUNCTIONS ----------------------------------------
 
 
 @db_session
@@ -128,6 +128,32 @@ def retrive_recipe(id):
         }
     
     return obj_array
+
+@db_session
+def retrive_user_recipes(id):
+    print(id)
+    obj_array = []
+    recipe_obj = Recipes.select(user=id)
+    for i in recipe_obj:
+        steps = i.cooking_steps.replace("'",'"')
+        ingredients = i.ingredients.replace("'",'"')
+        print(steps)
+        print(ingredients)
+        obj_array.append({
+            'userId': i.user.id,
+            'userFirstName': i.user.firstName,
+            'userlastName': i.user.lastName,
+            'recipeId': i.id,
+            'title': i.recipe_name,
+            'cookingTime': i.cooking_time,
+            'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
+            'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
+            'ingredients': ingredients,
+            'cookingSteps': steps,
+        })
+    
+    return (obj_array)
+    
     
 
 @db_session

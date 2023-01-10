@@ -43,7 +43,6 @@ def auth():
         is_true = entity.validate_token(
             id=decrypted_token_json['user_id'], token=decrypted_token_json['token'])
         user_data = entity.retrive_user_by_id(decrypted_token_json['user_id'])
-        print(user_data.firstName)
         return jsonify({
                         "login": is_true,
                         "firstName":user_data.firstName,
@@ -126,6 +125,14 @@ def retrive_recipe(id):
     print('im in retrive ' + id)
     data = entity.retrive_recipe(id)
     # return_obj
+    return jsonify(data)
+
+@app.route('/retriveUserRecipes/')
+def retrive_user_recipes():
+    key =  request.args.get('key')
+    decrypted_str = cryptocode.decrypt(key, os.environ.get('SECRET_KEY'))
+    decrypted_json = json.loads(decrypted_str)
+    data = entity.retrive_user_recipes(decrypted_json['user_id'])
     return jsonify(data)
 
 #  ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------

@@ -41,4 +41,8 @@ export class RecipeService {
   retriveRecipe(id: string) {
     return this.http.get('http://127.0.0.1:5001/retriveRecipe/' + id);
   }
+
+  retriveUserRecipes (){
+    return this.http.get('http://127.0.0.1:5001/retriveUserRecipes/', {params:{key:this.cookieService.get('key')}} )
+  }
 }

@@ -1,7 +1,9 @@
+$border: 1px solid rgba(128, 128, 128, 0.301);
+
 .recipe-details-container {
     display: flex;
     flex-direction: column;
-    padding: 5%;
+    margin: 5%;
     padding-top: 0px;
     margin-top: 100Px;
     // p{
@@ -11,15 +13,21 @@
         font-size: 4em;
         font-weight: 600;
         margin:0px;
+        
         .user-name {     
             font-weight: bold;
             font-size: 0.35em;
+            
         }
+    }
+    h3 {
+        border-bottom: $border;
     }
     .top-container {
         display: flex;
         flex-direction: row;
-        
+        border-bottom: $border;
+        padding-bottom: 20px;
         
         .left-container {
             width: 50%;
@@ -32,13 +40,17 @@
         
         // TODO: Fix image sizing issues
         .right-container {
+            
+
             width: 50%;
             // background-color: rgba(245, 245, 245, 0.63);
             border-radius: 10px;
                 ul{
+                    
                     li {
+                        
                         list-style-type: none;
-                        line-height: 0px;
+                        // line-height: 0px;
                         list-style-image: url(../../../assets/images/ingredients-svgrepo-com.svg);
                     }
                 }    
@@ -46,11 +58,13 @@
         
     }
     .steps-container {
-           margin-top: 50px; 
+        //    margin-top: 50px; 
         p {
             padding:5px;
             width: 80%;
             line-break: normal;
+        }
+        p:first-child {
         }
     }
 }

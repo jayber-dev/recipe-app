@@ -34,8 +34,6 @@ export class RecipeDetailsComponent implements OnInit {
       this.recipeDetails = data;
       this.cookingSteps = (JSON.parse(this.recipeDetails.cookingSteps));
       this.ingredients = (JSON.parse(this.recipeDetails.ingredients))
-      
-      
       recipeDetails.unsubscribe()
     })
   }
