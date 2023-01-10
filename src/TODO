@@ -1,4 +1,7 @@
 TODO: make login after registration
 TODO: make password hash
-TODO: Add quantity to add recipe
 TODO: make url guards
+TODO: add date time to add recipe and make it visible on recipe panel
+TODO: add gender to user registration
+TODO: preperation time and cooking time
+
