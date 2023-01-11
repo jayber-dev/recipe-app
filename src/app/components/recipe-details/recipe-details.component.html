@@ -1,4 +1,4 @@
-<div class="recipe-details-container">
+<div class="recipe-details-container" *ngIf="recipeDetails">
     <h1>{{recipeDetails['title']}}<span class="user-name"> by {{recipeDetails['userFirstName']}} {{recipeDetails['userlastName']}}</span></h1>
     <h3>Cooking time : {{recipeDetails['cookingTime']}} minutes</h3>
     <div class="top-container">

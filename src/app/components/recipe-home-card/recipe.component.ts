@@ -21,8 +21,8 @@ export class RecipeComponent implements OnInit, OnDestroy {
   maxServerData:number
   makeCall:boolean
   startIndex:number = 10
-  endIndex:number
-
+  endIndex:number = 20
+  i:number = 0;
   constructor(
     public user: UserLoginService,
     public recipeService: RecipeService,
@@ -45,23 +45,45 @@ export class RecipeComponent implements OnInit, OnDestroy {
   onScrollEvent(e: any){
     const maxHeight = e.target.scrollingElement.offsetHeight - 1200;
     const currScroll = e.target.scrollingElement.scrollTop; 
+    
+    if(currScroll < maxHeight) {
+      this.i = 0
+    }
+
+    console.log(this.i);
+    if(this.i < 1) {
     if(currScroll > maxHeight){
       if(this.makeCall){
-        const request = this.recipeService.retriveRecipes(this.startIndex,20).subscribe(data => {
+        const request = this.recipeService.retriveRecipes(this.startIndex,this.endIndex).subscribe(data => {
           
-          this.currObjLength = data[0]['currLength']
-          for(let i = 0; i < this.currObjLength;i++){
-            this.fetchedData.push(data[i]);
+          try {
+            this.currObjLength = data[0]['currLength']
+            for(let i = 0; i < this.currObjLength;i++){
+              this.fetchedData.push(data[i]);
+            }
+          } catch (e) {
+            console.log(data['data']);
           }
+          
+          
 
           this.makeCall = this.currObjLength < 10 ? false: true;
-          this.startIndex += 10
-          this.endIndex += 10
+          
+          
           console.log(this.fetchedData)
           request.unsubscribe()
         })
+        if(this.makeCall) {
+          console.log(this.makeCall);
+          this.startIndex += 10
+          this.endIndex += 10
+        }
+        this.i = 1
+        
       }
     };
+  }
+    
     
     
   }

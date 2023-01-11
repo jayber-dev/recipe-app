@@ -109,8 +109,10 @@ def retrive_recipes(from_index,to_index):
             # 'cookingSteps': i.cooking_steps,
             'max-length':len(recipe_length),
         })
-    
-    obj_array[0]['currLength'] = curr_obj_length
+    try:
+        obj_array[0]['currLength'] = curr_obj_length
+    except:
+        pass
 
     return obj_array
 
