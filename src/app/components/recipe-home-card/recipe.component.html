@@ -1,7 +1,8 @@
-<div class="recipe-card" [ngStyle]="user.isLogged ? {'margin-top':'100px'}:{}">
+<div class="recipe-card" [ngStyle]="user.isLogged ? {'margin-top':'100px'}:{}" (window:scroll)="onScrollEvent($event)">
         <div *ngFor="let item of fetchedData" class="img-container">
                 <a [routerLink]="['recipeDetails', item.recipeId]" ><img [src]="item['recipe-img']" alt="" loading="lazy"></a>
-                <p class="recipe-name">{{item.title}}
+                <p  class="recipe-name">{{item.title}}
+                        
                 </p>
                 <div class="name-container">
                         
@@ -11,5 +12,4 @@
                         </div>
                 </div>
         </div>
-        
 </div>

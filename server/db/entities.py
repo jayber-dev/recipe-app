@@ -90,7 +90,7 @@ def retrive_recipes():
     # set_sql_debug(True)
     # print(os.environ['UPLOAD_FOLDER'])
     obj_array = []
-    recipe_obj = Recipes.select()
+    recipe_obj = Recipes.select()[0:20]
 
     for i in recipe_obj:
         obj_array.append({
@@ -102,8 +102,26 @@ def retrive_recipes():
             'cookingTime': i.cooking_time,
             'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
             'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
-            'ingredients': i.ingredients,
-            'cookingSteps': i.cooking_steps,
+            
+        })
+
+    return obj_array
+
+@db_session
+def retrive_recipes_home(id):
+    obj_array = []
+    recipe_obj = Recipes.select().order_by(Recipes.id)[0:10]
+
+    for i in recipe_obj:
+        obj_array.append({
+            'userId': i.user.id,
+            'userFirstName': i.user.firstName,
+            'userlastName': i.user.lastName,
+            'recipeId': i.id,
+            'title': i.recipe_name,
+            'cookingTime': i.cooking_time,
+            'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
+            'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
         })
 
     return obj_array
@@ -111,7 +129,7 @@ def retrive_recipes():
 @db_session
 def retrive_recipe(id):
     obj_array = {}
-    data = Recipes.get(id=id)
+    data = Recipes.select(user=id)
     steps = data.cooking_steps.replace("'",'"')
     ingredients = data.ingredients.replace("'",'"')
     obj_array = {

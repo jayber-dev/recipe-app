@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component,Input } from '@angular/core';
+import { Component,Input , OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 // import { Router } from '@angular/router';
 
@@ -12,14 +12,17 @@ import { RecipeService } from './services/recipeService/recipe-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent  {
   title = 'recipe-app';
   constructor(private http:HttpClient,
      private cookieService:CookieService,
      user:UserLoginService,
-     recipeService:RecipeService
+     recipeService:RecipeService,
+     private renderer2:Renderer2
      )
     {
+      
+    
     
     http.post('http://127.0.0.1:5001/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
       if(data['login']){
@@ -35,4 +38,12 @@ export class AppComponent {
       
     })
   } 
+
+  getScrollingElement(): Element {
+    return document.scrollingElement || document.documentElement;
+  }
+
+  loadMoreData(){
+    console.log('im triggered'); 
+  }
 }

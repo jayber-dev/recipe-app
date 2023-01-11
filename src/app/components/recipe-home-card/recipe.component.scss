@@ -4,7 +4,8 @@ $borderColor: rgb(63, 135, 166);
     margin: 10px;
     width: 40vw;
     height: 40vh;
-    transition: width 0.5s,height 0.5s;
+    border-radius: 10px;
+    transition: width 0.5s,height 0.5s, box-shadow 0.5s;
 
     img {
         height: 100%;
@@ -78,6 +79,12 @@ $borderColor: rgb(63, 135, 166);
 .img-container:hover{    
     width: 41vw;
     height: 41vh;
+    box-shadow: -5px 10px 5px 3px grey;
+    // transition: box-shadow 1s ease-in width 1s ease-in height 1s ease-in;
+}
+
+.img-container:hover:nth-child(even) {
+    box-shadow: 5px 10px 5px 3px grey;
 }
 
 
