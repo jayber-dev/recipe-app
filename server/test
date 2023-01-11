@@ -1,0 +1,28 @@
+@db_session
+def retrive_recipes(from_index,to_index):
+    # set_sql_debug(True)
+    # print(os.environ['UPLOAD_FOLDER'])
+   
+    obj_array = []
+    recipe_length = list(Recipes.select())
+    recipe_obj = Recipes.select().order_by(Recipes.recipe_name)[from_index:to_index]
+    curr_obj_length = 0
+    for i in recipe_obj: 
+        curr_obj_length += 1
+        obj_array.append({
+            'userId': i.user.id,
+            'userFirstName': i.user.firstName,
+            'userlastName': i.user.lastName,
+            'recipeId': i.id,
+            'title': i.recipe_name,
+            'cookingTime': i.cooking_time,
+            'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
+            'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
+            'ingredients': i.ingredients,
+            'cookingSteps': i.cooking_steps,
+            'max-length':len(recipe_length),
+        })
+    
+    obj_array[0]['currLength'] = curr_obj_length
+
+    return obj_array

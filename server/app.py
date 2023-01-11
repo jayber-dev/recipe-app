@@ -117,7 +117,9 @@ def add_recipe():
 
 @app.route('/retriveRecipes')
 def retrive_recipes():
-    data = entity.retrive_recipes()
+    print(request.args.get('startIndex'))
+    print(request.args.get('endIndex'))
+    data = entity.retrive_recipes(int(request.args.get('startIndex')),int(request.args.get('endIndex')))
     return data
 
 @app.route('/retriveRecipe/<string:id>')

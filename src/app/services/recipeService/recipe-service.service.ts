@@ -34,15 +34,18 @@ export class RecipeService {
       });
   }
 
-  retriveRecipes() {
-    return this.http.get('http://127.0.0.1:5001/retriveRecipes');
+  retriveRecipes(startIndex:number,endIndex:number) { 
+    // Retrives all recipes for home page
+    return this.http.get('http://127.0.0.1:5001/retriveRecipes',{params:{startIndex:startIndex,endIndex:endIndex}});
   }
 
-  retriveRecipe(id: string) {
+  retriveRecipe(id: string) { 
+    // Retrive data for one recipe with ingredients and cooking steps
     return this.http.get('http://127.0.0.1:5001/retriveRecipe/' + id);
   }
 
-  retriveUserRecipes (){
+  retriveUserRecipes (){ 
+    // Retrives all user recipes
     return this.http.get('http://127.0.0.1:5001/retriveUserRecipes/', {params:{key:this.cookieService.get('key')}} )
   }
 }

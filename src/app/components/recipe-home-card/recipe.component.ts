@@ -17,6 +17,9 @@ export class RecipeComponent implements OnInit, OnDestroy {
   fetchedData: any;
   paths: SafeUrl[];
   currUrl: string;
+  currObjLength:number = 0
+  maxServerData:number
+  makeCall:boolean
 
   constructor(
     public user: UserLoginService,
@@ -41,16 +44,18 @@ export class RecipeComponent implements OnInit, OnDestroy {
     const maxHeight = e.target.scrollingElement.offsetHeight - 1200;
     const currScroll = e.target.scrollingElement.scrollTop; 
     if(currScroll > maxHeight){
-      const request = this.recipeService.retriveRecipes().subscribe(data => {
-        console.log(data);
-        if(data) {
-          console.log(this.fetchedData);
-          let someData = []
-          someData.push(data) 
-          this.fetchedData.push(...someData)
+      if(this.makeCall){
+        const request = this.recipeService.retriveRecipes(10,20).subscribe(data => {
+          
+          this.currObjLength = data[0]['currLength']
+          for(let i = 0; i < this.currObjLength;i++){
+            this.fetchedData.push(data[i]);
+          }
+
+          this.makeCall = this.currObjLength < 10 ? false: true;
           request.unsubscribe()
-        }
-      })
+        })
+      }
     };
     
     
@@ -85,9 +90,13 @@ export class RecipeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log("im in the ngoninit") 
-    const recieps = this.recipeService.retriveRecipes().subscribe((data) => {
+    const recieps = this.recipeService.retriveRecipes(0,10).subscribe((data) => {
       this.fetchedData = data;
-      console.log(this.fetchedData);
+      this.maxServerData = data[0]['max-length']
+      this.currObjLength = data[0]['currLength']
+      this.makeCall = this.currObjLength == 10 ? true : false
+      // console.log(this.fetchedData);
+      // console.log(this.maxServerData);
       
       this.location.onUrlChange((event)=>{
 
