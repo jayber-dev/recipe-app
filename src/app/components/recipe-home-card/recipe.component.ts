@@ -20,6 +20,8 @@ export class RecipeComponent implements OnInit, OnDestroy {
   currObjLength:number = 0
   maxServerData:number
   makeCall:boolean
+  startIndex:number = 10
+  endIndex:number
 
   constructor(
     public user: UserLoginService,
@@ -45,7 +47,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
     const currScroll = e.target.scrollingElement.scrollTop; 
     if(currScroll > maxHeight){
       if(this.makeCall){
-        const request = this.recipeService.retriveRecipes(10,20).subscribe(data => {
+        const request = this.recipeService.retriveRecipes(this.startIndex,20).subscribe(data => {
           
           this.currObjLength = data[0]['currLength']
           for(let i = 0; i < this.currObjLength;i++){
@@ -53,6 +55,9 @@ export class RecipeComponent implements OnInit, OnDestroy {
           }
 
           this.makeCall = this.currObjLength < 10 ? false: true;
+          this.startIndex += 10
+          this.endIndex += 10
+          console.log(this.fetchedData)
           request.unsubscribe()
         })
       }
