@@ -27,6 +27,7 @@ class Recipes(db.Entity):
     user = Required(Users)
     recipe_name = Required(str)
     cooking_time = Required(int)
+    preperation_time = Required(int)
     primary_image = Required(str)
     ingredients = Required(LongStr)
     cooking_steps = Required(LongStr)
@@ -103,6 +104,7 @@ def retrive_recipes(from_index,to_index):
             'recipeId': i.id,
             'title': i.recipe_name,
             'cookingTime': i.cooking_time,
+            'preperationTime':i.preperation_time,
             'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
             'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
             # 'ingredients': i.ingredients,
@@ -131,6 +133,7 @@ def retrive_recipe(id):
             "recipeId": data.id,
             "title": data.recipe_name,
             "cookingTime": data.cooking_time,
+            'preperationTime':data.preperation_time,
             "recipe-img": f"http://127.0.0.1:5001/recipe-images/{data.primary_image}",
             "profile-img": f"http://127.0.0.1:5001/profile/{data.user.imgName}",
             "ingredients": ingredients,
@@ -156,6 +159,7 @@ def retrive_user_recipes(id):
             'recipeId': i.id,
             'title': i.recipe_name,
             'cookingTime': i.cooking_time,
+            'preperationTime':i.preperation_time,
             'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
             'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
             'ingredients': ingredients,
@@ -178,6 +182,7 @@ def add_recipe(id, data):
                      primary_image=data['data']['img'],
                      ingredients=str(data['data']['ingredients']),
                      cooking_steps=str(data['data']['cookingSteps']),
-                     user=Users[id]
+                     user=Users[id],
+                     preperation_time=data['data']['preperationTime']
                      )
     return

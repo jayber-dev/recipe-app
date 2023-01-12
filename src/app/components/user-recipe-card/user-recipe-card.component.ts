@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
 
 @Component({
@@ -7,13 +8,21 @@ import { RecipeService } from 'src/app/services/recipeService/recipe-service.ser
   styleUrls: ['./user-recipe-card.component.scss']
 })
 export class UserRecipeCardComponent implements OnInit {
-  constructor(private userRecipes:RecipeService){
+  constructor(
+    private userRecipes:RecipeService,
+    private router:Router,
+    ){
 
   }
   userRecipesStringData:any
   userRecipesObjectData:any = []
   steps:string[]
   ingredients:string[]
+
+  editRecipe(id){
+    console.log(id);
+    this.router.navigateByUrl('/editRecipe/' + id)
+  }
 
   ngOnInit(): void {
     const UserData = this.userRecipes.retriveUserRecipes().subscribe(data => {

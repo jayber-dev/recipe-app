@@ -109,7 +109,7 @@ $random: #d4d5d6;
                 .add-ingredient-button-container{
                     display: flex;
                     flex-direction: column;
-                    margin-bottom: 10px;
+                    // margin-bottom: 10px;
                 }
 
                 .add-ingredient-button{
@@ -144,6 +144,14 @@ $random: #d4d5d6;
                     margin:13px;
                     margin-top: 25px;
                 }
+
+                .cooking-preperation-time {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+
                 
             }
 
@@ -214,6 +222,8 @@ $random: #d4d5d6;
             flex-direction: row;
             margin-bottom: 20px;
             
+            
+
             .left-row {
                 width: 25vw;
                 
@@ -264,6 +274,46 @@ $random: #d4d5d6;
         }
         .cooking-time{
             font-weight: 900;
+        }
+
+        .preview-table {
+            margin-bottom: 20px;
+            // border: 1px solid rgba(128, 128, 128, 0.363);
+            border-collapse: collapse;
+            margin-top: 10px;
+            thead {                
+                tr {
+                    td {
+                        margin-left: 20px;
+                        margin-right: 20px;
+                        padding: 5px;
+                        border-right:2px solid rgba(128, 128, 128, 0.363);
+                        // border-left:1px solid rgba(128, 128, 128, 0.363);
+                        text-align: center;
+                    }
+
+                    td:last-child {
+                        border-right: 0px;
+                    }
+                }
+            }
+            tbody {
+                tr{
+                    td{
+                        border-right:2px solid rgba(128, 128, 128, 0.363) ;
+                        // border-left:1px solid rgba(128, 128, 128, 0.363) ;
+                        width: 150px;
+                        text-align: center;
+                        padding: 5px;
+                        font-size: larger;
+                       
+                    }
+
+                    td:last-child {
+                        border-right: 0px;
+                    }
+                }
+            }
         }
 
         

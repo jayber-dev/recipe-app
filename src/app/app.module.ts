@@ -18,6 +18,7 @@ import { RecipeService } from './services/recipeService/recipe-service.service';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
 import { UserRecipeCardComponent } from './components/user-recipe-card/user-recipe-card.component';
+import { EditRecipeComponent } from './components/edit-recipe/edit-recipe.component';
 
 
 
@@ -34,6 +35,7 @@ import { UserRecipeCardComponent } from './components/user-recipe-card/user-reci
     SafeUrlPipe,
     RecipeDetailsComponent,
     UserRecipeCardComponent,
+    EditRecipeComponent,
   ],
   imports: [
     BrowserAnimationsModule,

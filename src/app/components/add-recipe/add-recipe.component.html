@@ -1,7 +1,7 @@
 <div class="container-wrapper">
-  <div class="left-container">
+  <div class="left-container" >
     <div class="form-wrapper">
-      <form [formGroup]="addRecipe" (ngSubmit)="onSubmit()">
+      <form [formGroup]="addRecipe" (ngSubmit)="onSubmit()" >
         <div class="container-outline add-steps-button">
           <label for="">Recipe name</label>
           <input type="text" name="title" formControlName="title" />
@@ -16,9 +16,14 @@
             formControlName="primaryImage"
             (change)="readUrl($event)"
           />
+          <div class="cooking-preperation-time">
+            <label for="">Preperation time</label>
+            <input type="number" formControlName="preperationTime">
+            <label for="" class="">Cooking Time</label>
+            <input type="number" class="" name="cookingTime" formControlName="cookingTime" />
+            
+          </div>
           
-          <label for="" class="">Cooking Time</label>
-          <input type="number" class="" name="cookingTime" formControlName="cookingTime" />
         </div>
         
         <div class="add-ingredient-button-container container-outline">
@@ -85,20 +90,29 @@
       </form>
     </div>
   </div>
-  <div class="right-container">
+  <!-- IMPORTANT ----------------- Preview Screen on the right ------------------------ -->
+  <div class="right-container" style="padding:20px">
     <!-- <p>{{ addRecipe.value | json }}</p> -->
     <h1>Preview:</h1>
     
     <h2 *ngIf="addRecipe.get('title').value">
       {{ addRecipe.get("title").value }}
     </h2>
-    <p *ngIf="addRecipe.get('cookingTime').value">
-      Cooking time:
-      <span class="cooking-time"
-        >{{ addRecipe.get("cookingTime").value }}
-      </span>
-      Minutes
-    </p>
+    <table *ngIf="addRecipe.get('cookingTime').value && addRecipe.get('preperationTime').value" class="preview-table">
+      <thead>
+        <tr>
+          <td>preperation time</td>
+          <td>Cooking time</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{addRecipe.get('preperationTime').value}} minutes</td>
+          <td>{{ addRecipe.get("cookingTime").value }} minutes</td>
+        </tr>
+      </tbody>
+    </table>
+        
     
     <div class="right-row-container">
       <div class="left-row">

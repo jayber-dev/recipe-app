@@ -50,37 +50,30 @@ export class RecipeComponent implements OnInit, OnDestroy {
       this.i = 0
     }
 
-    console.log(this.i);
     if(this.i < 1) {
-    if(currScroll > maxHeight){
-      if(this.makeCall){
-        const request = this.recipeService.retriveRecipes(this.startIndex,this.endIndex).subscribe(data => {
-          
-          try {
-            this.currObjLength = data[0]['currLength']
-            for(let i = 0; i < this.currObjLength;i++){
-              this.fetchedData.push(data[i]);
+      if(currScroll > maxHeight){
+        if(this.makeCall){
+          const request = this.recipeService.retriveRecipes(this.startIndex,this.endIndex).subscribe(data => {
+            
+            try {
+              this.currObjLength = data[0]['currLength']
+              for(let i = 0; i < this.currObjLength;i++){
+                this.fetchedData.push(data[i]);
+              }
+            } catch (e) {
             }
-          } catch (e) {
-            console.log(data['data']);
+            
+            this.makeCall = this.currObjLength < 10 ? false: true;
+            
+            request.unsubscribe()
+          })
+          if(this.makeCall) {
+            this.startIndex += 10
+            this.endIndex += 10
           }
+          this.i = 1
           
-          
-
-          this.makeCall = this.currObjLength < 10 ? false: true;
-          
-          
-          console.log(this.fetchedData)
-          request.unsubscribe()
-        })
-        if(this.makeCall) {
-          console.log(this.makeCall);
-          this.startIndex += 10
-          this.endIndex += 10
         }
-        this.i = 1
-        
-      }
     };
   }
     

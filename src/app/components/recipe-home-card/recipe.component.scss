@@ -21,10 +21,10 @@ $borderColor: rgb(63, 135, 166);
     .recipe-name {
         position: absolute;
         text-align: center;
-        font-size: large;
-        font-weight: 500;
+        font-size: calc(16px + 0.52634vw);
+        font-weight: 700;
         color: rgb(7, 59, 7);
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        // font-family: Verdana, Geneva, Tahoma, sans-serif;
         background-color: rgba(245, 245, 245, 0.479);
         width: auto;
         padding: 20px;
@@ -54,9 +54,9 @@ $borderColor: rgb(63, 135, 166);
                 font-size: large;
                 font-weight: 500;
                 color: rgb(7, 59, 7);
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-weight: 500;
-                font-size: small;
+                // font-family: Verdana, Geneva, Tahoma, sans-serif;
+                // font-weight: 500;
+                // font-size: small;
                 width: 100%;
                 // padding: 20px;
                 

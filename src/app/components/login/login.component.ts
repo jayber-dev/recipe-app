@@ -1,4 +1,5 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { UserLoginService } from 'src/app/services/authServices/userLoginService
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(public user:UserLoginService,){
+  constructor(
+    public user:UserLoginService,
+    private router:Router,
+    ){
     this.isLogged = user.isLogged
   }
 
@@ -22,7 +26,9 @@ export class LoginComponent {
     password: ${this.password}` ); 
     this.user.login(this.email,this.password) 
     
-    
+    if(this.isLogged = true){
+      this.router.navigateByUrl('/home')
+    }
     
     console.log('after server validation')
   }

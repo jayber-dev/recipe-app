@@ -1,0 +1,150 @@
+$textcolor: rgb(16, 32, 16);
+$borderColor: rgba(16, 32, 16, 0.596);
+$random: #d4d5d6;
+.editRecipe {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  .form-wrapper {
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    form {
+      display: flex;
+      flex-direction: column;
+      .quantity-unit {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        input {
+          width: 50px;
+        }
+      }
+      label {
+        padding: 5px;
+        font-size: larger;
+        color: $textcolor;
+      }
+      input {
+        font-size: larger;
+        border: 0px;
+        box-shadow: -2px 2px 4px 1px grey;
+        padding: 10px;
+        background-color: transparent;
+      }
+
+      input:focus {
+        outline-color: rgb(134, 184, 134);
+        border: 0px;
+      }
+
+      input::placeholder {
+        color: rgba(53, 53, 53, 0.541);
+      }
+
+      .pic-upload {
+        display: none;
+      }
+      .pic-label {
+        position: relative;
+        cursor: pointer;
+        // border: 1px solid;
+        margin-top: 25px;
+        font-size: medium;
+        color: $textcolor;
+        padding: 10px;
+        box-shadow: -2px 2px 4px 1px grey;
+
+        svg {
+          text-align: end;
+        }
+
+        img {
+          position: absolute;
+          margin-top: 5px;
+          height: 100px;
+          width: 100px;
+          top: -35px;
+          right: -120px;
+          border-radius: 150px;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      select {
+        // appearance: none;
+        outline: none;
+        background-color: transparent;
+        padding: 10px;
+        box-shadow: -2px 2px 4px 1px grey;
+        border: 0px;
+        color: rgb(53, 53, 53);
+        border: none;
+        option {
+          background-color: rgba(112, 163, 112, 0.233);
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        font-size: larger;
+        padding: 10px;
+        // border-radius: 5px ;
+        border: 1px dashed grey;
+        background-color: rgba(168, 46, 46, 0.445);
+        color: $borderColor;
+        box-shadow: -2px 2px 4px 1px grey;
+        background-color: rgba(81, 151, 81, 0.514);
+      }
+
+      .add-step-button {
+        margin-top: 20px;
+      }
+
+      .add-ingredient-button-container {
+        display: flex;
+        flex-direction: column;
+        // margin-bottom: 10px;
+      }
+
+      .add-ingredient-button {
+        margin-top: 20px;
+      }
+
+      .button-hover:hover {
+        border: 1px solid grey;
+      }
+      .add-steps-button {
+        display: flex;
+        flex-direction: column;
+        textarea {
+          margin-bottom: 0px;
+        }
+      }
+
+      .container-outline {
+        margin-left: 5px;
+        padding: 10px;
+        margin-top: 20px;
+        box-shadow: -5px 5px 3px 1px grey;
+        border: 1px solid rgba(128, 128, 128, 0.267);
+        border-bottom: 0px;
+        border-left: 0px;
+      }
+
+      .submit-button {
+        margin: 13px;
+        margin-top: 25px;
+      }
+
+      .cooking-preperation-time {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

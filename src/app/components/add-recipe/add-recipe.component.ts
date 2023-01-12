@@ -34,6 +34,7 @@ export class AddRecipeComponent {
   ) {
     this.addRecipe = fb.group({
       title: ["", Validators.required],
+      preperationTime: ["", Validators.required],
       cookingTime: ["", Validators.required],
       primaryImage: ["", Validators.required],
       ingredient: ["", Validators.required],
@@ -96,6 +97,7 @@ export class AddRecipeComponent {
     this.toSend = {
       title: this.addRecipe.get('title').value,
       cookingTime: this.addRecipe.get('cookingTime').value,
+      preperationTime: this.addRecipe.get('preperationTime').value,
       img: this.fileName,
       ingredients: this.ingredients,
       cookingSteps: this.stepsArray,
