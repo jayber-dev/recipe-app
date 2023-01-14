@@ -34,6 +34,10 @@ export class RecipeService {
       });
   }
 
+  deleteRecipe(id){
+    return this.http.delete('http://127.0.0.1:5001//deleteRecipe', {params:{data:id}})
+  }
+
   retriveRecipes(startIndex:number,endIndex:number) { 
     // Retrives all recipes for home page
     return this.http.get('http://127.0.0.1:5001/retriveRecipes',{params:{startIndex:startIndex,endIndex:endIndex}});

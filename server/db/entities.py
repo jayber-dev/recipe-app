@@ -186,3 +186,12 @@ def add_recipe(id, data):
                      preperation_time=data['data']['preperationTime']
                      )
     return
+
+@db_session
+def delete_recipe(recipe_id):
+    set_sql_debug(True)
+
+    data = Recipes.get(id=recipe_id)
+    data.delete()
+    print(id)
+    

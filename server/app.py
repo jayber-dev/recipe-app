@@ -140,6 +140,11 @@ def retrive_user_recipes():
     data = entity.retrive_user_recipes(decrypted_json['user_id'])
     return jsonify(data)
 
+@app.route('/deleteRecipe', methods=['POST','GET','DELETE'])
+def delete_recipe():
+    entity.delete_recipe(request.args['data'])
+    return jsonify({"data": "recived"})
+
 #  ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------
 
 

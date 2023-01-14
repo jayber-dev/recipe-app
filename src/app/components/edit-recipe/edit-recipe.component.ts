@@ -19,7 +19,7 @@ export class EditRecipeComponent implements OnInit {
         title: ["", Validators.required],
       preperationTime: ["", Validators.required],
       cookingTime: ["", Validators.required],
-      primaryImage: ["", Validators.required],
+      primaryImage: [""],
       ingredient: ["", Validators.required],
       quantity: ["", Validators.required],
       unit: ["", Validators.required],
@@ -38,8 +38,9 @@ export class EditRecipeComponent implements OnInit {
   SecurityContext: any;
 
   addStep() {
-    this.stepsArray.push(this.editRecipeForm.get('steps').value);
+    this.cookingSteps.push(this.editRecipeForm.get('steps').value);
     this.editRecipeForm.controls['steps'].setValue('');
+    console.log(this.stepsArray);
   }
 
   readUrl(event){
