@@ -33,7 +33,7 @@
         
     </div>
     <div class="steps-container" >
-        <p *ngFor="let step of cookingSteps">{{ step}}</p>
+        <p *ngFor="let step of cookingSteps; index as i">step {{i + 1}}:<br> {{ step}}</p>
     </div>
 </div>
 

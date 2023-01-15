@@ -71,6 +71,7 @@
             rows="10"
             formControlName="steps"
           ></textarea>
+          
           <button class="add-step-button button-hover"
             [disabled]="!addRecipe.controls['steps'].value"
             type="button" (click)="addStep()" 
@@ -136,9 +137,10 @@
       </div>
     </div>
     <div class="cooking-steps-wrapper" *ngFor="let item of stepsArray; index as i">
-      
-      <p class="cooking-steps" > <button class="steps-delete-btn" (click)="deleteStepItem(i)">delete</button> 
-        step {{ i + 1 }} - {{ item }}
+      step {{i + 1}}:
+      <p class="cooking-steps" > <button class="steps-delete-btn" (click)="deleteStepItem(i)" >delete</button> 
+        
+         {{ item }} 
       </p>
       
     </div>

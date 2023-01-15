@@ -78,13 +78,14 @@
               Add steps
             </button>
           </div>
-          <!-- <p *ngIf="stepsArray.length === 0">no steps added</p> -->
+      
           <!-- <p>{{editRecipeForm.valid}}</p> -->
+          
           <button 
             
             class="button-hover submit-button" 
-            [disabled]="stepsArray.length == 0 || ingredients.length == 0" 
-            [ngStyle]="{'background-color': stepsArray.length != 0 && ingredients.length != 0 ? 'rgba(81, 151, 81, 0.514)' : 'rgba(168, 46, 46, 0.445)' }">
+            [disabled]="cookingSteps || ingredients " 
+            [ngStyle]="{'background-color': cookingSteps && ingredients ? 'rgba(81, 151, 81, 0.514)' : 'rgba(168, 46, 46, 0.445)' }">
             Submit recipe
           </button>
         </form>

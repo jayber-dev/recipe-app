@@ -1,4 +1,4 @@
-import { Component, SecurityContext } from '@angular/core';
+import { Component, OnDestroy, OnInit, SecurityContext } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
 import { RecpieModel } from './addRecipe.interface';
 import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
+import { Editor, toDoc, toHTML } from 'ngx-editor';
+
 
 @Component({
   selector: 'app-add-recipe',
@@ -23,6 +25,8 @@ export class AddRecipeComponent {
   fileName:string;
   fileData:FormData = new FormData()
   toPush: any;
+  
+  
  
 
   constructor(
@@ -67,7 +71,7 @@ export class AddRecipeComponent {
     
   }
 
-  addStep() {
+  addStep() {     
     this.stepsArray.push(this.addRecipe.get('steps').value);
     this.addRecipe.controls['steps'].setValue('');
   }
@@ -107,4 +111,6 @@ export class AddRecipeComponent {
     this.recipeService.addRecipe(this.toSend); // calls to add recipe in DB
     this.router.navigateByUrl('/home'); // navigates to home page
   }
+
+  
 }
