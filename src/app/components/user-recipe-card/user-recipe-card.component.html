@@ -1,4 +1,4 @@
-<div class="user-recipe-card"*ngFor="let item of userRecipesObjectData" >
+<div class="user-recipe-card"*ngFor="let item of userRecipesObjectData; index as index" >
     <div class="recipe-card" >
         <div class="header">
             <h1>{{item.title}}</h1>
@@ -9,7 +9,7 @@
                 <p>Dislikes: </p>
                 <div class="buttons-container">
                     <button (click)="editRecipe(item.recipeId)">Edit</button>
-                    <button (click)="deleteRecipe(item.recipeId)">Delete</button>
+                    <button (click)="deleteRecipe(item.recipeId,index)">Delete</button>
                     <button>Share</button>
                 </div>
             </div>

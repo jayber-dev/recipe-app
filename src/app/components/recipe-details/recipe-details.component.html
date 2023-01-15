@@ -1,6 +1,24 @@
 <div class="recipe-details-container" *ngIf="recipeDetails">
     <h1>{{recipeDetails['title']}}<span class="user-name"> by {{recipeDetails['userFirstName']}} {{recipeDetails['userlastName']}}</span></h1>
-    <h3>Cooking time : {{recipeDetails['cookingTime']}} minutes</h3>
+    <table class="preview-table">
+        <thead>
+            <tr>
+                <td>Cooking time</td>
+                <td>preperation Time</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {{recipeDetails['cookingTime']}} minutes
+                </td>
+                <td>
+                    {{recipeDetails['preperationTime']}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
     <div class="top-container">
         <div class="left-container">
             <img [src]="recipeDetails['recipe-img']" alt="nana">

@@ -110,13 +110,14 @@ $font-size: calc(12px + 0.52634vw);
 }
 
 .recipe-card {
-    margin-top: 70px;
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
     // margin: 20px;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 15px;
+    
 }
 
 @media screen and (max-width:750px) {
@@ -132,3 +133,4 @@ $font-size: calc(12px + 0.52634vw);
         // scale: 1.6;
     }
 }
+

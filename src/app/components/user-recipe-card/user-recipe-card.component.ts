@@ -24,11 +24,12 @@ export class UserRecipeCardComponent implements OnInit {
     this.router.navigateByUrl('/editRecipe/' + id)
   }
 
-  deleteRecipe(id){
+  deleteRecipe(recipeId:number,index: number){
     if(confirm('are you sure you want to delete')){
-      this.userRecipes.deleteRecipe(id).subscribe(data => {
+      this.userRecipes.deleteRecipe(recipeId).subscribe(data => {
         console.log(data);
       })
+      this.userRecipesObjectData.splice(index, 1)
     }
     
   }
