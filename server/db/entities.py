@@ -188,6 +188,21 @@ def add_recipe(id, data):
     return
 
 @db_session
+def update_recipe(id, data):
+    # print((str(data['steps'])))
+    
+    recipe_data = Recipes.get(id=id)
+    recipe_data.recipe_name = data['title']
+    recipe_data.preperation_time = data['preperationTime']
+    recipe_data.cooking_time = data['cookingTime']
+    recipe_data.ingredients = str(data['ingredient'])
+    if(data['primaryImage']):
+        recipe_data.primary_image = data['primaryImage'] 
+    recipe_data.cooking_steps = str(data['steps'])
+    # print(recipe_data)
+    return True
+
+@db_session
 def delete_recipe(recipe_id):
     set_sql_debug(True)
 

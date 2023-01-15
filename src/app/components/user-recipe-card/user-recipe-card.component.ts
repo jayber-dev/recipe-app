@@ -27,7 +27,7 @@ export class UserRecipeCardComponent implements OnInit {
   deleteRecipe(recipeId:number,index: number){
     if(confirm('are you sure you want to delete')){
       this.userRecipes.deleteRecipe(recipeId).subscribe(data => {
-        console.log(data);
+        // console.log(data);
       })
       this.userRecipesObjectData.splice(index, 1)
     }
@@ -36,13 +36,13 @@ export class UserRecipeCardComponent implements OnInit {
 
   ngOnInit(): void {
     const UserData = this.userRecipes.retriveUserRecipes().subscribe(data => {
-      console.log(data);
-      console.log(data[0]['cookingSteps'])
+      // console.log(data);
+      // console.log(data[0]['cookingSteps'])
       this.userRecipesStringData = data;
       this.userRecipesStringData.forEach((elem) => {
         const steps = JSON.parse(elem.cookingSteps);
         const ingredients = JSON.parse(elem.ingredients)
-        console.log(elem);
+        // console.log(elem);
         
         this.userRecipesObjectData.push({
           title: elem['title'],
@@ -57,7 +57,7 @@ export class UserRecipeCardComponent implements OnInit {
           cookingSteps:steps
         })
       });
-      console.log(this.userRecipesObjectData);
+      // console.log(this.userRecipesObjectData);
       
       UserData.unsubscribe()
     })

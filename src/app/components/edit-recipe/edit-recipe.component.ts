@@ -36,6 +36,7 @@ export class EditRecipeComponent implements OnInit {
   stepsArray: string[] = [];
   url: SafeUrl;
   SecurityContext: any;
+  param:string
 
   addStep() {
     this.cookingSteps.push(this.editRecipeForm.get('steps').value);
@@ -78,21 +79,33 @@ export class EditRecipeComponent implements OnInit {
   }
 
   onSubmit(){
+    
+    // console.log(this.editRecipeForm.value)
+    const data = {...this.editRecipeForm.value,
+      ingredient: this.ingredients,
+      steps: this.cookingSteps,
 
+    }
+    // console.log(data);
+    this.recipeService.updateRecipe(data,this.param).subscribe(data => {
+      console.log(data);
+    })
   }
 
 
   ngOnInit():void {
     this.activatedRoute.params.subscribe(param => {
       console.log(param['id']);
+      this.param = param['id'];
       this.recipeService.retriveRecipe(param['id']).subscribe(data => {
-        console.log(data);
+        console.log(data['recipe-img'].replace('http://127.0.0.1:5001/recipe-images/', ''));
         this.ingredients = JSON.parse(data['ingredients'])
         this.cookingSteps = JSON.parse(data['cookingSteps'])
         this.editRecipeForm.get('title').setValue(data['title'])
         this.editRecipeForm.get('preperationTime').setValue(data['preperationTime'])
         this.editRecipeForm.get('cookingTime').setValue(data['cookingTime'])
         this.editRecipeForm.get('cookingTime').setValue(data['cookingTime'])
+        
       })
       
     })

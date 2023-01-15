@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
 import { RecpieModel } from './addRecipe.interface';
 import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
-import { Editor, toDoc, toHTML } from 'ngx-editor';
 
 
 @Component({

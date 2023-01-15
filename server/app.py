@@ -140,6 +140,14 @@ def retrive_user_recipes():
     data = entity.retrive_user_recipes(decrypted_json['user_id'])
     return jsonify(data)
 
+@app.route('/updateRecipe', methods=['GET','POST','PATCH'])
+def update_recipe():
+    
+    json_data = request.get_json()
+    
+    data = entity.update_recipe(id=json_data['id'],data=json_data['data'])
+    return jsonify({"data": "dataUpdated"})
+
 @app.route('/deleteRecipe', methods=['POST','GET','DELETE'])
 def delete_recipe():
     entity.delete_recipe(request.args['data'])
