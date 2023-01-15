@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SafeUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class EditRecipeComponent implements OnInit {
     private activatedRoute:ActivatedRoute,
     private recipeService:RecipeService,
     private fb:FormBuilder,
+    private router:Router,
     ){
       this.editRecipeForm = fb.group({
         title: ["", Validators.required],
@@ -90,6 +91,8 @@ export class EditRecipeComponent implements OnInit {
     this.recipeService.updateRecipe(data,this.param).subscribe(data => {
       console.log(data);
     })
+
+    this.router.navigateByUrl('myRecipes')
   }
 
 
