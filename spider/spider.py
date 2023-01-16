@@ -4,6 +4,8 @@ from playwright.sync_api import sync_playwright
 from pony.orm import *
 import requests
 import json
+from lxml import *
+from bs4 import BeautifulSoup
 
 db = Database()
 
@@ -33,29 +35,47 @@ class Recipes(db.Entity):
 
 db.generate_mapping()
 
+temp_data =[]
+
 @db_session
-def get_data():
+def get_rami_levi_data():
     data = list(Recipes.select())
-    for i in data:
-        print(i.ingredients)
-    
 
-# pw = sync_playwright().start()
+    for i in range(len(data)):
+        temp_data.append(json.loads(data[i].ingredients.replace("'",'"')))
 
-# br =  pw.chromium.launch(headless=False)
+    for i in temp_data:
+        for j in i:
+            body = {'q': j["ingredient"]}
+            res = requests.post('https://www.rami-levy.co.il/api/catalog?', json=body)
+            json_data = (json.loads(res.text))
+   
+            try:
+                j['rami_price'] = json_data['data'][0]['price']['price']
+            except:
+                pass
 
-# page = br.new_page()
+    for i in range(len(data)):
+        data[i].ingredients = str(temp_data[i])
 
-# page.goto('http://127.0.0.1:4200/register')
 
-body = {'q': "ביצים"}
+def get_shufersal_data():
 
-data = requests.post('https://www.rami-levy.co.il/api/catalog?', json=body)
-json_data = (json.loads(data.text))
+    pw = sync_playwright().start()
+    br = pw.chromium.launch(headless=False)
+    page = br.new_page()
+    page.goto('https://www.shufersal.co.il/online/he/search?text=%D7%97%D7%9C%D7%91')
+    # print(page.check('#wrapper'))
+    # param = 'חלב'
+    # data = BeautifulSoup(requests.get('https://www.shufersal.co.il/online/he/search?',params=param).text, features='lxml')
 
-# print(f'name: {json_data["data"][0]["name"]}  {json_data["data"][0]["price"]}')
+    # # print(data.findChildren('div'))
+    # main = data.main
 
-for i in json_data['data']:
-    print(f"name: {i['name']} ----------------|--------------- price: {i['price']['price']}")
+    # print(main.find('div', {"id":"wrapper"}))
+    # print(main_wrapper)
+    br.close()
 
-get_data()
+
+get_shufersal_data()
+# get_rami_levi_data()
