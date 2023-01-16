@@ -7,7 +7,7 @@ $font-size: calc(12px + 0.52634vw);
     height: 40vh;
     border-radius: 10px;
     transition: width 0.5s,height 0.5s, box-shadow 0.5s;
-
+    border:10px;
     img {
         height: 100%;
         width: 100%;
@@ -20,6 +20,7 @@ $font-size: calc(12px + 0.52634vw);
     }
     
     .recipe-name {
+        border:10px;
         position: absolute;
         text-align: center;
         font-size: calc(12px + 0.52634vw);
@@ -60,7 +61,7 @@ $font-size: calc(12px + 0.52634vw);
                 // font-size: small;
                 width: 100%;
                 // padding: 20px;
-                
+                border:10px;
              
                 margin: auto;
             }
@@ -69,6 +70,7 @@ $font-size: calc(12px + 0.52634vw);
                 height: 30px;
                 width: 30px;
                 border-radius: 200px;
+                border:10px;
             }
         }
         
@@ -80,12 +82,13 @@ $font-size: calc(12px + 0.52634vw);
 .img-container:hover{    
     width: 41vw;
     height: 41vh;
-    box-shadow: -5px 10px 5px 3px grey;
+    box-shadow: -5px 5px 5px 0 grey;
+    border:10px;
     // transition: box-shadow 1s ease-in width 1s ease-in height 1s ease-in;
 }
 
 .img-container:hover:nth-child(even) {
-    box-shadow: 5px 10px 5px 3px grey;
+    box-shadow: 5px 5px 5px 0 grey;
 }
 
 
