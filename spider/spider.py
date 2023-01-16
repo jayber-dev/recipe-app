@@ -60,20 +60,29 @@ def get_rami_levi_data():
 
 
 def get_shufersal_data():
-
+    price_array = []
+    param = 'שמנת'
     pw = sync_playwright().start()
-    br = pw.chromium.launch(headless=False)
+    br = pw.chromium.launch(headless=True)
     page = br.new_page()
-    page.goto('https://www.shufersal.co.il/online/he/search?text=%D7%97%D7%9C%D7%91')
-    # print(page.check('#wrapper'))
-    # param = 'חלב'
-    # data = BeautifulSoup(requests.get('https://www.shufersal.co.il/online/he/search?',params=param).text, features='lxml')
-
-    # # print(data.findChildren('div'))
-    # main = data.main
-
-    # print(main.find('div', {"id":"wrapper"}))
-    # print(main_wrapper)
+    context = br.new_context()
+    
+    page.goto(f'https://www.shufersal.co.il/online/he/search?text={param}')
+    data = page.content()
+   
+    
+    pasrsed_data = BeautifulSoup(data, features='html.parser')
+    main = (pasrsed_data.main.find_all(id="tabPane1"))
+         
+    for i in main:
+        price_number = ((i.find_all(class_='number'))) 
+    print(price_number[0].text)
+    
+    
+    
+   
+    
+    
     br.close()
 
 
