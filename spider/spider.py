@@ -58,25 +58,32 @@ def get_rami_levi_data():
     for i in range(len(data)):
         data[i].ingredients = str(temp_data[i])
 
-
+@db_session
 def get_shufersal_data():
-    price_array = []
-    param = 'שמנת'
+    db_data = list(Recipes.select())
+    temp_data = []
+    
     pw = sync_playwright().start()
     br = pw.chromium.launch(headless=True)
     page = br.new_page()
-    context = br.new_context()
     
-    page.goto(f'https://www.shufersal.co.il/online/he/search?text={param}')
-    data = page.content()
-   
-    
-    pasrsed_data = BeautifulSoup(data, features='html.parser')
-    main = (pasrsed_data.main.find_all(id="tabPane1"))
-         
-    for i in main:
-        price_number = ((i.find_all(class_='number'))) 
-    print(price_number[0].text)
+    for i in range(len(db_data)):
+        temp_data.append(json.loads(db_data[i].ingredients.replace("'",'"')))
+        
+    for i in temp_data:
+        for j in i:
+            
+            param = j['ingredient']
+            page.goto(f'https://www.shufersal.co.il/online/he/search?text={param}')
+            data = page.content()
+            pasrsed_data = BeautifulSoup(data, features='html.parser')
+            main = (pasrsed_data.main.find_all(id="tabPane1"))
+            for i in main:
+                price_number = ((i.find_all(class_='number')))
+            
+            j['shufersal_price'] = price_number[0].text
+        print('next search: %s' % j['shufersal_price'])
+    print(temp_data)
     
     
     
