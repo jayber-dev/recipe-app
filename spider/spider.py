@@ -6,6 +6,7 @@ import requests
 import json
 from lxml import *
 from bs4 import BeautifulSoup
+import time
 
 db = Database()
 
@@ -63,38 +64,70 @@ def get_rami_levi_data():
 
 @db_session
 def get_shufersal_data():
+    global_init_time = time.perf_counter()
+    print(f'process begins {global_init_time:0.2f}')
     db_data = list(Recipes.select())
     temp_data = []
     
     pw = sync_playwright().start()
-    br = pw.firefox.launch(headless=False)
+    br = pw.firefox.launch(headless=True)
     page = br.new_page()
 
     for i in range(len(db_data)):
         temp_data.append(json.loads(db_data[i].ingredients.replace("'",'"')))
-        
+    
+    counter = 0
+    
     for i in temp_data:
         for j in i:
+            loop_init_time = time.perf_counter()
             param = j['ingredient']
+            # param = 'חלב', 
+            print('before call')
+            init_time = (time.perf_counter())
             page.goto(f'https://www.shufersal.co.il/online/he/search?text={param}')
+            print('after call')
+            end_time = time.perf_counter() - init_time
+            print(f'{end_time:0.4f}')
             data = page.content()
             pasrsed_data = BeautifulSoup(data, features='html.parser')
-            main = (pasrsed_data.main.find_all(id="tabPane1"))
-
-            for i in main:
-                price_number = ((i.find_all(class_='number')))
+            # main = (pasrsed_data.main.find_all(id="tabPane1"))
+            line = pasrsed_data.find_all(class_='line')
             
-            j['shufersal_price'] = price_number[0].text
-        print('next search: %s' % j['shufersal_price'])
-    print(temp_data)
+            item_price = line[0].find(class_='number').text
+            try:
+                kg_price = line[0].find(class_='priceUnit')
+                kg_price_text = kg_price.text.replace('"', '&quot; ' )
+                
+                print(item_price_text + " " + kg_price_text)
+                j['shufersal_price'] = item_price_text
+                j['price_in_kg'] = True
+            except:
+                item_price_text = item_price.replace('\n', '').replace(' ','')
+                j['shufersal_price'] = item_price_text
+            # for i in main:
+            #     price_number = i.find_all(class_='number')
+            #     kg_price = i.find_all(class_='priceUnit')
+            #     sib = (price_number[0].next_sibling)
+            #     print(sib._find_all(class_='priceUnit'))
+            
+            # for i in main:
+            #     price = i.find_all(class_='line')
+            #     print(price)
+            # j['shufersal_price'] = price_number[0].text.replace('\n', '').replace(' ','')
+            print(f'ingredient: {j["ingredient"]} cost: {j["shufersal_price"]}')
+            print('next search: %s' % j['shufersal_price'])
+            counter += 1
+            print(counter)
+            print(f'loop time was : {time.perf_counter() - loop_init_time:0.2f}')
     
+    for i in range(len(db_data)):
+        db_data[i].ingredients = str(temp_data[i])
+        
     
-    
-   
-    
-    
+    print(f'total number of calls: {counter}')
     br.close()
-
-
-get_rami_levi_data()
+    global_end_time = time.perf_counter() - global_init_time
+    print(f'time it took it to make the whole procces: {global_end_time:0.2f}')
 # get_rami_levi_data()
+get_shufersal_data()

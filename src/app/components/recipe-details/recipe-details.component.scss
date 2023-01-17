@@ -73,7 +73,7 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
         
         .left-container {
             width: 50%;
-            height: 500px;
+            max-height: 500px;
             img{
                 border-radius: 10px;
                 box-shadow: -5px 5px 5px 0 grey;
@@ -92,12 +92,18 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
             border-radius: 10px;
 
             table {
+                width:100%;
                 td{
-                    width: 150px;
+                    width: 100px;
                     text-align: center;
                     border-bottom: 1px solid rgba(128, 128, 128, 0.212);
                     border-collapse: collapse;
                 }
+
+                td:nth-child(3) {
+                    width: 50px;
+                }
+                    
             }
                 // ul{
                     
@@ -118,7 +124,7 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
             width: 80%;
             line-break: normal;
         }
-        p:first-child {
-        }
+        // p:first-child {
+        // }
     }
 }
