@@ -23,12 +23,33 @@
         <div class="left-container">
             <img [src]="recipeDetails['recipe-img']" alt="nana">
         </div>
+        <div class="right-container">
+            <table *ngFor="let item of ingredients">
+                <thead>
+                        <tr>
+                            <td>Ingredient</td>
+                            <td>Quantity</td>
+                            <td>Rami Levy price</td>
+                            <td>Shufersal price</td>
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>{{item['ingredient']}}</td>
+                            <td>{{item['quantity']}}</td>
+                            <td>{{item['rami_price']}}</td>
+                            <td>{{item['shufersal_price']}}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
         
-            <div class="right-container">
-                <ul *ngFor="let item of ingredients">
-                    <li>{{item['ingredient']}}: {{item['quantity']}} {{item['unit']}}</li>
-                </ul>
-            </div>
+        
+        <!-- <div class="right-container">
+            <ul *ngFor="let item of ingredients">
+                <li>{{item['ingredient']}}: {{item['quantity']}} {{item['unit']}} | rami_levy: {{item['rami_price']}}</li>
+            </ul>
+        </div> -->
         
         
     </div>

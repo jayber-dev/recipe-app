@@ -64,20 +64,20 @@ def get_shufersal_data():
     temp_data = []
     
     pw = sync_playwright().start()
-    br = pw.chromium.launch(headless=True)
+    br = pw.firefox.launch(headless=False)
     page = br.new_page()
-    
+
     for i in range(len(db_data)):
         temp_data.append(json.loads(db_data[i].ingredients.replace("'",'"')))
         
     for i in temp_data:
         for j in i:
-            
             param = j['ingredient']
             page.goto(f'https://www.shufersal.co.il/online/he/search?text={param}')
             data = page.content()
             pasrsed_data = BeautifulSoup(data, features='html.parser')
             main = (pasrsed_data.main.find_all(id="tabPane1"))
+
             for i in main:
                 price_number = ((i.find_all(class_='number')))
             
