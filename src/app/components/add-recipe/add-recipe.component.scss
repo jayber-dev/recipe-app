@@ -161,7 +161,7 @@ $random: #d4d5d6;
     }
 
     .right-container{
-        margin-right: 5%;
+        margin-left: 5%;
         display: flex;
         // position: relative;
         flex-direction: column;
@@ -248,7 +248,7 @@ $random: #d4d5d6;
                     line-break: loose;
                     li {
                         border-bottom: 1px solid rgba(128, 128, 128, 0.411);
-                        font-size: small;
+                        font-size: x-small;
                         table {
                             width: 100%;
                             tr{
@@ -294,7 +294,7 @@ $random: #d4d5d6;
                         text-align: center;
                     }
 
-                    td:last-child {
+                    td:first-child {
                         border-right: 0px;
                     }
                 }
@@ -311,7 +311,7 @@ $random: #d4d5d6;
                        
                     }
 
-                    td:last-child {
+                    td:first-child {
                         border-right: 0px;
                     }
                 }

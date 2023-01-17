@@ -25,7 +25,7 @@ export class UserRecipeCardComponent implements OnInit {
   }
 
   deleteRecipe(recipeId:number,index: number){
-    if(confirm('are you sure you want to delete')){
+    if(confirm('האם אתה בטוח שאתה רוצה למחוק את המתכון ?')){
       this.userRecipes.deleteRecipe(recipeId).subscribe(data => {
         // console.log(data);
       })

@@ -37,15 +37,13 @@ $random: #d4d5d6;
                 flex-direction: row;
 
                 button:first-child {
-                    margin-left: 0px;
+                    margin-right: 0px;
                 }
 
-                button {
-                    // margin-top: 20px;
-                    margin-left:20px;
+                button {  
+                    margin-right:20px;
                     font-size: larger;
                     padding: 10px;
-                    // border-radius: 5px ;
                     border: 1px dashed grey;
                     background-color: rgba(168, 46, 46, 0.445);
                     color: $borderColor;

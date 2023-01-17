@@ -1,20 +1,20 @@
 <div class="user-recipe-card"*ngFor="let item of userRecipesObjectData; index as index" >
     <div class="recipe-card" >
         <div class="header">
-            <h1>{{item.title}}</h1>
+            <h1 [attr.aria-details]="item.title">{{item.title}}</h1>
         </div>
         <div class="main-container">
             <div class="left-container">
-                <p>Likes: </p>
-                <p>Dislikes: </p>
+                <p>אהבו: </p>
+                
                 <div class="buttons-container">
-                    <button (click)="editRecipe(item.recipeId)">Edit</button>
-                    <button (click)="deleteRecipe(item.recipeId,index)">Delete</button>
-                    <button>Share</button>
+                    <button (click)="editRecipe(item.recipeId)">ערוך מתכון</button>
+                    <button (click)="deleteRecipe(item.recipeId,index)" aria>מחק מתכון</button>
+                    <button>שתף</button>
                 </div>
             </div>
             <div class="right-container">
-                <img [src]="item.recipeImg" alt="">
+                <img [src]="item.recipeImg" alt=" תמונה של {{item.title}}">
             </div>
         </div>
         
