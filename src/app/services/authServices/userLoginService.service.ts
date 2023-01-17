@@ -32,7 +32,7 @@ export class UserLoginService {
 
   auth(){
     const auth = this.http.post('127.0.0.1:5001',{}).subscribe(data => {
-      // console.log(data);
+      console.log(data);
       auth.unsubscribe()
     })
   }

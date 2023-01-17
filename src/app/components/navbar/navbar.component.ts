@@ -3,7 +3,7 @@ import { Route, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserLoginService } from 'src/app/services//authServices/userLoginService.service';
 import { RecipeComponent } from '../recipe-home-card/recipe.component';
-
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-navbar',
@@ -12,8 +12,24 @@ import { RecipeComponent } from '../recipe-home-card/recipe.component';
 })
 export class NavbarComponent implements OnInit {
   
-  constructor(public user:UserLoginService,private cookieService:CookieService) {
-    
+  constructor(
+    public user:UserLoginService,
+    private cookieService:CookieService,
+    private http:HttpClient
+    ) {
+    http.post('http://127.0.0.1:5001/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
+        if(data['login']){
+          console.log(data);
+          user.userShortData = {
+            firstName: data['firstName'],
+            lastName: data['lastName'],
+            imgName: data['imgName'],
+            login: true,        
+          }
+          user.isLogged = true
+        }
+        
+      })
   }
   home:boolean
   showModal:boolean

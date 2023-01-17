@@ -58,6 +58,9 @@ def get_rami_levi_data():
     for i in range(len(data)):
         data[i].ingredients = str(temp_data[i])
 
+    print('process done')
+
+
 @db_session
 def get_shufersal_data():
     db_data = list(Recipes.select())
@@ -93,5 +96,5 @@ def get_shufersal_data():
     br.close()
 
 
-get_shufersal_data()
+get_rami_levi_data()
 # get_rami_levi_data()

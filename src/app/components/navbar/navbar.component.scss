@@ -11,10 +11,10 @@ nav {
     margin: 0px;
     top: 0;
     color:$textcolor;
-    // font-family: 'Heebo', sans-serif;
-    // font-family: 'Sofia Sans Extra Condensed', sans-serif;
-    // font-weight: 700;
-    font-size: calc(8px + 0.56234vw);
+    font-family: 'Heebo', sans-serif;
+    font-family: 'Sofia Sans Extra Condensed', sans-serif;
+    font-weight: 400;
+    font-size: calc(10px + 0.56234vw);
     border-bottom: $borderColor 1px solid;
 
     
@@ -88,10 +88,13 @@ nav {
             border-bottom: $borderColor 1px solid;
             align-items: center;
             
+            li:last-child {
+                margin-left: 18px;
+            }
             
             li {
                 
-                margin-right: 12px;
+                
                 padding:20px;
                 list-style: none;
                 text-decoration: none;
@@ -123,7 +126,7 @@ nav {
             .login-modal {
                 position: absolute;
                 background-color: $backgroundColor;
-                top: 58px;
+                top: 64px;
                 // right: 20px;
                 z-index: 10;
                 padding: 20px;
@@ -162,7 +165,7 @@ nav {
       
         list-style: none;
         li:first-child {
-            margin-left: 80px;
+            // margin-left: 20px;
         }
         li{
             list-style-type: none;

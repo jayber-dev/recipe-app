@@ -79,20 +79,25 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
         
         // TODO: Fix image sizing issues
         .right-container {
-            
-
+            margin-left: 20px;
             width: 50%;
             // background-color: rgba(245, 245, 245, 0.63);
             border-radius: 10px;
-                ul{
+
+            table {
+                td{
+                    text-align: center;
+                }
+            }
+                // ul{
                     
-                    li {
+                //     li {
                         
-                        list-style-type: none;
-                        // line-height: 0px;
-                        list-style-image: url(../../../assets/images/ingredients-svgrepo-com.svg);
-                    }
-                }    
+                //         list-style-type: none;
+                //         // line-height: 0px;
+                //         list-style-image: url(../../../assets/images/ingredients-svgrepo-com.svg);
+                //     }
+                // }    
         }
         
     }

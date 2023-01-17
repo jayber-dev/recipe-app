@@ -1,9 +1,9 @@
 <form action="">
-    <label for="">Email</label>
+    <label for="">אימייל</label>
     <input [(ngModel)]="email" name="email" autocomplete="email"  type="text">
     <small *ngIf="user.message === 'User\'s email does not exist'">User's email does not exist</small>
-    <label for="">Password</label>
+    <label for="">סיסמה</label>
     <input [(ngModel)]="password" name="password" autocomplete="current-password" type="password">
     <small *ngIf="user.message === 'Wrong password'">{{user.message}}</small>
-    <button (click)="sendLogin()">Submit</button>
+    <button (click)="sendLogin()">היכנס</button>
 </form>

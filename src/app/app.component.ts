@@ -16,8 +16,8 @@ export class AppComponent  {
   title = 'recipe-app';
   constructor(private http:HttpClient,
      private cookieService:CookieService,
-     user:UserLoginService,
-     recipeService:RecipeService,
+     private user:UserLoginService,
+     private recipeService:RecipeService,
      private renderer2:Renderer2
      )
     {

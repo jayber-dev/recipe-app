@@ -13,7 +13,7 @@ export const routes:Routes = [
     {path: '' , redirectTo:'/home',pathMatch:"full"},
     {path: 'register', component:RegistrationFormComponent},
     {path: 'addRecipe', component:AddRecipeComponent},
-    {path: 'home/recipeDetails/:id', component:RecipeDetailsComponent},
+    {path: 'recipeDetails/:id', component:RecipeDetailsComponent},
     {path: 'myRecipes', component:UserRecipeCardComponent},
     {path: 'editRecipe/:id', component:EditRecipeComponent},
     {path: '**' , component:NotFoundComponent }
