@@ -101,7 +101,7 @@ def get_shufersal_data():
                 
                 print(item_price_text + " " + kg_price_text)
                 j['shufersal_price'] = item_price_text
-                j['price_in_kg'] = True
+                j['price_in_kg'] = 'true'
             except:
                 item_price_text = item_price.replace('\n', '').replace(' ','')
                 j['shufersal_price'] = item_price_text

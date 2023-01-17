@@ -40,7 +40,8 @@
                             <td>{{item['quantity']}}</td>
                             <td>{{item['unit']}}</td>
                             <td>{{item['rami_price']}} &#8362;</td>
-                            <td>{{item['shufersal_price']}}</td>
+                            <td>{{item['shufersal_price']}} &#8362;
+                                <span *ngIf="item['price_in_kg'] == 'true'">לק"ג</span></td>
                         </tr>
                 </tbody>
             </table>
