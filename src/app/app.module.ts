@@ -5,13 +5,13 @@ import { FormsModule,FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/navbarComponents/navbar/navbar.component';
 import { RecipeComponent } from './components/recipesComponents/recipe-home-card/recipe.component';
 import { routes } from './routing.module';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/navbarComponents/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserLoginService } from './services//authServices/userLoginService.service';
-import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { RegistrationFormComponent } from './components/authComponents/registration-form/registration-form.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AddRecipeComponent } from './components/recipesComponents/add-recipe/add-recipe.component';
 import { RecipeService } from './services/recipeService/recipe-service.service';
@@ -19,7 +19,7 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { RecipeDetailsComponent } from './components/recipesComponents/recipe-details/recipe-details.component';
 import { UserRecipeCardComponent } from './components/recipesComponents/user-recipe-card/user-recipe-card.component';
 import { EditRecipeComponent } from './components/recipesComponents/edit-recipe/edit-recipe.component';
-import { LikesDisplayComponent } from './components/likes-display/likes-display.component';
+import { LikesDisplayComponent } from './components/likesComponents/likes-display/likes-display.component';
 
 
 
