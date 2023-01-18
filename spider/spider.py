@@ -160,6 +160,10 @@ def get_shufersal_data():
     print(f'time it took it to make the whole procces: {global_end_time:0.2f}')
 
 
+def get_data():
+    return 0
+
 # get_rami_levi_data()
-get_mega_data()
+# get_mega_data()
 # get_shufersal_data()
+get_data()
