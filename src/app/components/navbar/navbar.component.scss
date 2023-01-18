@@ -12,10 +12,11 @@ nav {
     top: 0;
     color:$textcolor;
     font-family: 'Heebo', sans-serif;
-    font-family: 'Sofia Sans Extra Condensed', sans-serif;
+    
     font-weight: 400;
-    font-size: calc(10px + 0.56234vw);
+    font-size: calc(8px + 0.56234vw);
     border-bottom: $borderColor 1px solid;
+    
 
     
     img{
@@ -89,7 +90,7 @@ nav {
             align-items: center;
             
             li:last-child {
-                margin-left: 18px;
+                margin-left: 0px;
             }
             
             li {

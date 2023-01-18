@@ -3,7 +3,7 @@ import { Component,Input , OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 // import { Router } from '@angular/router';
 
-import { recipeData } from './components/recipe-home-card/recipeData.interface'
+import { recipeData } from './components/recipesComponents/recipe-home-card/recipeData.interface'
 import { UserLoginService } from './services//authServices/userLoginService.service'
 import { RecipeService } from './services/recipeService/recipe-service.service';
 

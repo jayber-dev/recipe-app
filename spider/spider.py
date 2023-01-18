@@ -8,6 +8,7 @@ from lxml import *
 from bs4 import BeautifulSoup
 import time
 
+
 db = Database()
 
 db.bind(provider='sqlite', filename='../server/db.sqlite')
@@ -37,6 +38,30 @@ class Recipes(db.Entity):
 db.generate_mapping()
 
 temp_data =[]
+@db_session
+def get_mega_data():
+    data = list(Recipes.select())
+
+
+    for i in range(len(data)):
+        temp_data.append(json.loads(data[i].ingredients.replace("'",'"')))
+
+    # for i in temp_data:
+        # for j in i:
+      
+    # param= 'חלב'
+    # body = {
+    #     'appId': 4,
+
+    # }
+    # res = requests.get(f'https://www.mega.co.il/v2/retailers/1182/branches/1976/products?appId=4&filters=%7B%22must%22:%7B%22exists%22:%5B%22family.id%22,%22family.categoriesPaths.id%22,%22branch.regularPrice%22%5D,%22term%22:%7B%22branch.isActive%22:true,%22branch.isVisible%22:true%7D%7D,%22mustNot%22:%7B%22term%22:%7B%22branch.regularPrice%22:0%7D%7D%7D&from=0&isSearch=true&languageId=1&query={param}size=8')
+    
+    # json_data = (json.loads(res.text))
+    # print(f"{json_data['products'][0]['branch']} \n")
+    # print(json_data['products'][0]['branch']['regularPrice'])
+    # print(json_data['products'][0]['localName'])
+    return 0
+
 
 @db_session
 def get_rami_levi_data():
@@ -50,12 +75,16 @@ def get_rami_levi_data():
             body = {'q': j["ingredient"]}
             res = requests.post('https://www.rami-levy.co.il/api/catalog?', json=body)
             json_data = (json.loads(res.text))
-   
+            
             try:
                 j['rami_price'] = json_data['data'][0]['price']['price']
+                if json_data['data'][0]['prop']['by_kilo']:
+                    print('added')
+                    j['by_kilo'] = 'true'
             except:
                 pass
-
+    
+    print(temp_data)
     for i in range(len(data)):
         data[i].ingredients = str(temp_data[i])
 
@@ -129,5 +158,8 @@ def get_shufersal_data():
     br.close()
     global_end_time = time.perf_counter() - global_init_time
     print(f'time it took it to make the whole procces: {global_end_time:0.2f}')
+
+
 # get_rami_levi_data()
-get_shufersal_data()
+get_mega_data()
+# get_shufersal_data()

@@ -1,7 +1,7 @@
 import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { RecpieModel } from 'src/app/components/add-recipe/addRecipe.interface';
+import { RecpieModel } from 'src/app/components/recipesComponents/add-recipe/addRecipe.interface';
 
 @Injectable({
   providedIn: 'root',

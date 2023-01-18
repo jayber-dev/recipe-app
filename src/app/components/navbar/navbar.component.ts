@@ -1,9 +1,10 @@
 import { Component,inject,Injectable,Injector,Input,OnInit, Output} from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserLoginService } from 'src/app/services//authServices/userLoginService.service';
-import { RecipeComponent } from '../recipe-home-card/recipe.component';
+import { RecipeComponent } from '../recipesComponents/recipe-home-card/recipe.component';
 import { HttpClient } from '@angular/common/http'
+
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     public user:UserLoginService,
     private cookieService:CookieService,
-    private http:HttpClient
+    private http:HttpClient,
+    private router:Router
     ) {
     http.post('http://127.0.0.1:5001/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
         if(data['login']){
@@ -47,6 +49,7 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     this.user.logout()
+    this.router.navigateByUrl('/home')
   }
  
 

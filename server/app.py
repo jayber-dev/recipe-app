@@ -35,6 +35,7 @@ def allowed_file(filename):
 
 @app.route('/auth', methods=['GET', 'POST'])
 def auth():
+    print("im in auth")
     data = request.get_json()
     try:
         decrypted_token_str = cryptocode.decrypt(

@@ -5,12 +5,12 @@ from dotenv import load_dotenv
 import os
 
 
-# IMPORTANT ---------------------------------- DATABASE MODEL ----------------------------------------------------
+
 db = Database()
 
 load_dotenv()
 
-# IMPORTANT ----------------------------------------- DATABASE MODEL ---------------------------------------------
+# SECTION ----------------------------------------- DATABASE MODEL ---------------------------------------------
 
 class Users(db.Entity):
     firstName = Required(str)
@@ -33,7 +33,7 @@ class Recipes(db.Entity):
     cooking_steps = Required(LongStr)
 
 
-# IMPORTANT -------------------------------------USER DATABASE FUNCTIONS -----------------------------------------
+# SECTION -------------------------------------USER DATABASE FUNCTIONS -----------------------------------------
 
 
 @db_session
@@ -83,7 +83,7 @@ def retrive_user_by_id(id):
 def retrive_user_list():
     return select(p for p in Users)[:],
 
-# IMPORTANT --------------------------------- RECIPES DATABASE FUNCTIONS ----------------------------------------
+# SECTION --------------------------------- RECIPES DATABASE FUNCTIONS ----------------------------------------
 
 
 @db_session
