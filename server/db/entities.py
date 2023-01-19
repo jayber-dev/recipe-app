@@ -31,6 +31,11 @@ class Recipes(db.Entity):
     primary_image = Required(str)
     ingredients = Required(LongStr)
     cooking_steps = Required(LongStr)
+    
+class Likes(db.Entity):
+    userId = Required(int)
+    recipeId = Required(int)
+    
 
 
 # SECTION -------------------------------------USER DATABASE FUNCTIONS -----------------------------------------

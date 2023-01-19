@@ -19,7 +19,7 @@
                 </tr>
             </tbody>
         </table>
-        <app-like-btn [recipeId]="recipeDetails['recipeId']"></app-like-btn>
+        <app-like-btn [recipeId]="recipeDetails['recipeId']" [userId]=""></app-like-btn>
     </div>
     
     
@@ -78,5 +78,7 @@
     <div class="steps-container" >
         <p *ngFor="let step of cookingSteps; index as i"><u>שלב הכנה  {{i + 1}}</u><br> {{ step}}</p>
     </div>
+
+    
 </div>
 

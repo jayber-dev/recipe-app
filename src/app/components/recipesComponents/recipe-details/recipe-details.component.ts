@@ -22,25 +22,14 @@ export class RecipeDetailsComponent implements OnInit {
     ) {
       console.log('im reloding the component');
       
-      // http.post('http://127.0.0.1:5001/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
-      //   if(data['login']){
-      //     console.log(data);
-      //     user.userShortData = {
-      //       firstName: data['firstName'],
-      //       lastName: data['lastName'],
-      //       imgName: data['imgName'],
-      //       login: true,        
-      //     }
-      //     user.isLogged = true
-      //   }
-        
-      // })
   }
 
   param:any
   recipeDetails:any
   cookingSteps:string[]
   ingredients:string[]
+  userData:any
+
 
   ngOnInit(): void {
     

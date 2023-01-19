@@ -200,6 +200,7 @@ def profile_img_serve(imgName):
 
 @app.route('/addLike', methods=['POST','GET'])
 def add_like():
+    
     return 0
     
 if __name__ == "__main__":
