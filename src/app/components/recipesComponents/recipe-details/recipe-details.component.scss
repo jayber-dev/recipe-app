@@ -21,48 +21,52 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
             
         }
     }
+    .cooking-time-container{
+        display: flex;
+        flex-direction: row;
+        .preview-table {
+            margin-bottom: 20px;
+            // border: 1px solid rgba(128, 128, 128, 0.363);
+            border-collapse: collapse;
+            margin-top: 10px;
+            max-width: 600px;
+            font-size: calc(13px + 0.5234vw);
+            thead {                
+                tr {
+                    td {
+                        margin-left: 20px;
+                        margin-right: 20px;
+                        padding: 5px;
+                        border-right:2px solid rgba(128, 128, 128, 0.363);
+                        // border-left:1px solid rgba(128, 128, 128, 0.363);
+                        text-align: center;
+                    }
     
-    .preview-table {
-        margin-bottom: 20px;
-        // border: 1px solid rgba(128, 128, 128, 0.363);
-        border-collapse: collapse;
-        margin-top: 10px;
-        max-width: 600px;
-        font-size: calc(13px + 0.5234vw);
-        thead {                
-            tr {
-                td {
-                    margin-left: 20px;
-                    margin-right: 20px;
-                    padding: 5px;
-                    border-right:2px solid rgba(128, 128, 128, 0.363);
-                    // border-left:1px solid rgba(128, 128, 128, 0.363);
-                    text-align: center;
-                }
-
-                td:first-child {
-                    border-right: 0px;
+                    td:first-child {
+                        border-right: 0px;
+                    }
                 }
             }
-        }
-        tbody {
-            tr{
-                td{
-                    border-right:2px solid rgba(128, 128, 128, 0.363) ;
-                    // border-left:1px solid rgba(128, 128, 128, 0.363) ;
-                    width: 150px;
-                    text-align: center;
-                    padding: 5px;
-                    font-size: larger;
-                   
-                }
-
-                td:first-child {
-                    border-right: 0px;
+            tbody {
+                tr{
+                    td{
+                        border-right:2px solid rgba(128, 128, 128, 0.363) ;
+                        // border-left:1px solid rgba(128, 128, 128, 0.363) ;
+                        width: 150px;
+                        text-align: center;
+                        padding: 5px;
+                        font-size: larger;
+                       
+                    }
+    
+                    td:first-child {
+                        border-right: 0px;
+                    }
                 }
             }
         }
     }
+    
     .top-container {
         display: flex;
         flex-direction: row;
@@ -84,7 +88,6 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
             }
         }
         
-        // TODO: Fix image sizing issues
         .right-container {
             margin-right: 20px;
             width: 50%;

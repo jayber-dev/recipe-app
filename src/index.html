@@ -6,23 +6,27 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script nl_pos="bl" src="./assets/hangasha/nagishli.js"></script>
+  <!-- <script nl_pos="bl" src="./assets/hangasha/nagishli.js"></script>
   <script>
     nl_pos = "bl";
     nl_dir = "./src/assets/hangasha/";
     nl_contact = "n:יבנגי ברשדסקי|p:0526767682|u:jayber1+d:gmail.com";
-    </script>
+    </script> -->
+    <script src="./assets/hangasha-beta/nagishli_v3_beta/nagishli_beta.js?v=3.0b" charset="utf-8" defer></script>
+    <script>
+      nagishli_config = {
+        // צבע התוסף - האפשרויות הן Blue (כחול), Red (אדום), Green (ירוק), Purple (סגול), Pink (ורוד), Yellow (צהוב), Gray (אפור), Orange (כתום), Brown (חום), Turquoise (טורקיז) ו-Black (שחור)
+        color: "green",
+        // שפת התוסף, he - עברית, en - אנגלית
+        language: "he"
+      };
+      </script>
 </head>
 <body>
   
   
   <app-root>
-     <!-- <script>
-      nl_pos = "bl";
-      nl_dir = "./src/assets/hangasha/";
-      nl_contact = "n:יבנגי ברשדסקי|p:0526767682|u:jayber1+d:gmail.com";
-      </script>
-      <script src="./assets/hangasha/nagishli.js?v=2.3" charset="utf-8" defer></script>  -->
+   
     
   </app-root>
 </body>

@@ -20,6 +20,8 @@ import { RecipeDetailsComponent } from './components/recipesComponents/recipe-de
 import { UserRecipeCardComponent } from './components/recipesComponents/user-recipe-card/user-recipe-card.component';
 import { EditRecipeComponent } from './components/recipesComponents/edit-recipe/edit-recipe.component';
 import { LikesDisplayComponent } from './components/likesComponents/likes-display/likes-display.component';
+import { LikeBtnComponent } from './components/likesComponents/like-btn/like-btn.component';
+import { LikeService } from './services/likeService/likeService.Service';
 
 
 
@@ -39,6 +41,7 @@ import { LikesDisplayComponent } from './components/likesComponents/likes-displa
     UserRecipeCardComponent,
     EditRecipeComponent,
     LikesDisplayComponent,
+    LikeBtnComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -55,6 +58,7 @@ import { LikesDisplayComponent } from './components/likesComponents/likes-displa
     UserLoginService,
     RecipeService,
     CookieService,
+    LikeService,
   ],
   bootstrap: [AppComponent]
 })
