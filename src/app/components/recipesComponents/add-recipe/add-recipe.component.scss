@@ -74,20 +74,37 @@ $random: #d4d5d6;
                     }
                 }
 
-                select {
+                // select {
                     
-                    // appearance: none;
-                    outline: none;
+                //     // appearance: none;
+                //     outline: green;
+                //     background-color: transparent;
+                //     padding:10px;
+                //     box-shadow: -2px 2px 4px 1px grey;
+                //     border: 0px;
+                //     color:rgb(53, 53, 53) ;
+                //     border: none; 
+                //     option {
+                //         background-color:  rgba(112, 163, 112, 0.233); 
+                //     }
+
+                //     option:focus{
+                //         background-color: red;
+                //     }
+                // }
+
+                select {
                     background-color: transparent;
-                    padding:10px;
+                    color: black;
+                    padding: 12px;
+                    width: 250px;
+                    // border: 1px solid grey;
+                    font-size: 20px;
                     box-shadow: -2px 2px 4px 1px grey;
-                    border: 0px;
-                    color:rgb(53, 53, 53) ;
-                    border: none; 
-                    option {
-                        background-color:  rgba(112, 163, 112, 0.233); 
-                    }
-                }
+                    -webkit-appearance: button;
+                    appearance: button;
+                    outline: none;
+                  }
 
                 button {
                     margin-top: 20px;

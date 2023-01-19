@@ -101,7 +101,7 @@ def logout():
     entity.delete_token(id=decrypted_token_json['user_id'])
     return jsonify({'logout': 'true'})
 
-# --------------------------------------------- Recipes Handler ------------------------------------
+# SECTION --------------------------------------------- Recipes Handler ------------------------------------
 
 
 @app.route('/addRecipe', methods=['GET', 'POST'])
@@ -154,7 +154,7 @@ def delete_recipe():
     entity.delete_recipe(request.args['data'])
     return jsonify({"data": "recived"})
 
-#  ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------
+# SECTION ---------------------------------------- FILES UPLOAD AND SERVE HANDLER ----------------------------
 
 
 @app.route('/upload-img', methods=['GET', 'POST'])
@@ -194,7 +194,9 @@ def img(imgName):
 def profile_img_serve(imgName):
     return send_from_directory(app.config['PROFILE_UPLOAD_FOLDER'], imgName)
 
+# SECTION ------------------------------ LIkKES HANDLING ------------------------------------------
 
+# TODO: addLikes route
 if __name__ == "__main__":
 
     app.run(debug=True, host='127.0.0.1', port='5001')
