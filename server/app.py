@@ -194,9 +194,14 @@ def img(imgName):
 def profile_img_serve(imgName):
     return send_from_directory(app.config['PROFILE_UPLOAD_FOLDER'], imgName)
 
-# SECTION ------------------------------ LIkKES HANDLING ------------------------------------------
+# SECTION ------------------------------ LIKES HANDLING ------------------------------------------
 
 # TODO: addLikes route
+
+@app.route('/addLike', methods=['POST','GET'])
+def add_like():
+    return 0
+    
 if __name__ == "__main__":
 
     app.run(debug=True, host='127.0.0.1', port='5001')
