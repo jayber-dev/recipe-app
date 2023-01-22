@@ -20,6 +20,7 @@ export class LikeBtnComponent implements OnInit {
 
   @Input() recipeId:string
   @Input() userId:string
+  // isLiked:boolean = true
 
   addLike(){
     console.log('i was clicked');
@@ -28,6 +29,7 @@ export class LikeBtnComponent implements OnInit {
     this.likeService.addLike().subscribe(data => {
       console.log(data); 
     })
+    // this.isLiked = true
     
   }
 

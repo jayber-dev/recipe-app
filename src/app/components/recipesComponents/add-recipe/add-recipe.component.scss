@@ -46,6 +46,9 @@ $random: #d4d5d6;
 
                 .pic-upload {
                     display: none;
+                    // appearance: none;
+                    // background-color: transparent;
+                    
                 }
                 .pic-label{
                     position: relative;
@@ -94,17 +97,24 @@ $random: #d4d5d6;
                 // }
 
                 select {
+                    
                     background-color: transparent;
                     color: black;
-                    padding: 12px;
+                    padding: 10px;
                     width: 250px;
+                    border: 0px;
                     // border: 1px solid grey;
-                    font-size: 20px;
+                    font-size: 14px;
                     box-shadow: -2px 2px 4px 1px grey;
                     -webkit-appearance: button;
                     appearance: button;
                     outline: none;
                   }
+                
+                select:focus {
+                    border:1px solid rgb(134, 184, 134);
+                    background-color: transparent;
+                }
 
                 button {
                     margin-top: 20px;

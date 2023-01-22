@@ -21,7 +21,7 @@ class Users(db.Entity):
     token = Optional(str)
     imgName = Optional(str)
     recipes = Set('Recipes')
-
+    likes = Set('Likes')
 
 class Recipes(db.Entity):
     user = Required(Users)
@@ -31,10 +31,13 @@ class Recipes(db.Entity):
     primary_image = Required(str)
     ingredients = Required(LongStr)
     cooking_steps = Required(LongStr)
+    likes_count = Required(int)
+   
     
 class Likes(db.Entity):
-    userId = Required(int)
-    recipeId = Required(int)
+    user_id = Required(Users)
+    recipe_id = Required(int)
+
     
 
 
