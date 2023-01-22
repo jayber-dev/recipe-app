@@ -191,7 +191,8 @@ def add_recipe(id, data):
                      ingredients=str(data['data']['ingredients']),
                      cooking_steps=str(data['data']['cookingSteps']),
                      user=Users[id],
-                     preperation_time=data['data']['preperationTime']
+                     preperation_time=data['data']['preperationTime'],
+                     likes_count=0
                      )
     return
 
@@ -217,4 +218,30 @@ def delete_recipe(recipe_id):
     data = Recipes.get(id=recipe_id)
     data.delete()
     print(id)
+    
+@db_session
+def add_like(recipeId,user_id):
+    data = Likes.get(user_id=user_id,recipe_id=recipeId)
+    print(data)
+    if data == None:
+        print('im here')
+        Likes(user_id=user_id,
+            recipe_id=recipeId)
+        return True
+    else:
+        data.delete()
+        return False
+    
+@db_session
+def check_like(recipe_id, user_id):
+    print(recipe_id, user_id)
+    data = Likes.get(user_id=user_id,recipe_id=recipe_id)
+    print(data)
+    if data == None:
+        return False
+    else:
+        return True
+    
+    
+    
     

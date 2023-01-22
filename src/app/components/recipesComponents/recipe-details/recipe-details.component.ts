@@ -6,6 +6,7 @@ import { toArray } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
+import { LikeService } from 'src/app/services/likeService/likeService.Service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -18,7 +19,8 @@ export class RecipeDetailsComponent implements OnInit {
     private activatedRoute:ActivatedRoute,
     private cookieService:CookieService,
     private http:HttpClient,
-    private user:UserLoginService
+    private user:UserLoginService,
+    private likes:LikeService,
     ) {
       console.log('im reloding the component');
       
@@ -36,6 +38,10 @@ export class RecipeDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe(param => {
       console.log(param);  
       this.param = param
+    })
+
+    const like = this.likes.checkIfPressed(this.param.id).subscribe(data => {
+      console.log(data);
     })
 
     console.log(this.param);

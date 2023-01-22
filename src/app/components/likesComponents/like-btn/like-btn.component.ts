@@ -20,20 +20,36 @@ export class LikeBtnComponent implements OnInit {
 
   @Input() recipeId:string
   @Input() userId:string
-  // isLiked:boolean = true
+  isLiked:boolean
 
   addLike(){
     console.log('i was clicked');
     console.log(this.recipeId);
     console.log(this.user.userData);
-    this.likeService.addLike().subscribe(data => {
-      console.log(data); 
+    this.likeService.addLike(this.recipeId).subscribe(data => {
+      // console.log(data); 
+      if(data['data'] === true){
+        this.isLiked = true
+      } else {
+        this.isLiked = false
+      }
     })
-    // this.isLiked = true
+    
     
   }
 
   ngOnInit(): void {
-      
+    try {
+      this.likeService.checkIfPressed(this.recipeId).subscribe(data => {
+        console.log(data);
+        if(data['data'] === true){
+          this.isLiked = true
+        } else {
+          this.isLiked = false
+        }
+      })
+    } catch {
+      console.log('wow');
+    }
   }
 }

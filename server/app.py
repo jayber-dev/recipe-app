@@ -200,8 +200,26 @@ def profile_img_serve(imgName):
 
 @app.route('/addLike', methods=['POST','GET'])
 def add_like():
+    data = (request.get_json())
+    print(data.get('recipe_id'))
+    print(data.get('key'))
+    key =  data.get('key')
+    decrypted_str = cryptocode.decrypt(key, os.environ.get('SECRET_KEY'))
+    decrypted_json = json.loads(decrypted_str)
     
-    return 0
+    entity_response = entity.add_like(recipeId=data.get('recipe_id'),user_id=decrypted_json['user_id'])
+    return jsonify({'data': entity_response})
+
+@app.route('/checkLike', methods=['GET', 'POST'])
+def check_like():
+    print('im in check if liked')
+    data = request.args
+    key =  data.get('key')
+    decrypted_str = cryptocode.decrypt(key, os.environ.get('SECRET_KEY'))
+    decrypted_json = json.loads(decrypted_str)
+    entity_response = entity.check_like(data.get('recipeId'), decrypted_json['user_id'])
+    print(entity_response)
+    return jsonify({'data':entity_response})
     
 if __name__ == "__main__":
 

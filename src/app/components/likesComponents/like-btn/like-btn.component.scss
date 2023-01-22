@@ -5,13 +5,17 @@ button {
     width: 80px;
     transition: height 0.5s ease-in;
 
-    img{
-        height: 50px;
-        width: 50px;
-        color: red;
-        cursor: pointer;
-        // background-color: red;
+    svg{
+        fill:green
     }
+    // img{
+    //     height: 50px;
+    //     width: 50px;
+    //     // color: red;
+    //     cursor: pointer;
+        
+    //     // background-color: red;
+    // }
 }
 
 button:hover {
