@@ -112,6 +112,8 @@ export class RecipeComponent implements OnInit, OnDestroy {
     console.log("im in the ngoninit") 
     const recieps = this.recipeService.retriveRecipes(0,10).subscribe((data) => {
       this.fetchedData = data;
+      console.log(this.fetchedData);
+      
       this.maxServerData = data[0]['max-length']
       this.currObjLength = data[0]['currLength']
       this.makeCall = this.currObjLength == 10 ? true : false

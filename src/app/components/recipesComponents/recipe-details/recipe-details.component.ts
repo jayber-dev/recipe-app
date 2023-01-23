@@ -42,6 +42,7 @@ export class RecipeDetailsComponent implements OnInit {
 
     const like = this.likes.checkIfPressed(this.param.id).subscribe(data => {
       console.log(data);
+      like.unsubscribe()
     })
 
     console.log(this.param);

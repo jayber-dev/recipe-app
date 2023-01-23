@@ -6,7 +6,8 @@ button {
     transition: height 0.5s ease-in;
 
     svg{
-        fill:green
+        rotate: -45deg;
+        transition: fill 0.5s ease-in, rotate 1s ease;
     }
     // img{
     //     height: 50px;

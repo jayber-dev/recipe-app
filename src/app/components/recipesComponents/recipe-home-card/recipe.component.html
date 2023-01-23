@@ -1,8 +1,8 @@
 <div class="recipe-card"  (window:scroll)="onScrollEvent($event)">
         <div *ngFor="let item of fetchedData" class="img-container">
                 <a [routerLink]="['/recipeDetails', item.recipeId]" ><img [src]="item['recipe-img']" alt="" loading="lazy"></a>
-                <p  class="recipe-name">{{item.title}}
-                        
+                <p  class="recipe-name">{{item.title}} 
+                        <app-likes-display [likesCount]="item.likesCount"></app-likes-display> 
                 </p>
                 <div class="name-container">
                         

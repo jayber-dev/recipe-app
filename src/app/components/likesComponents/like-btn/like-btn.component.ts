@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
 import { LikeService } from 'src/app/services/likeService/likeService.Service';
 import { RecipeService } from 'src/app/services/recipeService/recipe-service.service';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-like-btn',
@@ -14,24 +15,31 @@ export class LikeBtnComponent implements OnInit {
     private likeService:LikeService,
     private recipeService:RecipeService,
     public user:UserLoginService,
-    private cookieService:CookieService){
-
-  }
+    private cookieService:CookieService,
+    private http:HttpClient
+    ){
+    
+    }
 
   @Input() recipeId:string
   @Input() userId:string
-  isLiked:boolean
+  isLiked:string
+  logged:boolean
+
+  likeStyle(){
+    if(this.isLiked == 'green'){
+      return {'fill':this.isLiked, 'rotate':'-30deg'}
+    } 
+    return {'fill':this.isLiked, 'rotate':'0deg'}
+  }
 
   addLike(){
-    console.log('i was clicked');
-    console.log(this.recipeId);
-    console.log(this.user.userData);
     this.likeService.addLike(this.recipeId).subscribe(data => {
       // console.log(data); 
       if(data['data'] === true){
-        this.isLiked = true
+        this.isLiked = 'green'
       } else {
-        this.isLiked = false
+        this.isLiked = 'black'
       }
     })
     
@@ -39,13 +47,21 @@ export class LikeBtnComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const cookie = this.cookieService.check('key')
+    console.log(cookie);
+    
+    this.logged = cookie
+    console.log(this.logged);
+    if(this.logged) this.isLiked = "black"
+    
+    
     try {
       this.likeService.checkIfPressed(this.recipeId).subscribe(data => {
         console.log(data);
         if(data['data'] === true){
-          this.isLiked = true
+          this.isLiked = 'green'
         } else {
-          this.isLiked = false
+          this.isLiked = 'black'
         }
       })
     } catch {

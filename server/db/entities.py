@@ -115,6 +115,7 @@ def retrive_recipes(from_index,to_index):
             'preperationTime':i.preperation_time,
             'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
             'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
+            'likesCount': i.likes_count,
             # 'ingredients': i.ingredients,
             # 'cookingSteps': i.cooking_steps,
             'max-length':len(recipe_length),
@@ -172,6 +173,7 @@ def retrive_user_recipes(id):
             'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
             'ingredients': ingredients,
             'cookingSteps': steps,
+            'likesCount': i.likes_count
         })
     
     return (obj_array)
@@ -225,10 +227,15 @@ def add_like(recipeId,user_id):
     print(data)
     if data == None:
         print('im here')
+        recipe = Recipes.get(id=recipeId)
+        print(recipe.likes_count)
+        recipe.likes_count = recipe.likes_count + 1
         Likes(user_id=user_id,
             recipe_id=recipeId)
         return True
     else:
+        recipe = Recipes.get(id=recipeId)
+        recipe.likes_count = recipe.likes_count - 1
         data.delete()
         return False
     
