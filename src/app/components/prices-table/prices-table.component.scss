@@ -1,0 +1,27 @@
+table {
+    thead{
+        background-color: rgba(71, 133, 71, 0.103);
+        
+        td{
+            border: 1px solid rgba(128, 128, 128, 0.171);
+            border-collapse: collapse;
+        }
+
+        td:nth-child(3) {
+            
+            width: 50px;
+            // font-size: calc(6px + 0.523vw);
+            
+        }
+    }
+    width:100%;
+    td{
+        width: 100px;
+        text-align: center;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.212);
+        border-collapse: collapse;
+    }
+
+    
+        
+}

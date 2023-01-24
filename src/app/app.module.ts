@@ -22,8 +22,10 @@ import { EditRecipeComponent } from './components/recipesComponents/edit-recipe/
 import { LikesDisplayComponent } from './components/likesComponents/likes-display/likes-display.component';
 import { LikeBtnComponent } from './components/likesComponents/like-btn/like-btn.component';
 import { LikeService } from './services/likeService/likeService.Service';
-import { NgxPayPalModule } from 'ngx-paypal';
-import { PaypalButtonComponent } from './components/paypalComponent/paypal-button/paypal-button.component';
+
+import { PaypalQrComponent } from './components/paypalComponent/paypal-qr/paypal-qr.component';
+import { PaypalBtnComponent } from './components/paypalComponent/paypal-btn/paypal-btn.component';
+import { PricesTableComponent } from './components/prices-table/prices-table.component';
 
 
 
@@ -44,7 +46,9 @@ import { PaypalButtonComponent } from './components/paypalComponent/paypal-butto
     EditRecipeComponent,
     LikesDisplayComponent,
     LikeBtnComponent,
-    PaypalButtonComponent,
+    PaypalQrComponent,
+    PaypalBtnComponent,
+    PricesTableComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -53,7 +57,6 @@ import { PaypalButtonComponent } from './components/paypalComponent/paypal-butto
     ReactiveFormsModule,
     CommonModule,
     BrowserModule,
-    NgxPayPalModule,
     RouterModule.forRoot(routes),
     
   ],
