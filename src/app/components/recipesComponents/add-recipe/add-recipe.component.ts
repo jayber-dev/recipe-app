@@ -115,7 +115,7 @@ export class AddRecipeComponent implements OnInit{
       cookingSteps: this.stepsArray,
     };
     this.recipeService.recipesList.push(this.toSend);   
-    this.recipeService.fileUpload(this.fileData, this.cookieService.get('key')); // calls to upload images
+    this.recipeService.fileUpload(this.fileData); // calls to upload images
     this.recipeService.addRecipe(this.toSend); // calls to add recipe in DB
     this.router.navigateByUrl('/home'); // navigates to home page
   }

@@ -15,9 +15,9 @@ export class RecipeService {
   }
   recipesData: string[];
 
-  fileUpload(formData,key) {
+  fileUpload(formData) {
     const upload = this.http
-      .post('http://127.0.0.1:5001/upload-img', {file:formData, id:key})
+      .post('http://127.0.0.1:5001/upload-img', formData)
       .subscribe((data) => {
         upload.unsubscribe();
       });

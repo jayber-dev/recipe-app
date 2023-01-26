@@ -159,8 +159,8 @@ def retrive_user_recipes(id):
     for i in recipe_obj:
         steps = i.cooking_steps.replace("'",'"')
         ingredients = i.ingredients.replace("'",'"')
-        print(steps)
-        print(ingredients)
+        # print(steps)
+        # print(ingredients)
         obj_array.append({
             'userId': i.user.id,
             'userFirstName': i.user.firstName,

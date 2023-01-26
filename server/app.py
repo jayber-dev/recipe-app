@@ -165,6 +165,7 @@ def file_upload():
         return jsonify({'data': 'no file was given'})
     file = request.files['file']
     if file and allowed_file(file.filename):
+        print(file.filename)
         file_name = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
         return jsonify({'data': 'file uploaded'})

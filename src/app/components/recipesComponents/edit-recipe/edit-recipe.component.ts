@@ -47,9 +47,10 @@ export class EditRecipeComponent implements OnInit {
 
   readUrl(event){
     const file:File = event.target.files[0]
-    
+    console.log(event.target.files);
     if(file){
-      this.fileName = file.name;
+      this.fileName = event.target.files[0].name;
+      console.log(this.fileName);
       this.fileData.append('file',file)
     }
     
@@ -87,6 +88,7 @@ export class EditRecipeComponent implements OnInit {
     
     // console.log(this.editRecipeForm.value)
     const data = {...this.editRecipeForm.value,
+      img:this.fileName,
       ingredient: this.ingredients,
       steps: this.cookingSteps,
 
@@ -95,7 +97,9 @@ export class EditRecipeComponent implements OnInit {
     this.recipeService.updateRecipe(data,this.param).subscribe(data => {
       console.log(data);
     })
-
+    if(this.fileData) {
+      this.recipeService.fileUpload(this.fileData)
+    }
     this.router.navigateByUrl('myRecipes')
   }
 
