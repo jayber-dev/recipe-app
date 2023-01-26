@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
 
+
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
@@ -38,6 +39,7 @@ export class AddRecipeComponent implements OnInit{
     private user:UserLoginService,
     private http:HttpClient,
     private cookieService:CookieService,
+   
   ) {
     this.addRecipe = fb.group({
       title: ["", Validators.required],
@@ -54,9 +56,9 @@ export class AddRecipeComponent implements OnInit{
   isUserLogged:boolean
 
   addIngredient() {
-    this.ingredients.push({ingredient : this.addRecipe.get('ingredient').value,
+    this.ingredients.push({ingredient : this.addRecipe.get('ingredient').value.replace('"','&quot;').replace("'", "&apos;").replace(':','&#58;'),
                           quantity: this.addRecipe.get('quantity').value,
-                          unit: this.addRecipe.get('unit').value});
+                          unit: this.addRecipe.get('unit').value.replace('"','&quot;').replace("'", "&apos;").replace(':','&#58;')});
  
     // console.log(this.addRecipe.get('ingredient').value)
     this.addRecipe.controls['ingredient'].setValue('');
@@ -72,12 +74,10 @@ export class AddRecipeComponent implements OnInit{
   }
   deleteStepItem(itemId) {
     this.stepsArray.splice(itemId, 1)
-  
-    
   }
 
   addStep() {     
-    this.stepsArray.push(this.addRecipe.get('steps').value);
+    this.stepsArray.push(this.addRecipe.get('steps').value.replace('"','&quot;').replace("'", "&apos;").replace(':','&#58;').replace(',','&#44;').replace('[','&#91;'));
     this.addRecipe.controls['steps'].setValue('');
   }
 
@@ -102,6 +102,7 @@ export class AddRecipeComponent implements OnInit{
     }
   }
   async onSubmit() {
+    
     
     this.toSend = {
       title: this.addRecipe.get('title').value,

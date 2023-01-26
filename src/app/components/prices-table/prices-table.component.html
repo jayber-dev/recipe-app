@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of ingredients">
-            <td>{{item['ingredient']}}</td>
+            <td>{{item['ingredient'] | htmlDecoder}}</td>
             
             <td>
                 {{item['רמי לוי באינטרנט'] ? item['רמי לוי באינטרנט'] : "אין מחיר"}} &#8362;

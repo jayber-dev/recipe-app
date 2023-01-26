@@ -45,28 +45,7 @@ export class UserLoginService {
   }
 
   login(user:string,pass:string){
-    const logging = this.http.post<any>('http://127.0.0.1:5001/login', { name: user, pass: pass }, { responseType: 'json' }).subscribe((data) => {
-      if (data['data'] == true) {
-        this.isLogged = true;       
-        this.cookieService.set('key', data['token'],1);  
-        console.log(data);
-        
-        this.userData = data
-        console.log(this.userData);
-        this.userShortData = {
-          firstName: data['firstName'],
-          lastName: data['lastName'],
-          imgName: data['imgName'],
-          login: true,        
-        }
-        
-      } else {
-        
-        
-        this.isLogged = false;
-        this.message = data['message']
-      }
-    })
+    return this.http.post<any>('http://127.0.0.1:5001/login', { name: user, pass: pass }, { responseType: 'json' })
 
     // logging.unsubscribe()
   }

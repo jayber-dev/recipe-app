@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-recipe-show',
+  selector: 'app-recipe-card',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss'],
 })

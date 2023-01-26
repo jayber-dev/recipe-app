@@ -14,6 +14,9 @@ import { RecipeService } from './services/recipeService/recipe-service.service';
 })
 export class AppComponent  {
   title = 'recipe-app';
+  isLogged:boolean
+  userShortData:any
+
   constructor(private http:HttpClient,
      private cookieService:CookieService,
      private user:UserLoginService,
@@ -21,19 +24,21 @@ export class AppComponent  {
      private renderer2:Renderer2
      )
     {
-      
+    
+    
     
     
     http.post('http://127.0.0.1:5001/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
       if(data['login']){
         console.log(data);
-        user.userShortData = {
+        this.userShortData = {
           firstName: data['firstName'],
           lastName: data['lastName'],
           imgName: data['imgName'],
           login: true,        
         }
-        user.isLogged = true
+        this.isLogged = true
+        // user.isLogged = true
       }
       
     })

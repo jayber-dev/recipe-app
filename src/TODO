@@ -4,7 +4,11 @@ TODO: make url guards
 TODO: add date time to add recipe and make it visible on recipe panel
 TODO: add gender to user registration
 TODO: handling file upload deletion after change or recipe delete
-
+TODO: add paypal button component
+TODO: image scanner (external bot or build an AI by myself)
+TODO: fix app component and recipe component url placing
+TODO: handle spacial Chars from users input
+FIX: hebrew named files cant be uploaded 
 <!-- done -->
 
 DONE: preperation time and cooking time

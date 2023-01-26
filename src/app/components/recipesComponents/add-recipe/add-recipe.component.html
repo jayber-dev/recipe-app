@@ -130,9 +130,9 @@
           <li *ngFor="let item of ingredients; index as i">  
             <table>
               <tr>
-                <td>{{ item.ingredient}}:</td>
+                <td>{{ item.ingredient | htmlDecoder}}:</td>
                 <td>{{item.quantity}}</td>
-                <td>{{item.unit}}</td>
+                <td>{{item.unit | htmlDecoder}}</td>
                 <td><button class="delete-btn" (click)="deleteItem(i)" >מחק </button></td>
               </tr>
             </table>
@@ -145,7 +145,7 @@
       שלב הכנה {{i + 1}}:
       <p class="cooking-steps" > <button class="steps-delete-btn" (click)="deleteStepItem(i)" >delete</button> 
         
-         {{ item }} 
+         {{ item | htmlDecoder}} 
       </p>
       
     </div>

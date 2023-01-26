@@ -38,9 +38,24 @@ export class UserRecipeCardComponent implements OnInit {
     const UserData = this.userRecipes.retriveUserRecipes().subscribe(data => {
       
       this.userRecipesStringData = data;
+      
+      let steps = ''
+      let ingredients = ''
       this.userRecipesStringData.forEach((elem) => {
-        const steps = JSON.parse(elem.cookingSteps);
-        const ingredients = JSON.parse(elem.ingredients)
+       
+        try {
+           steps = JSON.parse(elem.cookingSteps);
+        } catch{
+          // console.log(elem.cookingSteps);
+        }
+        try {
+          console.log(elem.ingredients);
+          
+          ingredients = JSON.parse(elem.ingredients)
+        } catch {
+          console.log(elem.ingredients);
+          
+        }
         
         this.userRecipesObjectData.push({
           title: elem['title'],

@@ -4,32 +4,32 @@
             <img src="../../assets/images/logo.png" alt="">
             <li routerLinkActive='active-link' > <a routerLink="home" >בית</a></li>
             
-            <li class="user-details" *ngIf="user.isLogged">
+            <li class="user-details" *ngIf="isLogged">
                 <!-- <p>
                     {{user.userData?.firstName}}
                     {{user.userData?.lastName}}
                 </p> -->
-                <img [src]="user.userShortData?.imgName" alt="">
+                <img [src]="userData?.imgName" alt="">
                 <p>
-                    {{user.userShortData?.firstName}}
-                    {{user.userShortData?.lastName}}
+                    {{userData?.firstName}}
+                    {{userData?.lastName}}
                 </p>
             </li>
         </div>
         <div class="right-nav" >
-            <li *ngIf="!user.isLogged" (click)="modalView($event)" class="login">היכנס</li>
-                <div class="login-modal" *ngIf="showModal && !user.isLogged">
-                    <app-login></app-login>
+            <li *ngIf="!isLogged" (click)="modalView($event)" class="login">היכנס</li>
+                <div class="login-modal" *ngIf="showModal && !isLogged">
+                    <app-login (event)="isLoggedEvent($event)"></app-login>
                 </div>
             
-            <li *ngIf="user.isLogged" (click)="logout()" class="logout">
+            <li *ngIf="isLogged" (click)="logout()" class="logout">
                 צא מהמערכת
             </li>
-            <li *ngIf="!user.isLogged" routerLinkActive="active-link"><a routerLink="/register" > הירשם לאתר</a></li>
+            <li *ngIf="!isLogged" routerLinkActive="active-link"><a routerLink="/register" > הירשם לאתר</a></li>
         </div>
         
     </ul>
-    <ul *ngIf="user.isLogged" class="member-nav">
+    <ul *ngIf="isLogged" class="member-nav">
         <li routerLinkActive='active-link'> <a routerLink="/myRecipes">המתכונים שלי</a></li>
         <li routerLinkActive='active-link'> <a routerLink="/addRecipe">הוסף מתכון</a></li>
         <li routerLinkActive='active-link'> <a routerLink="/favorites">מתכונים מועדפים</a></li>
