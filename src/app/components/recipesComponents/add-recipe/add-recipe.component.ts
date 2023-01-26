@@ -87,6 +87,8 @@ export class AddRecipeComponent implements OnInit{
     if(file){
       this.fileName = file.name;
       this.fileData.append('file',file)
+      // console.log(this.fileData);
+      
     }
     
     if (event.target.files && event.target.files[0]) {
@@ -113,7 +115,7 @@ export class AddRecipeComponent implements OnInit{
       cookingSteps: this.stepsArray,
     };
     this.recipeService.recipesList.push(this.toSend);   
-    this.recipeService.fileUpload(this.fileData); // calls to upload images
+    this.recipeService.fileUpload(this.fileData, this.cookieService.get('key')); // calls to upload images
     this.recipeService.addRecipe(this.toSend); // calls to add recipe in DB
     this.router.navigateByUrl('/home'); // navigates to home page
   }

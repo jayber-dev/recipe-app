@@ -161,7 +161,7 @@ def delete_recipe():
 def file_upload():
     print('im inside file upload')
     if 'file' not in request.files:
-        
+    # TODO: add key decoder to query user data and put email in filename 
         return jsonify({'data': 'no file was given'})
     file = request.files['file']
     if file and allowed_file(file.filename):
