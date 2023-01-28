@@ -18,12 +18,13 @@ export class UserLoginService {
   dataStr:string
   userData:userData
   userShortData:UserShortData
-  
+  domain:String = 'http://127.0.0.1'
+  port:string = '5000'
   
   uploadProfileImg(formData:any){
     console.log(formData);
     
-    const http = this.http.post('http://127.0.0.1:5001/upload-profile',formData).subscribe(data => {
+    const http = this.http.post(`${this.domain}:${this.port}/upload-profile`,formData).subscribe(data => {
       console.log(data);
       
       http.unsubscribe()
@@ -31,7 +32,7 @@ export class UserLoginService {
   }
 
   auth(){
-    const auth = this.http.post('127.0.0.1:5001',{}).subscribe(data => {
+    const auth = this.http.post(`${this.domain}:${this.port}/auth`,{}).subscribe(data => {
       console.log(data);
       auth.unsubscribe()
     })
@@ -39,19 +40,19 @@ export class UserLoginService {
 
   register(userData:any){
     this.dataStr = JSON.stringify(userData)
-    const register = this.http.post('http://127.0.0.1:5001/register',{data:this.dataStr}).subscribe(data => {
+    const register = this.http.post(`${this.domain}:${this.port}/register`,{data:this.dataStr}).subscribe(data => {
       register.unsubscribe()
     })
   }
 
   login(user:string,pass:string){
-    return this.http.post<any>('http://127.0.0.1:5001/login', { name: user, pass: pass }, { responseType: 'json' })
+    return this.http.post<any>(`${this.domain}:${this.port}/login`, { name: user, pass: pass }, { responseType: 'json' })
 
     // logging.unsubscribe()
   }
 
   logout(){
-    this.http.post('http://127.0.0.1:5001/logout',{key:this.cookieService.get('key')}).subscribe((data)=>{
+    this.http.post(`${this.domain}:${this.port}/logout`,{key:this.cookieService.get('key')}).subscribe((data)=>{
       this.isLogged = false
       this.cookieService.deleteAll()
     })

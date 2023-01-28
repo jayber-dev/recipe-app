@@ -14,13 +14,16 @@ export class LikeService {
 
     }
 
+    domain:String = 'http://127.0.0.1'
+    port:string = '5000'
+
     addLike(recipeId){
         console.log(recipeId);
-        return this.http.post('http://127.0.0.1:5001/addLike',{recipe_id:recipeId, key:this.cookieService.get('key')})
+        return this.http.post(`${this.domain}:${this.port}/addLike`,{recipe_id:recipeId, key:this.cookieService.get('key')})
     }
 
     checkIfPressed(recipeId){
         console.log(recipeId);
-        return this.http.get('http://127.0.0.1:5001/checkLike', {params:{recipeId:recipeId,key:this.cookieService.get('key')}})
+        return this.http.get(`${this.domain}:${this.port}/checkLike`, {params:{recipeId:recipeId,key:this.cookieService.get('key')}})
     }
 }

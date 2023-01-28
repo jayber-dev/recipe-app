@@ -12,6 +12,8 @@ import cryptocode
 from ast import literal_eval
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+PORT = '5000'
+DOMAIN = 'http://127.0.0.1' 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -48,7 +50,7 @@ def auth():
                         "login": is_true,
                         "firstName":user_data.firstName,
                         "lastName": user_data.lastName,
-                        "imgName": f"http://127.0.0.1:5001/profile/{user_data.imgName}",
+                        "imgName": f"{DOMAIN}:{PORT}/profile/{user_data.imgName}",
                         })
     except:
         return jsonify({"login": False})
@@ -84,7 +86,7 @@ def login():
                 'id': user_data.id,
                 'firstName': user_data.firstName,
                 'lastName': user_data.lastName,
-                'imgName': f"http://127.0.0.1:5001/profile/{user_data.imgName}"}))
+                'imgName': f"{DOMAIN}:{PORT}/profile/{user_data.imgName}"}))
         else:
             return jsonify({'data': 'false', 'message': 'Wrong password'})
     except:
@@ -223,5 +225,6 @@ def check_like():
     return jsonify({'data':entity_response})
     
 if __name__ == "__main__":
-
-    app.run(debug=True, host='127.0.0.1', port='5001')
+    website_url = '127.0.0.1:5000'
+    app.config['SERVER_NAME'] = website_url
+    app.run(debug=True, )

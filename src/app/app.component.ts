@@ -28,7 +28,7 @@ export class AppComponent  {
     
     
     
-    http.post('http://127.0.0.1:5001/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
+    http.post('http://127.0.0.1:5000/auth',{id: cookieService.get('id') , key:cookieService.get('key')}).subscribe(data => {
       if(data['login']){
         console.log(data);
         this.userShortData = {

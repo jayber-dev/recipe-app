@@ -121,7 +121,7 @@ export class AddRecipeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.http.post('http://127.0.0.1:5001/auth',{id: this.cookieService.get('id') , key:this.cookieService.get('key')}).subscribe(data => {
+    this.http.post('http://127.0.0.1:5000/auth',{id: this.cookieService.get('id') , key:this.cookieService.get('key')}).subscribe(data => {
       console.log(data);
       
       if(data['login']){

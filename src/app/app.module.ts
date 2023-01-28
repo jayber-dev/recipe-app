@@ -26,6 +26,7 @@ import { PaypalQrComponent } from './components/paypalComponent/paypal-qr/paypal
 import { PaypalBtnComponent } from './components/paypalComponent/paypal-btn/paypal-btn.component';
 import { PricesTableComponent } from './components/prices-table/prices-table.component';
 import { HtmlDecoder } from './pipes/htmlDecoder.pipe';
+import { UserDetailsComponent } from './components/settingsComponents/user-details/user-details.component';
 
 
 
@@ -50,6 +51,8 @@ import { HtmlDecoder } from './pipes/htmlDecoder.pipe';
     PaypalQrComponent,
     PaypalBtnComponent,
     PricesTableComponent,
+    UserDetailsComponent,
+    
   ],
   imports: [
     BrowserAnimationsModule,

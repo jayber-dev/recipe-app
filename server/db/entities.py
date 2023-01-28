@@ -9,7 +9,8 @@ import os
 db = Database()
 
 load_dotenv()
-
+PORT = '5000'
+DOMAIN = 'http://127.0.0.1' 
 # SECTION ----------------------------------------- DATABASE MODEL ---------------------------------------------
 
 class Users(db.Entity):
@@ -113,8 +114,8 @@ def retrive_recipes(from_index,to_index):
             'title': i.recipe_name,
             'cookingTime': i.cooking_time,
             'preperationTime':i.preperation_time,
-            'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
-            'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
+            'recipe-img': f"{DOMAIN}:{PORT}/recipe-images/{i.primary_image}",
+            'profile-img': f"{DOMAIN}:{PORT}/profile/{i.user.imgName}",
             'likesCount': i.likes_count,
             # 'ingredients': i.ingredients,
             # 'cookingSteps': i.cooking_steps,
@@ -143,8 +144,8 @@ def retrive_recipe(id):
             "title": data.recipe_name,
             "cookingTime": data.cooking_time,
             'preperationTime':data.preperation_time,
-            "recipe-img": f"http://127.0.0.1:5001/recipe-images/{data.primary_image}",
-            "profile-img": f"http://127.0.0.1:5001/profile/{data.user.imgName}",
+            "recipe-img": f"{DOMAIN}:{PORT}/recipe-images/{data.primary_image}",
+            "profile-img": f"{DOMAIN}:{PORT}/profile/{data.user.imgName}",
             "ingredients": ingredients,
             "cookingSteps": steps,
         }
@@ -169,8 +170,8 @@ def retrive_user_recipes(id):
             'title': i.recipe_name,
             'cookingTime': i.cooking_time,
             'preperationTime':i.preperation_time,
-            'recipe-img': f"http://127.0.0.1:5001/recipe-images/{i.primary_image}",
-            'profile-img': f"http://127.0.0.1:5001/profile/{i.user.imgName}",
+            'recipe-img': f"{DOMAIN}:{PORT}/recipe-images/{i.primary_image}",
+            'profile-img': f"{DOMAIN}:{PORT}/profile/{i.user.imgName}",
             'ingredients': ingredients,
             'cookingSteps': steps,
             'likesCount': i.likes_count

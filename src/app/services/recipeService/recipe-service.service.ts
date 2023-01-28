@@ -14,10 +14,11 @@ export class RecipeService {
     const recipesList: any[] = this.recipesData;
   }
   recipesData: string[];
-
+  domain:String = 'http://127.0.0.1'
+  port:string = '5000'
   fileUpload(formData) {
     const upload = this.http
-      .post('http://127.0.0.1:5001/upload-img', formData)
+      .post(`${this.domain}:${this.port}/upload-img`, formData)
       .subscribe((data) => {
         upload.unsubscribe();
       });
@@ -25,12 +26,12 @@ export class RecipeService {
 
   updateRecipe(data,id){
     console.log(id);
-     return this.http.patch('http://127.0.0.1:5001/updateRecipe', {data:data,id:id})
+     return this.http.patch(`${this.domain}:${this.port}/updateRecipe`, {data:data,id:id})
   }
 
   addRecipe(data: RecpieModel) {
     const send = this.http
-      .post('http://127.0.0.1:5001/addRecipe', {
+      .post(`${this.domain}:${this.port}/addRecipe`, {
         key: this.cookieService.get('key'),
         data,
       })
@@ -40,21 +41,21 @@ export class RecipeService {
   }
 
   deleteRecipe(id){
-    return this.http.delete('http://127.0.0.1:5001//deleteRecipe', {params:{data:id}})
+    return this.http.delete(`${this.domain}:${this.port}/deleteRecipe`, {params:{data:id}})
   }
 
   retriveRecipes(startIndex:number,endIndex:number) { 
     // Retrives all recipes for home page
-    return this.http.get('http://127.0.0.1:5001/retriveRecipes',{params:{startIndex:startIndex,endIndex:endIndex}});
+    return this.http.get(`${this.domain}:${this.port}/retriveRecipes`,{params:{startIndex:startIndex,endIndex:endIndex}});
   }
 
   retriveRecipe(id: string) { 
     // Retrive data for one recipe with ingredients and cooking steps
-    return this.http.get('http://127.0.0.1:5001/retriveRecipe/' + id);
+    return this.http.get(`${this.domain}:${this.port}/retriveRecipe/` + id);
   }
 
   retriveUserRecipes (){ 
     // Retrives all user recipes
-    return this.http.get('http://127.0.0.1:5001/retriveUserRecipes/', {params:{key:this.cookieService.get('key')}} )
+    return this.http.get(`${this.domain}:${this.port}/retriveUserRecipes/`, {params:{key:this.cookieService.get('key')}} )
   }
 }
