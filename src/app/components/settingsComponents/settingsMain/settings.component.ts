@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserLoginService } from 'src/app/services/authServices/userLoginService.service';
 
 @Component({
   selector: 'app-settings',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent {
+  constructor(
+    private user:UserLoginService,
+  ){
 
+  }
+  ngOnInit() {
+    
+  }
 }
