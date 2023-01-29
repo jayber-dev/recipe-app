@@ -55,7 +55,7 @@ export class LikeBtnComponent implements OnInit {
     if(this.logged) this.isLiked = "black"
     
     
-    try {
+    if(cookie){
       this.likeService.checkIfPressed(this.recipeId).subscribe(data => {
         console.log(data);
         if(data['data'] === true){
@@ -64,8 +64,6 @@ export class LikeBtnComponent implements OnInit {
           this.isLiked = 'black'
         }
       })
-    } catch {
-      console.log('wow');
     }
   }
 }

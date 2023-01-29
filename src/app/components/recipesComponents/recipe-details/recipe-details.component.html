@@ -1,26 +1,32 @@
 <div class="recipe-details-container" *ngIf="recipeDetails">
     <h1>{{recipeDetails['title']}}<span class="user-name">  נכתב על ידי - {{recipeDetails['userFirstName']}} {{recipeDetails['userlastName']}}</span></h1>
     <div class="cooking-time-container">
-        <table class="preview-table">
-            <thead>
-                <tr>
-                    <td>זמן בישול</td>
-                    <td>זמן הכנה</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        {{recipeDetails['cookingTime']}} דקות
-                    </td>
-                    <td>
-                        {{recipeDetails['preperationTime']}} דקות
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <app-like-btn [recipeId]="recipeDetails['recipeId']" [userId]=""></app-like-btn>
-        <app-paypal-qr></app-paypal-qr>
+        <div class="right-side">
+            <table class="preview-table">
+                <tbody>
+                    <tr>
+                        <td>זמן בישול</td>
+                        <td>זמן הכנה</td>
+                    </tr>
+                
+                
+                    <tr>
+                        <td>
+                            {{recipeDetails['cookingTime']}} דקות
+                        </td>
+                        <td>
+                            {{recipeDetails['preperationTime']}} דקות
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="left-side">
+            <app-like-btn [recipeId]="recipeDetails['recipeId']" [userId]=""></app-like-btn>
+            <!-- <app-paypal-qr></app-paypal-qr> -->
+            <app-paypal-btn></app-paypal-btn>
+        </div>
+        
         
     </div>
     

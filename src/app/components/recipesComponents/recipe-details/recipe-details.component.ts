@@ -40,15 +40,15 @@ export class RecipeDetailsComponent implements OnInit {
       this.param = param
     })
 
-    const like = this.likes.checkIfPressed(this.param.id).subscribe(data => {
-      console.log(data);
-      like.unsubscribe()
-    })
+    // const like = this.likes.checkIfPressed(this.param.id).subscribe(data => {
+    //   console.log(data);
+    //   like.unsubscribe()
+    // })
 
     console.log(this.param);
     
     const recipeDetails = this.recipeService.retriveRecipe(this.param.id).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.recipeDetails = data;
       
       this.cookingSteps = (JSON.parse(this.recipeDetails.cookingSteps));

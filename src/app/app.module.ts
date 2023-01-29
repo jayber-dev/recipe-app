@@ -29,10 +29,6 @@ import { HtmlDecoder } from './pipes/htmlDecoder.pipe';
 import { UserDetailsComponent } from './components/settingsComponents/user-details/user-details.component';
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,8 +47,7 @@ import { UserDetailsComponent } from './components/settingsComponents/user-detai
     PaypalQrComponent,
     PaypalBtnComponent,
     PricesTableComponent,
-    UserDetailsComponent,
-    
+    UserDetailsComponent, 
   ],
   imports: [
     BrowserAnimationsModule,
@@ -61,6 +56,7 @@ import { UserDetailsComponent } from './components/settingsComponents/user-detai
     ReactiveFormsModule,
     CommonModule,
     BrowserModule,
+    
     RouterModule.forRoot(routes),
     
   ],
