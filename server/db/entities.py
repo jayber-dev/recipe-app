@@ -21,6 +21,7 @@ class Users(db.Entity):
     password = Required(str)
     token = Optional(str)
     imgName = Optional(str)
+    donation_link= Optional(str)
     recipes = Set('Recipes')
     likes = Set('Likes')
 
@@ -33,6 +34,7 @@ class Recipes(db.Entity):
     ingredients = Required(LongStr)
     cooking_steps = Required(LongStr)
     likes_count = Required(int)
+    
    
     
 class Likes(db.Entity):
@@ -110,6 +112,7 @@ def retrive_recipes(from_index,to_index):
             'userId': i.user.id,
             'userFirstName': i.user.firstName,
             'userlastName': i.user.lastName,
+            'donationLink': i.user.donation_link,
             'recipeId': i.id,
             'title': i.recipe_name,
             'cookingTime': i.cooking_time,
@@ -140,6 +143,7 @@ def retrive_recipe(id):
             "userId": data.user.id,
             "userFirstName": data.user.firstName,
             "userlastName": data.user.lastName,
+            "donationLink": data.user.donation_link,
             "recipeId": data.id,
             "title": data.recipe_name,
             "cookingTime": data.cooking_time,
@@ -166,6 +170,7 @@ def retrive_user_recipes(id):
             'userId': i.user.id,
             'userFirstName': i.user.firstName,
             'userlastName': i.user.lastName,
+            'donationLink': i.user.donation_link,
             'recipeId': i.id,
             'title': i.recipe_name,
             'cookingTime': i.cooking_time,

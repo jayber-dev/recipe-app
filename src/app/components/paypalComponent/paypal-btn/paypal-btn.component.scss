@@ -6,9 +6,19 @@
         animation-duration: 5s;
         animation-iteration-count: infinite;
         a {
+          text-decoration: none;
             svg {
-                fill: rgba(243, 36, 70, 0.493);
+              height: 50px;
+              width: 50px;
+              fill: rgba(219, 108, 126, 0.493);
             }
+        }
+        a:active {
+          color:black;
+        }
+
+        a:visited {
+          color:black;
         }
 
     }
