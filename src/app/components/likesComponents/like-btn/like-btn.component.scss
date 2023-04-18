@@ -1,4 +1,7 @@
 button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     cursor: pointer;
     background-color: transparent;
     border: 0px;

@@ -13,6 +13,8 @@ svg{
     fill:$textcolor
 }
 nav {
+    
+    
     background-color: $backgroundColor;
     position: fixed;
     z-index: 2;
@@ -190,9 +192,7 @@ nav {
         .right-member-nav {
             display: flex;
             flex-direction: row;
-            li:first-child {
-                // margin-left: 20px;
-            }
+            
             li{
                 list-style-type: none;
                 padding:5px;        
@@ -211,9 +211,7 @@ nav {
             }
         }
 
-        .left-member-nav{
-
-        }
+        
         
         
         

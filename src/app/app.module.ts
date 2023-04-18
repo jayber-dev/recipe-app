@@ -27,6 +27,7 @@ import { PaypalBtnComponent } from './components/paypalComponent/paypal-btn/payp
 import { PricesTableComponent } from './components/prices-table/prices-table.component';
 import { HtmlDecoder } from './pipes/htmlDecoder.pipe';
 import { UserDetailsComponent } from './components/settingsComponents/user-details/user-details.component';
+import { SettingsComponent } from './components/settingsComponents/settingsMain/settings.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { UserDetailsComponent } from './components/settingsComponents/user-detai
     PaypalQrComponent,
     PaypalBtnComponent,
     PricesTableComponent,
-    UserDetailsComponent, 
+    UserDetailsComponent,
+    SettingsComponent, 
   ],
   imports: [
     BrowserAnimationsModule,

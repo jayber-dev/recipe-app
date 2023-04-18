@@ -28,8 +28,10 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
         align-items: center;
         justify-content: space-between;
         .right-side{
+            
             .preview-table {
-                margin-bottom: 20px;
+
+                // margin-bottom: 20px;
                 // border: 1px solid rgba(128, 128, 128, 0.363);
                 border-collapse: collapse;
                 margin-top: 10px;
@@ -38,6 +40,7 @@ $border: 1px solid rgba(128, 128, 128, 0.301);
                 display: flex;
                 flex-direction: column;
                 align-items: stretch ;
+            
                                 
                 tbody {
                     text-align: center;
