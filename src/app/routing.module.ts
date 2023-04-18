@@ -8,7 +8,6 @@ import { RecipeComponent } from './components/recipesComponents/recipe-home-card
 import { RegistrationFormComponent } from './components/authComponents/registration-form/registration-form.component'
 import { UserRecipeCardComponent } from './components/recipesComponents/user-recipe-card/user-recipe-card.component'
 import { UserDetailsComponent } from './components/settingsComponents/user-details/user-details.component'
-import { SettingsComponent } from './components/settingsComponents/settingsMain/settings.component'
 
 export const routes:Routes = [
     {path: 'home', component:RecipeComponent},
@@ -18,6 +17,6 @@ export const routes:Routes = [
     {path: 'recipeDetails/:id', component:RecipeDetailsComponent},
     {path: 'myRecipes', component:UserRecipeCardComponent},
     {path: 'editRecipe/:id', component:EditRecipeComponent},
-    {path: 'settings', component:SettingsComponent},
+    {path: 'settings', component:UserDetailsComponent},
     {path: '**' , component:NotFoundComponent }
 ]

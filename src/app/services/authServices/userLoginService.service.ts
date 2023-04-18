@@ -57,7 +57,5 @@ export class UserLoginService {
       this.cookieService.deleteAll()
     })
   }
-
- 
   
 }

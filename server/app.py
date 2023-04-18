@@ -103,10 +103,6 @@ def logout():
     entity.delete_token(id=decrypted_token_json['user_id'])
     return jsonify({'logout': 'true'})
 
-@app.route('/retrive-user',)
-def retrive_user():
-    return jsonify({'wow':'nana'})
-
 # SECTION --------------------------------------------- Recipes Handler ------------------------------------
 
 
