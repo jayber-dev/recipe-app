@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 from pony.orm import *
 import requests
 import json
-from lxml import *
+# from lxml import *
 from bs4 import BeautifulSoup
 import time
 
